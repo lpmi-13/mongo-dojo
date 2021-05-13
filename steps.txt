@@ -1,0 +1,25 @@
+sudo -i
+# update OS
+sudo yum update
+sudo reboot
+
+# reconnect and stop mongodb
+sudo -i
+/etc/init.d/mongod stop
+
+# download and extract new version
+cd /usr/local/mongo-installs
+# we'll do a public installer instead of the trustpilot one
+PUT THE PUBLIC MONGO INSTALLER PATH HERE WITH WGET
+tar xvf mongodb-linux-x86_64-amazon-3.6.23.tgz
+rm -rf mongodb-linux-x86_64-amazon-3.6.23.tgz
+chown -R mongod:mongod mongodb-linux-x86_64-amazon-3.6.23/
+cd /usr/local
+ln -sfn /usr/local/mongo-installs/mongodb-linux-x86_64-amazon-3.6.23/ mongodb
+
+# start mongodb
+(alternately just restart the VM if you need to update the kernel)
+/etc/init.d/mongod start
+
+# this should show new version running
+/usr/local/mongodb/bin/mongo
