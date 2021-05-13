@@ -36,3 +36,5 @@ This will involve following the process in `steps.txt`.
 - Creating an index
 
 - Restoring from backups (not exactly sure how backups will work in this setup, but we can probably work something out
+
+- Firing exactly enough traffic to the primary to make it stop responding to read requests, but still respond to heartbeats
