@@ -40,7 +40,7 @@ net:
   bindIp: 0.0.0.0  # Enter 0.0.0.0,:: to bind to all IPv4 and IPv6 addresses or, alternatively, use the net.bindIpAll setting.
 replication:
    oplogSizeMB: 50
-   replSetName: AZN
+   replSetName: dojo
 EOF
 sudo systemctl restart mongod
 sudo systemctl enable mongod
@@ -61,7 +61,6 @@ Vagrant.configure("2") do |config|
     mongo1.vm.network :private_network, ip: "192.168.42.100"
     mongo1.vm.hostname = "mongo1"
     mongo1.vm.provision "shell", inline: $mongoConfigScript
-    mongo1.vm.provision "shell", path: "mongo_rs_config.sh"
   end
 
   config.vm.define :mongo2 do |mongo2|
@@ -75,5 +74,6 @@ Vagrant.configure("2") do |config|
     mongo3.vm.network :private_network, ip: "192.168.42.102"
     mongo3.vm.hostname = "mongo3"
     mongo3.vm.provision "shell", inline: $mongoConfigScript
+    mongo3.vm.provision "shell", path: "mongo_rs_config.sh"
   end
 end
