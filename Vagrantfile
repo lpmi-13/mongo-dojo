@@ -167,7 +167,7 @@ tee $GRAFANA_DATASOURCE <<-"EOF"
 apiVersion: 1
 
 datasources:
-  - name: Mongo Exporter
+  - name: Prometheus
     type: mongo_metrics
 EOF
 
