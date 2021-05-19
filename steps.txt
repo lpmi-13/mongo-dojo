@@ -9,7 +9,6 @@ sudo -i
 
 # download and extract new version
 cd /usr/local/mongo-installs
-# we'll do a public installer instead of the trustpilot one
 PUT THE PUBLIC MONGO INSTALLER PATH HERE WITH WGET
 tar xvf mongodb-linux-x86_64-amazon-3.6.23.tgz
 rm -rf mongodb-linux-x86_64-amazon-3.6.23.tgz

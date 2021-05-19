@@ -38,3 +38,7 @@ This will involve following the process in `steps.txt`.
 - Restoring from backups (not exactly sure how backups will work in this setup, but we can probably work something out
 
 - Firing exactly enough traffic to the primary to make it stop responding to read requests, but still respond to heartbeats
+
+- Attaching a node service that reads from the primary (without secondaryPreferred), and then see what happens when the primary steps down (it should break)
+
+- look at "realtime" metrics inside the VM using "mongotop" and "mongostat"
