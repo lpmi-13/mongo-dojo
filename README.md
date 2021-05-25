@@ -42,3 +42,5 @@ This will involve following the process in `steps.txt`.
 - Attaching a node service that reads from the primary (without secondaryPreferred), and then see what happens when the primary steps down (it should break)
 
 - look at "realtime" metrics inside the VM using "mongotop" and "mongostat"
+
+- load data and start with an unoptimized query. Run explain to see that it's not performant and fix it. Re-run explain to prove the fix worked.
