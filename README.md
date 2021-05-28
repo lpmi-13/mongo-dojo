@@ -33,6 +33,8 @@ This will involve following the process in `steps.txt`.
 
 - Running `explain()` to see why a query might be running slowly (probably lack of an index)
 
+- Find and stop a long-running query
+
 - Creating an index
 
 - Restoring from backups (not exactly sure how backups will work in this setup, but we can probably work something out
