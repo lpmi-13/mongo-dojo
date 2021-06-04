@@ -48,11 +48,15 @@ sudo systemctl enable mongod
 
 # I thought there would be a cleaner way to do this, but this works so keeping it for now
 sudo iptables -A IN_public_allow -p tcp -m tcp --dport 27017 -m conntrack --ctstate NEW,UNTRACKED -j ACCEPT
+# mongo exporter
 sudo iptables -A IN_public_allow -p tcp -m tcp --dport 9216 -m conntrack --ctstate NEW,UNTRACKED -j ACCEPT
+# node exporter
+sudo iptables -A IN_public_allow -p tcp -m tcp --dport 9100 -m conntrack --ctstate NEW,UNTRACKED -j ACCEPT
 sudo /etc/init.d/network restart
 
 
 
+# mongo exporter stuff
 wget https://github.com/percona/mongodb_exporter/releases/download/v0.7.1/mongodb_exporter-0.7.1.linux-amd64.tar.gz
 tar xvzf mongodb_exporter-0.7.1.linux-amd64.tar.gz
 sudo mv mongodb_exporter /usr/local/bin/
@@ -76,8 +80,31 @@ ExecStart=/usr/local/bin/mongodb_exporter
 WantedBy=multi-user.target
 EOF
 
+
+# prometheus node exporter stuff for VM metrics
+wget https://github.com/prometheus/node_exporter/releases/download/v1.1.2/node_exporter-1.1.2.linux-amd64.tar.gz
+tar xvfz node_exporter-1.1.2.linux-amd64.tar.gz
+sudo mv ./node_exporter-1.1.2.linux-amd64/node_exporter /usr/local/bin/
+
+NODE_EXPORTER_PATH="/lib/systemd/system/node_exporter.service"
+
+tee $NODE_EXPORTER_PATH <<-"EOF"
+[Unit]
+Description=Node Exporter
+User=prometheus
+
+[Service]
+Type=simple
+Restart=always
+ExecStart=/usr/local/bin/node_exporter
+
+[Install]
+WantedBy=multi-user.target
+EOF
+
 sudo systemctl daemon-reload
 sudo systemctl start mongodb_exporter.service
+sudo systemctl start node_exporter.service
 
 
 SCRIPT
@@ -94,7 +121,6 @@ sudo mkdir /etc/prometheus
 sudo mkdir /var/lib/prometheus
 
 tee $PROMETHEUS_CONFIG_PATH <<-"EOF"
-# A scrape configuration containing exactly one endpoint to scrape:
 global:
   scrape_interval: 1s
 
@@ -102,6 +128,9 @@ scrape_configs:
   - job_name: 'mongo_repl'
     static_configs:
       - targets: ['192.168.42.100:9216', '192.168.42.101:9216', '192.168.42.102:9216']
+  - job_name: 'node_health'
+    static_configs:
+      - targets: ['192.168.42.100:9100', '192.168.42.101:9100', '192.168.42.102:9100']
 EOF
 
 sudo useradd -rs /bin/false prometheus
@@ -168,7 +197,7 @@ apiVersion: 1
 
 datasources:
   - name: Prometheus
-    type: mongo_metrics
+    type: prometheus
 EOF
 
 GRAFANA_DEFAULT_DASHBOARD="/etc/grafana/provisioning/dashboards/default.yml"
@@ -177,8 +206,7 @@ tee $GRAFANA_DEFAULT_DASHBOARD <<-"EOF"
 apiVersion: 1
 
 providers:
-  - name: Mongo_Exporter    # A uniquely identifiable name for the provider
-    folder: Mongo_Stuff # The folder where to place the dashboards
+  - name: dashboards    # A uniquely identifiable name for the provider
     type: file
     options:
       path: /var/lib/grafana/dashboards
