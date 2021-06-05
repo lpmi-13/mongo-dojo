@@ -196,8 +196,10 @@ tee $GRAFANA_DATASOURCE <<-"EOF"
 apiVersion: 1
 
 datasources:
-  - name: Prometheus
+  - name: observer node exporter
     type: prometheus
+    access: proxy
+    url: http://localhost:9090
 EOF
 
 GRAFANA_DEFAULT_DASHBOARD="/etc/grafana/provisioning/dashboards/default.yml"
@@ -216,6 +218,7 @@ EOF
 # hack because vagrant ssh user can't scp to /var
 sudo mkdir -p /var/lib/grafana/dashboards
 sudo cp /tmp/mongo_replicaset_summary.json /var/lib/grafana/dashboards/
+sudo cp /tmp/node-exporter-server-metrics.json /var/lib/grafana/dashboards/
 
 sudo systemctl daemon-reload
 sudo systemctl start prometheus
@@ -261,8 +264,10 @@ Vagrant.configure("2") do |config|
   config.vm.define :observer do |observer|
     observer.vm.network :private_network, ip: "192.168.42.200"
     observer.vm.network "forwarded_port", guest: 3000, host: 3000
+    observer.vm.network "forwarded_port", guest: 9090, host: 9090
     observer.vm.hostname = "observer"
     observer.vm.provision "file", source: "mongo_replicaset_summary.json", destination: "/tmp/mongo_replicaset_summary.json"
+    observer.vm.provision "file", source: "node-exporter-server-metrics.json", destination: "/tmp/node-exporter-server-metrics.json"
     observer.vm.provision "shell", inline: $observerConfigScript
   end
 end
