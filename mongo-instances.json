@@ -205,7 +205,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "rate(mongodb_metrics_document_total{instance=~\"$env\"}[$interval])",
+          "expr": "rate(mongodb_mongod_metrics_document_total{instance=~\"$env\",state=\"returned\"}[$interval])",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -551,7 +551,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "rate(mongodb_metrics_document_total{instance=~\"$env\"}[$interval])",
+          "expr": "rate(mongodb_mongod_metrics_document_total{instance=~\"$env\",state=\"returned\"}[$interval])",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -900,7 +900,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "rate(mongodb_metrics_document_total{instance=~\"$env\"}[$interval])",
+          "expr": "rate(mongodb_mongod_metrics_document_total{instance=~\"$env\",state=\"returned\"}[$interval])",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
