@@ -1,6 +1,6 @@
 # Mongo dojo
 
-This is a basic setup to reproduce a simple mongo replicaset using VMs locally with virtualbox and vagrant. I chose virtualbox because I figured that would be better cross-platform than something like parallels.
+This is a basic setup to reproduce a simple mongo replicaset using VMs locally with virtualbox and vagrant. I chose virtualbox because I figured that would be better cross-platform than something like parallels, and also because one of the things we'd like to practice is killing and restarting the `mongod` process within the VM, which is less straightforward in containers.
 
 ## Setting up
 
@@ -17,11 +17,8 @@ https://www.vagrantup.com/downloads
 
 5) `$ vagrant plugin install vagrant-vbguest`
 
-6) `$ vagrant up`
-
-7) `$ vagrant ssh`
-
-You're in your VM!
+7) `$ bash setup.sh`
+(this scripts insertion of mock data into the replicaset)
 
 ## Scenarios we want
 
@@ -46,3 +43,5 @@ This will involve following the process in `steps.txt`.
 - look at "realtime" metrics inside the VM using "mongotop" and "mongostat"
 
 - load data and start with an unoptimized query. Run explain to see that it's not performant and fix it. Re-run explain to prove the fix worked.
+
+- fix various things (probably a sub-set of the above) by restarting the `mongod` process

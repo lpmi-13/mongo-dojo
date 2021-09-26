@@ -3,6 +3,8 @@ sleep 10
 mongo localhost:27017 <<EOF
 use admin;
 rs.status();
+
+# so the exporter can grab data and provide it for prometheus
 db.createUser({
   user: "mongodb_exporter",
   pwd: "password",

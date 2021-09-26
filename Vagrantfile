@@ -223,7 +223,8 @@ EOF
 # hack because vagrant ssh user can't scp to /var
 sudo mkdir -p /var/lib/grafana/dashboards
 sudo cp /tmp/disk-performance.json /var/lib/grafana/dashboards/
-sudo cp /tmp/node-exporter-server-metrics.json /var/lib/grafana/dashboards/
+#sudo cp /tmp/node-exporter-server-metrics.json /var/lib/grafana/dashboards/
+sudo cp /tmp/custom-dashboard.json /var/lib/grafana/dashboards/
 sudo cp /tmp/mongo-instances.json /var/lib/grafana/dashboards/
 
 sudo systemctl daemon-reload
@@ -273,7 +274,8 @@ Vagrant.configure("2") do |config|
     observer.vm.network "forwarded_port", guest: 9090, host: 9090
     observer.vm.hostname = "observer"
     observer.vm.provision "file", source: "disk-performance.json", destination: "/tmp/disk-performance.json"
-    observer.vm.provision "file", source: "node-exporter-server-metrics.json", destination: "/tmp/node-exporter-server-metrics.json"
+    #observer.vm.provision "file", source: "node-exporter-server-metrics.json", destination: "/tmp/node-exporter-server-metrics.json"
+    observer.vm.provision "file", source: "custom-dashboard.json", destination: "/tmp/custom-dashboard.json"
     observer.vm.provision "file", source: "mongo-instances.json", destination: "/tmp/mongo-instances.json"
     observer.vm.provision "shell", inline: $observerConfigScript
   end
