@@ -9,7 +9,7 @@ RUN go mod download
 
 COPY main.go ./
 
-RUN go build -o /insert-data
+RUN CGO_ENABLED=0 go build -o /insert-data
 
 FROM scratch
 
