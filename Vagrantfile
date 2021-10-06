@@ -225,6 +225,7 @@ sudo mkdir -p /var/lib/grafana/dashboards
 sudo cp /tmp/disk-performance.json /var/lib/grafana/dashboards/
 sudo cp /tmp/custom-dashboard-v2.json /var/lib/grafana/dashboards/
 sudo cp /tmp/mongo-instances.json /var/lib/grafana/dashboards/
+sudo cp /tmp/mongo-instances-v2.json /var/lib/grafana/dashboards/
 
 sudo systemctl daemon-reload
 sudo systemctl start prometheus
@@ -275,6 +276,7 @@ Vagrant.configure("2") do |config|
     observer.vm.provision "file", source: "disk-performance.json", destination: "/tmp/disk-performance.json"
     observer.vm.provision "file", source: "custom-dashboard-v2.json", destination: "/tmp/custom-dashboard-v2.json"
     observer.vm.provision "file", source: "mongo-instances.json", destination: "/tmp/mongo-instances.json"
+    observer.vm.provision "file", source: "mongo-instances-v2.json", destination: "/tmp/mongo-instances-v2.json"
     observer.vm.provision "shell", inline: $observerConfigScript
   end
 end
