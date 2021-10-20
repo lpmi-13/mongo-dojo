@@ -222,10 +222,10 @@ EOF
 
 # hack because vagrant ssh user can't scp to /var
 sudo mkdir -p /var/lib/grafana/dashboards
-sudo cp /tmp/disk-performance.json /var/lib/grafana/dashboards/
 sudo cp /tmp/custom-dashboard-v2.json /var/lib/grafana/dashboards/
-sudo cp /tmp/mongo-instances.json /var/lib/grafana/dashboards/
 sudo cp /tmp/mongo-instances-v2.json /var/lib/grafana/dashboards/
+sudo cp /tmp/real-wired-tiger.json /var/lib/grafana/dashboards/
+sudo cp /tmp/replicaSet.json /var/lib/grafana/dashboards/
 
 sudo systemctl daemon-reload
 sudo systemctl start prometheus
@@ -273,9 +273,9 @@ Vagrant.configure("2") do |config|
     observer.vm.network "forwarded_port", guest: 3000, host: 3000
     observer.vm.network "forwarded_port", guest: 9090, host: 9090
     observer.vm.hostname = "observer"
-    observer.vm.provision "file", source: "disk-performance.json", destination: "/tmp/disk-performance.json"
     observer.vm.provision "file", source: "custom-dashboard-v2.json", destination: "/tmp/custom-dashboard-v2.json"
-    observer.vm.provision "file", source: "mongo-instances.json", destination: "/tmp/mongo-instances.json"
+    observer.vm.provision "file", source: "replicaSet.json", destination: "/tmp/replicaSet.json"
+    observer.vm.provision "file", source: "real-wired-tiger.json", destination: "/tmp/real-wired-tiger.json"
     observer.vm.provision "file", source: "mongo-instances-v2.json", destination: "/tmp/mongo-instances-v2.json"
     observer.vm.provision "shell", inline: $observerConfigScript
   end

@@ -23,7 +23,20 @@
   "gnetId": 2583,
   "graphTooltip": 1,
   "iteration": 1633530120053,
-  "links": [],
+  "links": [
+    {
+      "asDropdown": true,
+      "icon": "external link",
+      "includeVars": false,
+      "keepTime": false,
+      "tags": [],
+      "targetBlank": false,
+      "title": "Replicaset Dashboards",
+      "tooltip": "",
+      "type": "dashboards",
+      "url": ""
+    }
+  ],
   "panels": [
     {
       "datasource": "mongodb metrics",
@@ -1034,7 +1047,7 @@
     ]
   },
   "timezone": "browser",
-  "title": "MongoDB",
+  "title": "MongoDB - V2",
   "uid": "j6Vjxo6M2",
   "version": 1
 }
