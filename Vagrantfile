@@ -222,9 +222,15 @@ EOF
 
 # hack because vagrant ssh user can't scp to /var
 sudo mkdir -p /var/lib/grafana/dashboards
-sudo cp /tmp/custom-dashboard-v2.json /var/lib/grafana/dashboards/
-sudo cp /tmp/mongo-instances-v2.json /var/lib/grafana/dashboards/
-sudo cp /tmp/real-wired-tiger.json /var/lib/grafana/dashboards/
+sudo cp /tmp/mongo1-disk-performance.json /var/lib/grafana/dashboards/
+sudo cp /tmp/mongo2-disk-performance.json /var/lib/grafana/dashboards/
+sudo cp /tmp/mongo3-disk-performance.json /var/lib/grafana/dashboards/
+sudo cp /tmp/mongo1-operations.json /var/lib/grafana/dashboards/
+sudo cp /tmp/mongo2-operations.json /var/lib/grafana/dashboards/
+sudo cp /tmp/mongo3-operations.json /var/lib/grafana/dashboards/
+sudo cp /tmp/mongo1-wired-tiger.json /var/lib/grafana/dashboards/
+sudo cp /tmp/mongo2-wired-tiger.json /var/lib/grafana/dashboards/
+sudo cp /tmp/mongo3-wired-tiger.json /var/lib/grafana/dashboards/
 sudo cp /tmp/replicaSet.json /var/lib/grafana/dashboards/
 
 sudo systemctl daemon-reload
@@ -273,10 +279,16 @@ Vagrant.configure("2") do |config|
     observer.vm.network "forwarded_port", guest: 3000, host: 3000
     observer.vm.network "forwarded_port", guest: 9090, host: 9090
     observer.vm.hostname = "observer"
-    observer.vm.provision "file", source: "custom-dashboard-v2.json", destination: "/tmp/custom-dashboard-v2.json"
+    observer.vm.provision "file", source: "mongo1-disk-performance.json", destination: "/tmp/mongo1-disk-performance.json"
+    observer.vm.provision "file", source: "mongo2-disk-performance.json", destination: "/tmp/mongo2-disk-performance.json"
+    observer.vm.provision "file", source: "mongo3-disk-performance.json", destination: "/tmp/mongo3-disk-performance.json"
+    observer.vm.provision "file", source: "mongo1-operations.json", destination: "/tmp/mongo1-operations.json"
+    observer.vm.provision "file", source: "mongo2-operations.json", destination: "/tmp/mongo2-operations.json"
+    observer.vm.provision "file", source: "mongo3-operations.json", destination: "/tmp/mongo3-operations.json"
+    observer.vm.provision "file", source: "mongo1-wired-tiger.json", destination: "/tmp/mongo1-wired-tiger.json"
+    observer.vm.provision "file", source: "mongo2-wired-tiger.json", destination: "/tmp/mongo2-wired-tiger.json"
+    observer.vm.provision "file", source: "mongo3-wired-tiger.json", destination: "/tmp/mongo3-wired-tiger.json"
     observer.vm.provision "file", source: "replicaSet.json", destination: "/tmp/replicaSet.json"
-    observer.vm.provision "file", source: "real-wired-tiger.json", destination: "/tmp/real-wired-tiger.json"
-    observer.vm.provision "file", source: "mongo-instances-v2.json", destination: "/tmp/mongo-instances-v2.json"
     observer.vm.provision "shell", inline: $observerConfigScript
   end
 end
