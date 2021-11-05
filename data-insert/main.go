@@ -52,7 +52,9 @@ func main() {
 		if err != nil {
 			log.Fatal(err)
 		}
-		fmt.Printf("inserted ID: %v\n", result.InsertedID)
+		if i%1000 == 0 {
+			fmt.Printf("inserted ID: %v\n", result.InsertedID)
+		}
 	}
 
 	err = client.Disconnect(context.TODO())

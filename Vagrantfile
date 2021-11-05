@@ -270,8 +270,8 @@ Vagrant.configure("2") do |config|
     mongo3.vm.network :private_network, ip: "192.168.42.102"
     mongo3.vm.hostname = "mongo3"
     mongo3.vm.provision "shell", inline: $mongoConfigScript
-    mongo3.vm.provision "shell", path: "mongo_rs_config.sh"
-    mongo3.vm.provision "shell", path: "create_exporter_user.sh"
+    mongo3.vm.provision "shell", path: "provisioning-scripts/mongo_rs_config.sh"
+    mongo3.vm.provision "shell", path: "provisioning-scripts/create_exporter_user.sh"
   end
 
   config.vm.define :observer do |observer|
@@ -279,16 +279,16 @@ Vagrant.configure("2") do |config|
     observer.vm.network "forwarded_port", guest: 3000, host: 3000
     observer.vm.network "forwarded_port", guest: 9090, host: 9090
     observer.vm.hostname = "observer"
-    observer.vm.provision "file", source: "mongo1-disk-performance.json", destination: "/tmp/mongo1-disk-performance.json"
-    observer.vm.provision "file", source: "mongo2-disk-performance.json", destination: "/tmp/mongo2-disk-performance.json"
-    observer.vm.provision "file", source: "mongo3-disk-performance.json", destination: "/tmp/mongo3-disk-performance.json"
-    observer.vm.provision "file", source: "mongo1-operations.json", destination: "/tmp/mongo1-operations.json"
-    observer.vm.provision "file", source: "mongo2-operations.json", destination: "/tmp/mongo2-operations.json"
-    observer.vm.provision "file", source: "mongo3-operations.json", destination: "/tmp/mongo3-operations.json"
-    observer.vm.provision "file", source: "mongo1-wired-tiger.json", destination: "/tmp/mongo1-wired-tiger.json"
-    observer.vm.provision "file", source: "mongo2-wired-tiger.json", destination: "/tmp/mongo2-wired-tiger.json"
-    observer.vm.provision "file", source: "mongo3-wired-tiger.json", destination: "/tmp/mongo3-wired-tiger.json"
-    observer.vm.provision "file", source: "replicaSet.json", destination: "/tmp/replicaSet.json"
+    observer.vm.provision "file", source: "grafana-dashboards/mongo1-disk-performance.json", destination: "/tmp/mongo1-disk-performance.json"
+    observer.vm.provision "file", source: "grafana-dashboards/mongo2-disk-performance.json", destination: "/tmp/mongo2-disk-performance.json"
+    observer.vm.provision "file", source: "grafana-dashboards/mongo3-disk-performance.json", destination: "/tmp/mongo3-disk-performance.json"
+    observer.vm.provision "file", source: "grafana-dashboards/mongo1-operations.json", destination: "/tmp/mongo1-operations.json"
+    observer.vm.provision "file", source: "grafana-dashboards/mongo2-operations.json", destination: "/tmp/mongo2-operations.json"
+    observer.vm.provision "file", source: "grafana-dashboards/mongo3-operations.json", destination: "/tmp/mongo3-operations.json"
+    observer.vm.provision "file", source: "grafana-dashboards/mongo1-wired-tiger.json", destination: "/tmp/mongo1-wired-tiger.json"
+    observer.vm.provision "file", source: "grafana-dashboards/mongo2-wired-tiger.json", destination: "/tmp/mongo2-wired-tiger.json"
+    observer.vm.provision "file", source: "grafana-dashboards/mongo3-wired-tiger.json", destination: "/tmp/mongo3-wired-tiger.json"
+    observer.vm.provision "file", source: "grafana-dashboards/replicaSet.json", destination: "/tmp/replicaSet.json"
     observer.vm.provision "shell", inline: $observerConfigScript
   end
 end
