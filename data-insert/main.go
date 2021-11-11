@@ -13,11 +13,12 @@ import (
 )
 
 type FakeData struct {
-	Name       string `faker:"name"`
-	UserName   string `faker:"username"`
-	Email      string `faker:"email"`
-	SignupDate string `faker:"timestamp"`
-	Review     string `faker:"paragraph"`
+	Name            string `faker:"name"`
+	UserName        string `faker:"username"`
+	Email           string `faker:"email"`
+	ReviewRating    int    `faker:"oneof: 1, 2, 3, 4, 5"`
+	ReviewSubmitted string `faker:"timestamp"`
+	Review          string `faker:"paragraph"`
 }
 
 var collection *mongo.Collection
