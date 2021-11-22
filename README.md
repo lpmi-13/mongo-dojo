@@ -46,3 +46,6 @@ This will involve following the process in `steps.txt`.
 
 - Attaching a node service that reads from the primary (without secondaryPreferred), and then see what happens when the primary steps down (it should break)
 
+- fix various things (probably a sub-set of the above) by restarting the `mongod` process
+
+- fire a number of different types of queries into mongo and see what the graphs look like: skip param with a high number (1000+), gt/ls combined in the same query maybe?
