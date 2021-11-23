@@ -26,6 +26,10 @@ This will involve following the process in `steps.txt`.
 
 - Restoring from backups (not exactly sure how backups will work in this setup, but we can probably work something out)
 
+We're going to use `vagrant snapshot save mong3 backup` to snapshot the primary as a backup named "backup".
+
+Then we're going to kill a machine (one of the secondaries) and restore that from the backup.
+
 - look at "realtime" metrics inside the VM using "mongotop" and "mongostat"
 
 ### Working with indexes
