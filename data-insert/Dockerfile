@@ -15,4 +15,4 @@ FROM scratch
 
 COPY --from=builder /insert-data /insert-data
 
-CMD ["/insert-data", "500000"]
+CMD ["/insert-data", "50000"]
