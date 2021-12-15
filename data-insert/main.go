@@ -16,7 +16,6 @@ type FakeData struct {
 	Name            string `faker:"name"`
 	UserName        string `faker:"username"`
 	Email           string `faker:"email"`
-	ReviewRating    int    `faker:"oneof: 1, 2, 3, 4, 5"`
 	ReviewSubmitted string `faker:"timestamp"`
 	Review          string `faker:"paragraph"`
 }
@@ -54,7 +53,7 @@ func main() {
 			log.Fatal(err)
 		}
 		if i%1000 == 0 {
-			fmt.Printf("inserted ID: %v\n", result.InsertedID)
+			fmt.Printf("inserted ID # %d: %v\n", i, result.InsertedID)
 		}
 	}
 
