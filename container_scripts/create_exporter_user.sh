@@ -1,6 +1,6 @@
-echo "sleeping for 10 seconds..."
-sleep 10
-mongo localhost:27017 <<EOF
+#!/bin/bash
+
+mongo <<EOF
 use admin;
 rs.status();
 
@@ -14,5 +14,3 @@ db.createUser({
   ]
 })
 EOF
-
-echo "all done!"

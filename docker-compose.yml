@@ -1,0 +1,91 @@
+version: '3.7'
+
+services:
+  prometheus:
+    container_name: prometheus
+    image: prom/prometheus:v2.1.0
+    volumes:
+      - ./prometheus/:/etc/prometheus/
+    #  - prometheus_data:/prometheus
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+      - '--web.console.libraries=/usr/share/prometheus/console_libraries'
+      - '--web.console.templates=/usr/share/prometheus/consoles'
+    networks:
+      - mongors-network
+    ports:
+      - 9090:9090
+    restart: always
+  grafana:
+    container_name: grafana
+    image: grafana/grafana-oss
+    user: "472"
+    depends_on:
+      - prometheus
+    ports:
+      - 3000:3000
+    networks:
+      - mongors-network
+    volumes:
+      - grafana_data:/var/lib/grafana
+      - ./grafana/provisioning:/etc/grafana/provisioning
+  #  env_file:
+  #    - ./grafana/config.monitoring
+    restart: always
+
+  mongo-exporter:
+    container_name: mongo-exporter
+    image: percona/mongodb_exporter:0.30.0
+    networks:
+      - mongors-network
+    ports:
+      - 9216:9216
+    environment:
+      - MONGODB_URI=mongodb://mongodb_exporter:password@mongo1:27017
+
+  mongo1:
+    container_name: mongo1
+    image: mongo:3.6
+    volumes:
+      - ~/mongors/data1:/data/db
+      - ./container_scripts/rs-init.sh:/scripts/rs-init.sh
+      - ./container_scripts/create_exporter_user.sh:/scripts/create_exporter_user.sh
+    networks:
+      - mongors-network
+    ports:
+      - 27017:27017
+    links:
+      - mongo2
+      - mongo3
+    restart: always
+    entrypoint: [ "/usr/bin/mongod", "--bind_ip_all", "--replSet", "dbrs" ]
+  mongo2:
+    container_name: mongo2
+    image: mongo:3.6
+    volumes:
+      - ~/mongors/data2:/data/db
+    networks:
+      - mongors-network
+    ports:
+      - 27018:27017
+    restart: always
+    entrypoint: [ "/usr/bin/mongod", "--bind_ip_all", "--replSet", "dbrs" ]
+  mongo3:
+    container_name: mongo3
+    image: mongo:3.6
+    volumes:
+      - ~/mongors/data3:/data/db
+    networks:
+      - mongors-network
+    ports:
+      - 27019:27017
+    restart: always
+    entrypoint: [ "/usr/bin/mongod", "--bind_ip_all", "--replSet", "dbrs" ]
+
+volumes:
+    grafana_data: {}
+
+networks:
+  mongors-network:
+    driver: bridge

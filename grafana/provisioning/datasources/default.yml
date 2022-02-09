@@ -1,0 +1,10 @@
+apiVersion: 1
+
+datasources:
+  - name: mongodb metrics
+    type: prometheus
+    access: proxy
+    # we can just use the container name as the DNS
+    url: http://prometheus:9090
+    isDefault: true
+    editable: true
