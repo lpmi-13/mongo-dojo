@@ -28,7 +28,7 @@ func main() {
 	numberOfRecords, err := strconv.Atoi(os.Args[1])
         connectionURI := os.Args[2]
 
-	// this is the primary host for the replicaset running inside the VM
+	// this is the primary host for the replicaset running inside the containers
 	clientOptions := options.Client().ApplyURI(connectionURI)
 	client, err := mongo.Connect(ctx, clientOptions)
 	if err != nil {

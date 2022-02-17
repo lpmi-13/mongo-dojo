@@ -15,4 +15,4 @@ FROM scratch
 
 COPY --from=builder /insert-data /insert-data
 
-CMD ["/insert-data", "50000"]
+CMD ["/insert-data", "50000", "mongodb://192.168.42.102:27017/?replicaSet=dojo"]

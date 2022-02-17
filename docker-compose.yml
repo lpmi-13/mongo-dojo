@@ -19,7 +19,7 @@ services:
     restart: always
   grafana:
     container_name: grafana
-    image: grafana/grafana-oss
+    image: grafana/grafana-oss:6.6.2
     user: "472"
     depends_on:
       - prometheus
@@ -30,8 +30,8 @@ services:
     volumes:
       - grafana_data:/var/lib/grafana
       - ./grafana/provisioning:/etc/grafana/provisioning
-  #  env_file:
-  #    - ./grafana/config.monitoring
+    environment:
+      - GF_INSTALL_PLUGINS=natel-discrete-panel,digiapulssi-breadcrumb-panel,yesoreyeram-boomtable-panel
     restart: always
 
   mongo-exporter:
@@ -59,7 +59,7 @@ services:
       - mongo2
       - mongo3
     restart: always
-    entrypoint: [ "/usr/bin/mongod", "--bind_ip_all", "--replSet", "dbrs" ]
+    entrypoint: [ "/usr/bin/mongod", "--bind_ip_all", "--replSet", "dojo" ]
   mongo2:
     container_name: mongo2
     image: mongo:3.6
@@ -70,7 +70,7 @@ services:
     ports:
       - 27018:27017
     restart: always
-    entrypoint: [ "/usr/bin/mongod", "--bind_ip_all", "--replSet", "dbrs" ]
+    entrypoint: [ "/usr/bin/mongod", "--bind_ip_all", "--replSet", "dojo" ]
   mongo3:
     container_name: mongo3
     image: mongo:3.6
@@ -81,7 +81,7 @@ services:
     ports:
       - 27019:27017
     restart: always
-    entrypoint: [ "/usr/bin/mongod", "--bind_ip_all", "--replSet", "dbrs" ]
+    entrypoint: [ "/usr/bin/mongod", "--bind_ip_all", "--replSet", "dojo" ]
 
 volumes:
     grafana_data: {}

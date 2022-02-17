@@ -2,7 +2,7 @@
 
 mongo <<EOF
 var config = {
-    "_id": "dbrs",
+    "_id": "dojo",
     "version": 1,
     "members": [
         {

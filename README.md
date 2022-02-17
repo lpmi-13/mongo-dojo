@@ -33,7 +33,7 @@ This will involve following the process in `steps.txt`.
 
 - Restoring from backups (not exactly sure how backups will work in this setup, but we can probably work something out)
 
-We're going to use `vagrant snapshot save mong3 backup` to snapshot the primary as a backup named "backup".
+We're going to use `vagrant snapshot save mongo3 backup` to snapshot the primary as a backup named "backup".
 
 Then we're going to kill a machine (one of the secondaries) and restore that from the backup.
 
@@ -50,9 +50,48 @@ https://docs.docker.com/compose/install/
 
 ### Tasks for the container-based configuration
 
-- Look at "realtime" metrics inside the VM using "mongotop" and "mongostat"
+- Look at "realtime" metrics inside the containers using "mongotop" and "mongostat"
+
+```
+docker exec -it mongo1 /bin/sh
+```
+
+and then once inside the container shell, just run `mongotop` and you should see something like:
+
+```
+# mongotop
+2022-02-15T16:00:12.924+0000	connected to: 127.0.0.1
+
+                    ns    total    read    write    2022-02-15T16:00:13Z
+        local.oplog.rs      2ms     2ms      0ms
+     admin.system.keys      0ms     0ms      0ms
+    admin.system.roles      0ms     0ms      0ms
+    admin.system.users      0ms     0ms      0ms
+  admin.system.version      0ms     0ms      0ms
+config.system.sessions      0ms     0ms      0ms
+   config.transactions      0ms     0ms      0ms
+        config.version      0ms     0ms      0ms
+              local.me      0ms     0ms      0ms
+local.replset.election      0ms     0ms      0ms
+```
+
+you can do the exact same for `mongostat`...
+
+```
+# mongostat
+insert query update delete getmore command dirty used flushes vsize   res qrw arw net_in net_out conn  set repl                time
+    *0    *0     *0     *0       0     2|0  0.0% 0.1%       0 1.42G 78.0M 0|0 1|0   415b   63.4k   12 dojo  PRI Feb 15 16:01:03.439
+    *0    *0     *0     *0       0     4|0  0.0% 0.1%       0 1.42G 78.0M 0|0 1|0   825b   64.7k   12 dojo  PRI Feb 15 16:01:04.442
+    *0    *0     *0     *0       0     3|0  0.0% 0.1%       0 1.42G 78.0M 0|0 1|0   418b   63.9k   12 dojo  PRI Feb 15 16:01:05.437
+    *0     2     *0     *0       1    24|0  0.0% 0.1%       0 1.42G 78.0M 0|0 1|0  8.21k    167k   17 dojo  PRI Feb 15 16:01:06.434
+    *0    *0     *0     *0       0    10|0  0.0% 0.1%       0 1.42G 78.0M 0|0 1|0  2.73k    111k   12 dojo  PRI Feb 15 16:01:07.444
+    *0    *0     *0     *0       0     3|0  0.0% 0.1%       0 1.42G 78.0M 0|0 1|0   418b   63.9k   12 dojo  PRI Feb 15 16:01:08.438
+```
+
 
 - Creating an index
+
+
 
 - Load data and start with an unoptimized query. Run explain to see that it's not performant and fix it. Re-run explain to prove the fix worked.
 

@@ -19,11 +19,10 @@
     ]
   },
   "editable": true,
-  "fiscalYearStartMonth": 0,
   "gnetId": null,
   "graphTooltip": 0,
-  "id": 12,
-  "iteration": 1636126800378,
+  "id": 1,
+  "iteration": 1644939838958,
   "links": [
     {
       "asDropdown": true,
@@ -38,45 +37,24 @@
       "url": ""
     }
   ],
-  "liveNow": false,
   "panels": [
     {
+      "cacheTimeout": null,
+      "colorBackground": false,
+      "colorValue": false,
+      "colors": [
+        "rgb(88, 171, 76)",
+        "rgba(237, 129, 40, 0.89)",
+        "#d44a3a"
+      ],
       "datasource": "mongodb metrics",
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "mappings": [
-            {
-              "options": {
-                "1": {
-                  "index": 1,
-                  "text": "PRIMARY"
-                },
-                "2": {
-                  "index": 0,
-                  "text": "SECONDARY"
-                }
-              },
-              "type": "value"
-            }
-          ],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "red",
-                "value": 80
-              }
-            ]
-          }
-        },
-        "overrides": []
+      "format": "none",
+      "gauge": {
+        "maxValue": 100,
+        "minValue": 0,
+        "show": false,
+        "thresholdLabels": false,
+        "thresholdMarkers": true
       },
       "gridPos": {
         "h": 4,
@@ -85,34 +63,59 @@
         "y": 0
       },
       "id": 2,
-      "options": {
-        "colorMode": "value",
-        "graphMode": "area",
-        "justifyMode": "auto",
-        "orientation": "auto",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
+      "interval": null,
+      "links": [],
+      "mappingType": 1,
+      "mappingTypes": [
+        {
+          "name": "value to text",
+          "value": 1
         },
-        "text": {
-          "valueSize": 65
-        },
-        "textMode": "auto"
+        {
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "maxDataPoints": 100,
+      "nullPointMode": "connected",
+      "nullText": null,
+      "options": {},
+      "pluginVersion": "6.6.2",
+      "postfix": "",
+      "postfixFontSize": "50%",
+      "prefix": "",
+      "prefixFontSize": "50%",
+      "rangeMaps": [
+        {
+          "from": "null",
+          "text": "N/A",
+          "to": "null"
+        }
+      ],
+      "sparkline": {
+        "fillColor": "rgba(31, 118, 189, 0.18)",
+        "full": false,
+        "lineColor": "rgb(31, 120, 193)",
+        "show": false,
+        "ymax": null,
+        "ymin": null
       },
-      "pluginVersion": "8.2.3",
+      "tableColumn": "",
       "targets": [
         {
           "exemplar": true,
-          "expr": "mongodb_mongod_replset_my_state{instance=\"mongo1:27017\",job=\"mongo_repl\",set=\"dojo\"}",
+          "expr": "mongodb_members_state{member_idx=\"mongo1:27017\"}",
           "format": "time_series",
+          "instant": true,
           "interval": "",
+          "intervalFactor": 1,
           "legendFormat": "",
           "refId": "A"
         }
       ],
+      "thresholds": "",
+      "timeFrom": null,
+      "timeShift": null,
       "title": "ReplicaSet State mongo1",
       "transformations": [
         {
@@ -123,45 +126,39 @@
           }
         }
       ],
-      "type": "stat"
+      "type": "singlestat",
+      "valueFontSize": "80%",
+      "valueMaps": [
+        {
+          "op": "=",
+          "text": "Primary",
+          "value": "1"
+        },
+        {
+          "op": "=",
+          "text": "Secondary",
+          "value": "2"
+        }
+      ],
+      "valueName": "current"
     },
     {
+      "cacheTimeout": null,
+      "colorBackground": false,
+      "colorValue": false,
+      "colors": [
+        "rgb(88, 171, 76)",
+        "rgba(237, 129, 40, 0.89)",
+        "#d44a3a"
+      ],
       "datasource": "mongodb metrics",
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "mappings": [
-            {
-              "options": {
-                "1": {
-                  "index": 0,
-                  "text": "PRIMARY"
-                },
-                "2": {
-                  "index": 1,
-                  "text": "SECONDARY"
-                }
-              },
-              "type": "value"
-            }
-          ],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "red",
-                "value": 80
-              }
-            ]
-          }
-        },
-        "overrides": []
+      "format": "none",
+      "gauge": {
+        "maxValue": 100,
+        "minValue": 0,
+        "show": false,
+        "thresholdLabels": false,
+        "thresholdMarkers": true
       },
       "gridPos": {
         "h": 4,
@@ -169,74 +166,101 @@
         "x": 8,
         "y": 0
       },
-      "id": 4,
-      "options": {
-        "colorMode": "value",
-        "graphMode": "area",
-        "justifyMode": "auto",
-        "orientation": "auto",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
+      "id": 124,
+      "interval": null,
+      "links": [],
+      "mappingType": 1,
+      "mappingTypes": [
+        {
+          "name": "value to text",
+          "value": 1
         },
-        "text": {
-          "valueSize": 65
-        },
-        "textMode": "auto"
+        {
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "maxDataPoints": 100,
+      "nullPointMode": "connected",
+      "nullText": null,
+      "options": {},
+      "pluginVersion": "6.6.2",
+      "postfix": "",
+      "postfixFontSize": "50%",
+      "prefix": "",
+      "prefixFontSize": "50%",
+      "rangeMaps": [
+        {
+          "from": "null",
+          "text": "N/A",
+          "to": "null"
+        }
+      ],
+      "sparkline": {
+        "fillColor": "rgba(31, 118, 189, 0.18)",
+        "full": false,
+        "lineColor": "rgb(31, 120, 193)",
+        "show": false,
+        "ymax": null,
+        "ymin": null
       },
-      "pluginVersion": "8.2.3",
+      "tableColumn": "",
       "targets": [
         {
           "exemplar": true,
-          "expr": "mongodb_mongod_replset_my_state{instance=\"mongo2:27017\",job=\"mongo_repl\",set=\"dojo\"}",
+          "expr": "mongodb_members_state{member_idx=\"mongo2:27017\"}",
+          "format": "time_series",
+          "instant": true,
           "interval": "",
+          "intervalFactor": 1,
           "legendFormat": "",
           "refId": "A"
         }
       ],
+      "thresholds": "",
       "title": "ReplicaSet State mongo2",
-      "type": "stat"
+      "transformations": [
+        {
+          "id": "convertFieldType",
+          "options": {
+            "conversions": [],
+            "fields": {}
+          }
+        }
+      ],
+      "type": "singlestat",
+      "valueFontSize": "80%",
+      "valueMaps": [
+        {
+          "op": "=",
+          "text": "Primary",
+          "value": "1"
+        },
+        {
+          "op": "=",
+          "text": "Secondary",
+          "value": "2"
+        }
+      ],
+      "valueName": "avg"
     },
     {
+      "cacheTimeout": null,
+      "colorBackground": false,
+      "colorValue": false,
+      "colors": [
+        "rgb(88, 171, 76)",
+        "rgba(237, 129, 40, 0.89)",
+        "#d44a3a"
+      ],
       "datasource": "mongodb metrics",
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "mappings": [
-            {
-              "options": {
-                "1": {
-                  "index": 0,
-                  "text": "PRIMARY"
-                },
-                "2": {
-                  "index": 1,
-                  "text": "SECONDARY"
-                }
-              },
-              "type": "value"
-            }
-          ],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "red",
-                "value": 80
-              }
-            ]
-          }
-        },
-        "overrides": []
+      "format": "none",
+      "gauge": {
+        "maxValue": 100,
+        "minValue": 0,
+        "show": false,
+        "thresholdLabels": false,
+        "thresholdMarkers": true
       },
       "gridPos": {
         "h": 4,
@@ -244,403 +268,338 @@
         "x": 16,
         "y": 0
       },
-      "id": 6,
-      "options": {
-        "colorMode": "value",
-        "graphMode": "area",
-        "justifyMode": "auto",
-        "orientation": "auto",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
+      "id": 125,
+      "interval": null,
+      "links": [],
+      "mappingType": 1,
+      "mappingTypes": [
+        {
+          "name": "value to text",
+          "value": 1
         },
-        "text": {
-          "valueSize": 65
-        },
-        "textMode": "auto"
+        {
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "maxDataPoints": 100,
+      "nullPointMode": "connected",
+      "nullText": null,
+      "options": {},
+      "pluginVersion": "6.6.2",
+      "postfix": "",
+      "postfixFontSize": "50%",
+      "prefix": "",
+      "prefixFontSize": "50%",
+      "rangeMaps": [
+        {
+          "from": "null",
+          "text": "N/A",
+          "to": "null"
+        }
+      ],
+      "sparkline": {
+        "fillColor": "rgba(31, 118, 189, 0.18)",
+        "full": false,
+        "lineColor": "rgb(31, 120, 193)",
+        "show": false,
+        "ymax": null,
+        "ymin": null
       },
-      "pluginVersion": "8.2.3",
+      "tableColumn": "",
       "targets": [
         {
           "exemplar": true,
-          "expr": "mongodb_mongod_replset_my_state{instance=\"mongo3:27017\",job=\"mongo_repl\",set=\"dojo\"}",
+          "expr": "mongodb_members_state{member_idx=\"mongo3:27017\"}",
+          "format": "time_series",
+          "instant": true,
           "interval": "",
+          "intervalFactor": 1,
           "legendFormat": "",
           "refId": "A"
         }
       ],
-      "title": "ReplicatSet State mongo3",
-      "type": "stat"
-    },
-    {
-      "datasource": "mongodb metrics",
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "red",
-                "value": 80
-              }
-            ]
-          },
-          "unit": "string"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 3,
-        "w": 8,
-        "x": 0,
-        "y": 4
-      },
-      "id": 8,
-      "options": {
-        "colorMode": "value",
-        "graphMode": "area",
-        "justifyMode": "auto",
-        "orientation": "auto",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "text": {},
-        "textMode": "auto"
-      },
-      "pluginVersion": "8.2.3",
-      "targets": [
+      "thresholds": "",
+      "title": "ReplicaSet State mongo3",
+      "transformations": [
         {
-          "exemplar": true,
-          "expr": "mongodb_mongod_replset_number_of_members{instance=\"mongo1:27017\",job=\"mongo_repl\",set=\"dojo\"}",
-          "interval": "",
-          "legendFormat": "",
-          "refId": "A"
-        }
-      ],
-      "title": "ReplSet Members",
-      "type": "stat"
-    },
-    {
-      "datasource": "mongodb metrics",
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "red",
-                "value": 80
-              }
-            ]
+          "id": "convertFieldType",
+          "options": {
+            "conversions": [],
+            "fields": {}
           }
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 3,
-        "w": 8,
-        "x": 8,
-        "y": 4
-      },
-      "id": 10,
-      "options": {
-        "colorMode": "value",
-        "graphMode": "area",
-        "justifyMode": "auto",
-        "orientation": "auto",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "text": {},
-        "textMode": "auto"
-      },
-      "pluginVersion": "8.2.3",
-      "targets": [
-        {
-          "exemplar": true,
-          "expr": "mongodb_mongod_replset_number_of_members{instance=\"mongo2:27017\",job=\"mongo_repl\",set=\"dojo\"}",
-          "interval": "",
-          "legendFormat": "",
-          "refId": "A"
         }
       ],
-      "title": "ReplSet Members",
-      "type": "stat"
-    },
-    {
-      "datasource": "mongodb metrics",
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "red",
-                "value": 80
-              }
-            ]
-          }
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 3,
-        "w": 8,
-        "x": 16,
-        "y": 4
-      },
-      "id": 12,
-      "options": {
-        "colorMode": "value",
-        "graphMode": "area",
-        "justifyMode": "auto",
-        "orientation": "auto",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "text": {},
-        "textMode": "auto"
-      },
-      "pluginVersion": "8.2.3",
-      "targets": [
+      "type": "singlestat",
+      "valueFontSize": "80%",
+      "valueMaps": [
         {
-          "exemplar": true,
-          "expr": "mongodb_mongod_replset_number_of_members{instance=\"mongo3:27017\",job=\"mongo_repl\",set=\"dojo\"}",
-          "interval": "",
-          "legendFormat": "",
-          "refId": "A"
+          "op": "=",
+          "text": "Primary",
+          "value": "1"
+        },
+        {
+          "op": "=",
+          "text": "Secondary",
+          "value": "2"
         }
       ],
-      "title": "ReplSet Members",
-      "type": "stat"
+      "valueName": "avg"
     },
     {
+      "cacheTimeout": null,
+      "colorBackground": false,
+      "colorValue": false,
+      "colors": [
+        "#299c46",
+        "rgba(237, 129, 40, 0.89)",
+        "#d44a3a"
+      ],
       "datasource": "mongodb metrics",
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "decimals": 1,
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "red",
-                "value": 80
-              }
-            ]
-          },
-          "unit": "s"
-        },
-        "overrides": []
+      "format": "s",
+      "gauge": {
+        "maxValue": 100,
+        "minValue": 0,
+        "show": false,
+        "thresholdLabels": false,
+        "thresholdMarkers": true
       },
       "gridPos": {
         "h": 4,
         "w": 8,
         "x": 0,
-        "y": 7
+        "y": 4
       },
       "id": 14,
-      "options": {
-        "colorMode": "none",
-        "graphMode": "none",
-        "justifyMode": "auto",
-        "orientation": "auto",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
+      "interval": null,
+      "links": [],
+      "mappingType": 1,
+      "mappingTypes": [
+        {
+          "name": "value to text",
+          "value": 1
         },
-        "text": {
-          "valueSize": 65
-        },
-        "textMode": "auto"
+        {
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "maxDataPoints": 100,
+      "nullPointMode": "connected",
+      "nullText": null,
+      "options": {},
+      "pluginVersion": "6.6.2",
+      "postfix": "s",
+      "postfixFontSize": "50%",
+      "prefix": "",
+      "prefixFontSize": "50%",
+      "rangeMaps": [
+        {
+          "from": "null",
+          "text": "N/A",
+          "to": "null"
+        }
+      ],
+      "sparkline": {
+        "fillColor": "rgba(31, 118, 189, 0.18)",
+        "full": false,
+        "lineColor": "rgb(31, 120, 193)",
+        "show": false,
+        "ymax": null,
+        "ymin": null
       },
-      "pluginVersion": "8.2.3",
+      "tableColumn": "",
       "targets": [
         {
           "exemplar": true,
-          "expr": "time() - mongodb_mongod_replset_member_election_date{instance=\"mongo1:27017\"}",
+          "expr": "time() - mongodb_rs_members_electionDate{member_idx=\"mongo1:27017\"}/1000",
           "interval": "",
           "legendFormat": "",
           "refId": "A"
         }
       ],
+      "thresholds": "",
       "title": "ReplSet Last Election",
-      "type": "stat"
+      "type": "singlestat",
+      "valueFontSize": "80%",
+      "valueMaps": [
+        {
+          "op": "=",
+          "text": "N/A",
+          "value": "null"
+        }
+      ],
+      "valueName": "current"
     },
     {
+      "cacheTimeout": null,
+      "colorBackground": false,
+      "colorValue": false,
+      "colors": [
+        "#299c46",
+        "rgba(237, 129, 40, 0.89)",
+        "#d44a3a"
+      ],
       "datasource": "mongodb metrics",
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "decimals": 1,
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "red",
-                "value": 80
-              }
-            ]
-          },
-          "unit": "s"
-        },
-        "overrides": []
+      "format": "s",
+      "gauge": {
+        "maxValue": 100,
+        "minValue": 0,
+        "show": false,
+        "thresholdLabels": false,
+        "thresholdMarkers": true
       },
       "gridPos": {
         "h": 4,
         "w": 8,
         "x": 8,
-        "y": 7
+        "y": 4
       },
-      "id": 98,
-      "options": {
-        "colorMode": "none",
-        "graphMode": "none",
-        "justifyMode": "auto",
-        "orientation": "auto",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
+      "id": 126,
+      "interval": null,
+      "links": [],
+      "mappingType": 1,
+      "mappingTypes": [
+        {
+          "name": "value to text",
+          "value": 1
         },
-        "text": {
-          "valueSize": 65
-        },
-        "textMode": "auto"
+        {
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "maxDataPoints": 100,
+      "nullPointMode": "connected",
+      "nullText": null,
+      "options": {},
+      "pluginVersion": "6.6.2",
+      "postfix": "s",
+      "postfixFontSize": "50%",
+      "prefix": "",
+      "prefixFontSize": "50%",
+      "rangeMaps": [
+        {
+          "from": "null",
+          "text": "N/A",
+          "to": "null"
+        }
+      ],
+      "sparkline": {
+        "fillColor": "rgba(31, 118, 189, 0.18)",
+        "full": false,
+        "lineColor": "rgb(31, 120, 193)",
+        "show": false,
+        "ymax": null,
+        "ymin": null
       },
-      "pluginVersion": "8.2.3",
+      "tableColumn": "",
       "targets": [
         {
           "exemplar": true,
-          "expr": "time() - mongodb_mongod_replset_member_election_date{instance=\"mongo2:27017\"}",
+          "expr": "time() - mongodb_rs_members_electionDate{member_idx=\"mongo2:27017\"}/1000",
           "interval": "",
           "legendFormat": "",
           "refId": "A"
         }
       ],
+      "thresholds": "",
       "title": "ReplSet Last Election",
-      "type": "stat"
+      "type": "singlestat",
+      "valueFontSize": "80%",
+      "valueMaps": [
+        {
+          "op": "=",
+          "text": "N/A",
+          "value": "null"
+        }
+      ],
+      "valueName": "current"
     },
     {
+      "cacheTimeout": null,
+      "colorBackground": false,
+      "colorValue": false,
+      "colors": [
+        "#299c46",
+        "rgba(237, 129, 40, 0.89)",
+        "#d44a3a"
+      ],
       "datasource": "mongodb metrics",
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "decimals": 1,
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "red",
-                "value": 80
-              }
-            ]
-          },
-          "unit": "s"
-        },
-        "overrides": []
+      "format": "s",
+      "gauge": {
+        "maxValue": 100,
+        "minValue": 0,
+        "show": false,
+        "thresholdLabels": false,
+        "thresholdMarkers": true
       },
       "gridPos": {
         "h": 4,
         "w": 8,
         "x": 16,
-        "y": 7
+        "y": 4
       },
-      "id": 99,
-      "options": {
-        "colorMode": "none",
-        "graphMode": "none",
-        "justifyMode": "auto",
-        "orientation": "auto",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
+      "id": 127,
+      "interval": null,
+      "links": [],
+      "mappingType": 1,
+      "mappingTypes": [
+        {
+          "name": "value to text",
+          "value": 1
         },
-        "text": {
-          "valueSize": 65
-        },
-        "textMode": "auto"
+        {
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "maxDataPoints": 100,
+      "nullPointMode": "connected",
+      "nullText": null,
+      "options": {},
+      "pluginVersion": "6.6.2",
+      "postfix": "s",
+      "postfixFontSize": "50%",
+      "prefix": "",
+      "prefixFontSize": "50%",
+      "rangeMaps": [
+        {
+          "from": "null",
+          "text": "N/A",
+          "to": "null"
+        }
+      ],
+      "sparkline": {
+        "fillColor": "rgba(31, 118, 189, 0.18)",
+        "full": false,
+        "lineColor": "rgb(31, 120, 193)",
+        "show": false,
+        "ymax": null,
+        "ymin": null
       },
-      "pluginVersion": "8.2.3",
+      "tableColumn": "",
       "targets": [
         {
           "exemplar": true,
-          "expr": "time() - mongodb_mongod_replset_member_election_date{instance=\"mongo3:27017\"}",
+          "expr": "time() - mongodb_rs_members_electionDate{member_idx=\"mongo3:27017\"}/1000",
           "interval": "",
           "legendFormat": "",
           "refId": "A"
         }
       ],
+      "thresholds": "",
       "title": "ReplSet Last Election",
-      "type": "stat"
+      "type": "singlestat",
+      "valueFontSize": "80%",
+      "valueMaps": [
+        {
+          "op": "=",
+          "text": "N/A",
+          "value": "null"
+        }
+      ],
+      "valueName": "current"
     },
     {
       "aliasColors": {},
@@ -651,1059 +610,10 @@
       "fill": 2,
       "fillGradient": 0,
       "gridPos": {
-        "h": 8,
-        "w": 8,
+        "h": 10,
+        "w": 24,
         "x": 0,
-        "y": 11
-      },
-      "hiddenSeries": false,
-      "id": 20,
-      "legend": {
-        "avg": false,
-        "current": false,
-        "max": false,
-        "min": false,
-        "show": true,
-        "total": false,
-        "values": false
-      },
-      "lines": true,
-      "linewidth": 2,
-      "nullPointMode": "null",
-      "options": {
-        "alertThreshold": true
-      },
-      "percentage": false,
-      "pluginVersion": "8.2.3",
-      "pointradius": 2,
-      "points": false,
-      "renderer": "flot",
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "exemplar": true,
-          "expr": "mongodb_mongod_replset_member_replication_lag{instance=\"mongo1:27017\",name=\"mongo2:27017\"}",
-          "hide": false,
-          "interval": "",
-          "legendFormat": "replication to mongo2",
-          "refId": "B"
-        },
-        {
-          "exemplar": true,
-          "expr": "mongodb_mongod_replset_member_replication_lag{instance=\"mongo1:27017\",name=\"mongo3:27017\"}",
-          "hide": false,
-          "interval": "",
-          "legendFormat": "replication to mongo3",
-          "refId": "C"
-        }
-      ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
-      "title": "ReplSet Lag",
-      "tooltip": {
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "$$hashKey": "object:122",
-          "format": "s",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": "0",
-          "show": true
-        },
-        {
-          "$$hashKey": "object:123",
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
-    },
-    {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": "mongodb metrics",
-      "fill": 2,
-      "fillGradient": 0,
-      "gridPos": {
-        "h": 8,
-        "w": 8,
-        "x": 8,
-        "y": 11
-      },
-      "hiddenSeries": false,
-      "id": 22,
-      "legend": {
-        "avg": false,
-        "current": false,
-        "max": false,
-        "min": false,
-        "show": true,
-        "total": false,
-        "values": false
-      },
-      "lines": true,
-      "linewidth": 2,
-      "nullPointMode": "null",
-      "options": {
-        "alertThreshold": true
-      },
-      "percentage": false,
-      "pluginVersion": "8.2.3",
-      "pointradius": 2,
-      "points": false,
-      "renderer": "flot",
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "exemplar": true,
-          "expr": "mongodb_mongod_replset_member_replication_lag{instance=\"mongo2:27017\",name=\"mongo1:27017\"}",
-          "hide": false,
-          "interval": "",
-          "legendFormat": "replication to mongo1",
-          "refId": "B"
-        },
-        {
-          "exemplar": true,
-          "expr": "mongodb_mongod_replset_member_replication_lag{instance=\"mongo2:27017\",name=\"mongo3:27017\"}",
-          "hide": false,
-          "interval": "",
-          "legendFormat": "replication to mongo3",
-          "refId": "C"
-        }
-      ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
-      "title": "ReplSet Lag",
-      "tooltip": {
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "$$hashKey": "object:350",
-          "format": "s",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": "0",
-          "show": true
-        },
-        {
-          "$$hashKey": "object:351",
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
-    },
-    {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": "mongodb metrics",
-      "fill": 2,
-      "fillGradient": 0,
-      "gridPos": {
-        "h": 8,
-        "w": 8,
-        "x": 16,
-        "y": 11
-      },
-      "hiddenSeries": false,
-      "id": 24,
-      "legend": {
-        "avg": false,
-        "current": false,
-        "max": false,
-        "min": false,
-        "show": true,
-        "total": false,
-        "values": false
-      },
-      "lines": true,
-      "linewidth": 2,
-      "nullPointMode": "null",
-      "options": {
-        "alertThreshold": true
-      },
-      "percentage": false,
-      "pluginVersion": "8.2.3",
-      "pointradius": 2,
-      "points": false,
-      "renderer": "flot",
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "exemplar": true,
-          "expr": "mongodb_mongod_replset_member_replication_lag{instance=\"mongo3:27017\",name=\"mongo1:27017\"}",
-          "hide": false,
-          "interval": "",
-          "legendFormat": "replication to mongo1",
-          "refId": "B"
-        },
-        {
-          "exemplar": true,
-          "expr": "mongodb_mongod_replset_member_replication_lag{instance=\"mongo3:27017\",name=\"mongo2:27017\"}",
-          "hide": false,
-          "interval": "",
-          "legendFormat": "replication to mongo2",
-          "refId": "C"
-        }
-      ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
-      "title": "ReplSet lag",
-      "tooltip": {
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "$$hashKey": "object:430",
-          "format": "s",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        },
-        {
-          "$$hashKey": "object:431",
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": "0",
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
-    },
-    {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": "observer node exporter",
-      "fill": 1,
-      "fillGradient": 0,
-      "gridPos": {
-        "h": 8,
-        "w": 8,
-        "x": 0,
-        "y": 19
-      },
-      "hiddenSeries": false,
-      "id": 30,
-      "legend": {
-        "avg": false,
-        "current": false,
-        "max": false,
-        "min": false,
-        "show": true,
-        "total": false,
-        "values": false
-      },
-      "lines": true,
-      "linewidth": 1,
-      "nullPointMode": "null",
-      "options": {
-        "alertThreshold": true
-      },
-      "percentage": false,
-      "pluginVersion": "8.2.3",
-      "pointradius": 2,
-      "points": false,
-      "renderer": "flot",
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "exemplar": true,
-          "expr": "avg without (cpu)(irate(node_cpu_seconds_total{instance=~\"mongo1:9100\",mode!=\"idle\"}[5m]))",
-          "interval": "",
-          "legendFormat": "{{mode}}",
-          "refId": "A"
-        }
-      ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
-      "title": "CPU mongo1",
-      "tooltip": {
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "$$hashKey": "object:162",
-          "format": "percentunit",
-          "label": null,
-          "logBase": 1,
-          "max": "1.1",
-          "min": null,
-          "show": true
-        },
-        {
-          "$$hashKey": "object:163",
-          "decimals": 0,
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
-    },
-    {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": "observer node exporter",
-      "fill": 1,
-      "fillGradient": 0,
-      "gridPos": {
-        "h": 8,
-        "w": 8,
-        "x": 8,
-        "y": 19
-      },
-      "hiddenSeries": false,
-      "id": 31,
-      "legend": {
-        "avg": false,
-        "current": false,
-        "max": false,
-        "min": false,
-        "show": true,
-        "total": false,
-        "values": false
-      },
-      "lines": true,
-      "linewidth": 1,
-      "nullPointMode": "null",
-      "options": {
-        "alertThreshold": true
-      },
-      "percentage": false,
-      "pluginVersion": "8.2.3",
-      "pointradius": 2,
-      "points": false,
-      "renderer": "flot",
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "exemplar": true,
-          "expr": "avg without (cpu)(irate(node_cpu_seconds_total{instance=~\"mongo2:9100\",mode!=\"idle\"}[5m]))",
-          "interval": "",
-          "legendFormat": "{{mode}}",
-          "refId": "A"
-        }
-      ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
-      "title": "CPU mongo2",
-      "tooltip": {
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "$$hashKey": "object:162",
-          "format": "percentunit",
-          "label": null,
-          "logBase": 1,
-          "max": "1.1",
-          "min": null,
-          "show": true
-        },
-        {
-          "$$hashKey": "object:163",
-          "decimals": 0,
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
-    },
-    {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": "observer node exporter",
-      "fill": 1,
-      "fillGradient": 0,
-      "gridPos": {
-        "h": 8,
-        "w": 8,
-        "x": 16,
-        "y": 19
-      },
-      "hiddenSeries": false,
-      "id": 32,
-      "legend": {
-        "avg": false,
-        "current": false,
-        "max": false,
-        "min": false,
-        "show": true,
-        "total": false,
-        "values": false
-      },
-      "lines": true,
-      "linewidth": 1,
-      "nullPointMode": "null",
-      "options": {
-        "alertThreshold": true
-      },
-      "percentage": false,
-      "pluginVersion": "8.2.3",
-      "pointradius": 2,
-      "points": false,
-      "renderer": "flot",
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "exemplar": true,
-          "expr": "avg without (cpu)(irate(node_cpu_seconds_total{instance=~\"mongo3:9100\",mode!=\"idle\"}[5m]))",
-          "interval": "",
-          "legendFormat": "{{mode}}",
-          "refId": "A"
-        }
-      ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
-      "title": "CPU mongo3",
-      "tooltip": {
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "$$hashKey": "object:162",
-          "format": "percentunit",
-          "label": null,
-          "logBase": 1,
-          "max": "1.1",
-          "min": null,
-          "show": true
-        },
-        {
-          "$$hashKey": "object:163",
-          "decimals": 0,
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
-    },
-    {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": "observer node exporter",
-      "fill": 4,
-      "fillGradient": 0,
-      "gridPos": {
-        "h": 8,
-        "w": 8,
-        "x": 0,
-        "y": 27
-      },
-      "hiddenSeries": false,
-      "id": 34,
-      "legend": {
-        "avg": false,
-        "current": false,
-        "max": false,
-        "min": false,
-        "show": true,
-        "total": false,
-        "values": false
-      },
-      "lines": true,
-      "linewidth": 1,
-      "nullPointMode": "null",
-      "options": {
-        "alertThreshold": true
-      },
-      "percentage": false,
-      "pluginVersion": "8.2.3",
-      "pointradius": 2,
-      "points": false,
-      "renderer": "flot",
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "exemplar": true,
-          "expr": "node_memory_MemTotal_bytes{instance=\"mongo1:9100\"}",
-          "interval": "",
-          "legendFormat": "RAM Total",
-          "refId": "A"
-        },
-        {
-          "exemplar": true,
-          "expr": "node_memory_MemTotal_bytes{instance=\"mongo1:9100\"} - node_memory_MemFree_bytes{instance=\"mongo1:9100\"} - (node_memory_Cached_bytes{instance=\"mongo1:9100\"} + node_memory_Buffers_bytes{instance=\"mongo1:9100\"})",
-          "hide": false,
-          "interval": "",
-          "legendFormat": "RAM Used",
-          "refId": "B"
-        },
-        {
-          "exemplar": true,
-          "expr": "node_memory_Cached_bytes{instance=\"mongo1:9100\"} + node_memory_Buffers_bytes{instance=\"mongo1:9100\"}",
-          "hide": false,
-          "interval": "",
-          "legendFormat": "RAM Cache + Buffer",
-          "refId": "C"
-        },
-        {
-          "exemplar": true,
-          "expr": "node_memory_MemFree_bytes{instance=\"mongo1:9100\"}",
-          "hide": false,
-          "interval": "",
-          "legendFormat": "RAM Free",
-          "refId": "D"
-        },
-        {
-          "exemplar": true,
-          "expr": "(node_memory_SwapTotal_bytes{instance=\"mongo1:9100\"} - node_memory_SwapFree_bytes{instance=\"mongo1:9100\"})",
-          "hide": false,
-          "interval": "",
-          "legendFormat": "SWAP Used",
-          "refId": "E"
-        }
-      ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
-      "title": "Memory",
-      "tooltip": {
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "$$hashKey": "object:398",
-          "format": "bytes",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        },
-        {
-          "$$hashKey": "object:399",
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
-    },
-    {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": "observer node exporter",
-      "fill": 4,
-      "fillGradient": 0,
-      "gridPos": {
-        "h": 8,
-        "w": 8,
-        "x": 8,
-        "y": 27
-      },
-      "hiddenSeries": false,
-      "id": 35,
-      "legend": {
-        "avg": false,
-        "current": false,
-        "max": false,
-        "min": false,
-        "show": true,
-        "total": false,
-        "values": false
-      },
-      "lines": true,
-      "linewidth": 1,
-      "nullPointMode": "null",
-      "options": {
-        "alertThreshold": true
-      },
-      "percentage": false,
-      "pluginVersion": "8.2.3",
-      "pointradius": 2,
-      "points": false,
-      "renderer": "flot",
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "exemplar": true,
-          "expr": "node_memory_MemTotal_bytes{instance=\"mongo2:9100\"}",
-          "interval": "",
-          "legendFormat": "RAM Total",
-          "refId": "A"
-        },
-        {
-          "exemplar": true,
-          "expr": "node_memory_MemTotal_bytes{instance=\"mongo2:9100\"} - node_memory_MemFree_bytes{instance=\"mongo2:9100\"} - (node_memory_Cached_bytes{instance=\"mongo2:9100\"} + node_memory_Buffers_bytes{instance=\"mongo2:9100\"})",
-          "hide": false,
-          "interval": "",
-          "legendFormat": "RAM Used",
-          "refId": "B"
-        },
-        {
-          "exemplar": true,
-          "expr": "node_memory_Cached_bytes{instance=\"mongo2:9100\"} + node_memory_Buffers_bytes{instance=\"mongo2:9100\"}",
-          "hide": false,
-          "interval": "",
-          "legendFormat": "RAM Cache + Buffer",
-          "refId": "C"
-        },
-        {
-          "exemplar": true,
-          "expr": "node_memory_MemFree_bytes{instance=\"mongo2:9100\"}",
-          "hide": false,
-          "interval": "",
-          "legendFormat": "RAM Free",
-          "refId": "D"
-        },
-        {
-          "exemplar": true,
-          "expr": "(node_memory_SwapTotal_bytes{instance=\"mongo2:9100\"} - node_memory_SwapFree_bytes{instance=\"mongo2:9100\"})",
-          "hide": false,
-          "interval": "",
-          "legendFormat": "SWAP Used",
-          "refId": "E"
-        }
-      ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
-      "title": "Memory",
-      "tooltip": {
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "$$hashKey": "object:398",
-          "format": "bytes",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        },
-        {
-          "$$hashKey": "object:399",
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
-    },
-    {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": "observer node exporter",
-      "fill": 4,
-      "fillGradient": 0,
-      "gridPos": {
-        "h": 8,
-        "w": 8,
-        "x": 16,
-        "y": 27
-      },
-      "hiddenSeries": false,
-      "id": 36,
-      "legend": {
-        "avg": false,
-        "current": false,
-        "max": false,
-        "min": false,
-        "show": true,
-        "total": false,
-        "values": false
-      },
-      "lines": true,
-      "linewidth": 1,
-      "nullPointMode": "null",
-      "options": {
-        "alertThreshold": true
-      },
-      "percentage": false,
-      "pluginVersion": "8.2.3",
-      "pointradius": 2,
-      "points": false,
-      "renderer": "flot",
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "exemplar": true,
-          "expr": "node_memory_MemTotal_bytes{instance=\"mongo3:9100\"}",
-          "interval": "",
-          "legendFormat": "RAM Total",
-          "refId": "A"
-        },
-        {
-          "exemplar": true,
-          "expr": "node_memory_MemTotal_bytes{instance=\"mongo3:9100\"} - node_memory_MemFree_bytes{instance=\"mongo3:9100\"} - (node_memory_Cached_bytes{instance=\"mongo3:9100\"} + node_memory_Buffers_bytes{instance=\"mongo3:9100\"})",
-          "hide": false,
-          "interval": "",
-          "legendFormat": "RAM Used",
-          "refId": "B"
-        },
-        {
-          "exemplar": true,
-          "expr": "node_memory_Cached_bytes{instance=\"mongo3:9100\"} + node_memory_Buffers_bytes{instance=\"mongo3:9100\"}",
-          "hide": false,
-          "interval": "",
-          "legendFormat": "RAM Cache + Buffer",
-          "refId": "C"
-        },
-        {
-          "exemplar": true,
-          "expr": "node_memory_MemFree_bytes{instance=\"mongo3:9100\"}",
-          "hide": false,
-          "interval": "",
-          "legendFormat": "RAM Free",
-          "refId": "D"
-        },
-        {
-          "exemplar": true,
-          "expr": "(node_memory_SwapTotal_bytes{instance=\"mongo3:9100\"} - node_memory_SwapFree_bytes{instance=\"mongo3:9100\"})",
-          "hide": false,
-          "interval": "",
-          "legendFormat": "SWAP Used",
-          "refId": "E"
-        }
-      ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
-      "title": "Memory",
-      "tooltip": {
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "$$hashKey": "object:398",
-          "format": "bytes",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        },
-        {
-          "$$hashKey": "object:399",
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
-    },
-    {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": "mongodb metrics",
-      "fill": 2,
-      "fillGradient": 0,
-      "gridPos": {
-        "h": 8,
-        "w": 8,
-        "x": 0,
-        "y": 35
-      },
-      "hiddenSeries": false,
-      "id": 116,
-      "legend": {
-        "alignAsTable": true,
-        "avg": true,
-        "current": false,
-        "max": true,
-        "min": true,
-        "show": true,
-        "total": false,
-        "values": true
-      },
-      "lines": true,
-      "linewidth": 2,
-      "nullPointMode": "null",
-      "options": {
-        "alertThreshold": true
-      },
-      "percentage": false,
-      "pluginVersion": "8.2.3",
-      "pointradius": 2,
-      "points": false,
-      "renderer": "flot",
-      "repeatDirection": "h",
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "exemplar": true,
-          "expr": "rate(mongodb_mongod_op_counters_repl_total{instance=\"mongo1:27017\", type!~\"(command|getmore|query)\"}[$interval]) or \nirate(mongodb_mongod_op_counters_repl_total{instance=\"mongo1:27017\", type!~\"(command|getmore|query)\"}[5m])",
-          "interval": "$interval",
-          "legendFormat": "{{type}}",
-          "refId": "A"
-        }
-      ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
-      "title": "Replication Operations",
-      "tooltip": {
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "$$hashKey": "object:1350",
-          "decimals": 2,
-          "format": "ops",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": "0",
-          "show": true
-        },
-        {
-          "$$hashKey": "object:1351",
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
-    },
-    {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": "mongodb metrics",
-      "fill": 2,
-      "fillGradient": 0,
-      "gridPos": {
-        "h": 8,
-        "w": 8,
-        "x": 8,
-        "y": 35
+        "y": 8
       },
       "hiddenSeries": false,
       "id": 117,
@@ -1721,7 +631,8 @@
       "linewidth": 2,
       "nullPointMode": "null",
       "options": {
-        "alertThreshold": true
+        "alertThreshold": true,
+        "dataLinks": []
       },
       "percentage": false,
       "pluginVersion": "8.2.3",
@@ -1736,9 +647,9 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "rate(mongodb_mongod_op_counters_repl_total{instance=\"mongo2:27017\", type!~\"(command|getmore|query)\"}[$interval]) or \nirate(mongodb_mongod_op_counters_repl_total{instance=\"mongo2:27017\", type!~\"(command|getmore|query)\"}[5m])",
+          "expr": "rate(mongodb_ss_opcounters{job=\"mongo_repl\", legacy_op_type!~\"(command|getmore|query)\"}[$interval]) or \nirate(mongodb_ss_opcounters{job=\"mongo_repl\", legacy_op_type!~\"(command|getmore|query)\"}[5m])",
           "interval": "$interval",
-          "legendFormat": "{{type}}",
+          "legendFormat": "{{legacy_op_type}}",
           "refId": "A"
         }
       ],
@@ -1762,7 +673,6 @@
       },
       "yaxes": [
         {
-          "$$hashKey": "object:1350",
           "decimals": 2,
           "format": "ops",
           "label": null,
@@ -1772,102 +682,6 @@
           "show": true
         },
         {
-          "$$hashKey": "object:1351",
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
-    },
-    {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": "mongodb metrics",
-      "fill": 2,
-      "fillGradient": 0,
-      "gridPos": {
-        "h": 8,
-        "w": 8,
-        "x": 16,
-        "y": 35
-      },
-      "hiddenSeries": false,
-      "id": 124,
-      "legend": {
-        "alignAsTable": true,
-        "avg": true,
-        "current": false,
-        "max": true,
-        "min": true,
-        "show": true,
-        "total": false,
-        "values": true
-      },
-      "lines": true,
-      "linewidth": 2,
-      "nullPointMode": "null",
-      "options": {
-        "alertThreshold": true
-      },
-      "percentage": false,
-      "pluginVersion": "8.2.3",
-      "pointradius": 2,
-      "points": false,
-      "renderer": "flot",
-      "repeatDirection": "h",
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "exemplar": true,
-          "expr": "rate(mongodb_mongod_op_counters_repl_total{instance=\"mongo3:27017\", type!~\"(command|getmore|query)\"}[$interval]) or \nirate(mongodb_mongod_op_counters_repl_total{instance=\"mongo3:27017\", type!~\"(command|getmore|query)\"}[5m])",
-          "interval": "$interval",
-          "legendFormat": "{{type}}",
-          "refId": "A"
-        }
-      ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
-      "title": "Replication Operations",
-      "tooltip": {
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "$$hashKey": "object:1350",
-          "decimals": 2,
-          "format": "ops",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": "0",
-          "show": true
-        },
-        {
-          "$$hashKey": "object:1351",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -1893,880 +707,7 @@
         "h": 8,
         "w": 8,
         "x": 0,
-        "y": 43
-      },
-      "hiddenSeries": false,
-      "id": 44,
-      "legend": {
-        "alignAsTable": true,
-        "avg": true,
-        "current": false,
-        "max": true,
-        "min": true,
-        "show": true,
-        "total": false,
-        "values": true
-      },
-      "lines": true,
-      "linewidth": 2,
-      "nullPointMode": "null",
-      "options": {
-        "alertThreshold": true
-      },
-      "percentage": false,
-      "pluginVersion": "8.2.3",
-      "pointradius": 2,
-      "points": false,
-      "renderer": "flot",
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "exemplar": true,
-          "expr": "time()-mongodb_mongod_replset_oplog_tail_timestamp{instance=\"mongo1:27017\"}",
-          "interval": "",
-          "legendFormat": "Now to End",
-          "refId": "A"
-        },
-        {
-          "exemplar": true,
-          "expr": "mongodb_mongod_replset_oplog_head_timestamp{instance=\"mongo1:27017\"} - mongodb_mongod_replset_oplog_tail_timestamp{instance=\"mongo1:27017\"}",
-          "hide": false,
-          "interval": "",
-          "legendFormat": "OpLog Range",
-          "refId": "B"
-        }
-      ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
-      "title": "Oplog Recovery Window",
-      "tooltip": {
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "$$hashKey": "object:114",
-          "decimals": 0,
-          "format": "s",
-          "label": "",
-          "logBase": 1,
-          "max": null,
-          "min": "0",
-          "show": true
-        },
-        {
-          "$$hashKey": "object:115",
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
-    },
-    {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": "mongodb metrics",
-      "fill": 2,
-      "fillGradient": 0,
-      "gridPos": {
-        "h": 8,
-        "w": 8,
-        "x": 8,
-        "y": 43
-      },
-      "hiddenSeries": false,
-      "id": 100,
-      "legend": {
-        "alignAsTable": true,
-        "avg": true,
-        "current": false,
-        "max": true,
-        "min": true,
-        "show": true,
-        "total": false,
-        "values": true
-      },
-      "lines": true,
-      "linewidth": 2,
-      "nullPointMode": "null",
-      "options": {
-        "alertThreshold": true
-      },
-      "percentage": false,
-      "pluginVersion": "8.2.3",
-      "pointradius": 2,
-      "points": false,
-      "renderer": "flot",
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "exemplar": true,
-          "expr": "time()-mongodb_mongod_replset_oplog_tail_timestamp{instance=\"mongo2:27017\"}",
-          "interval": "",
-          "legendFormat": "Now to End",
-          "refId": "A"
-        },
-        {
-          "exemplar": true,
-          "expr": "mongodb_mongod_replset_oplog_head_timestamp{instance=\"mongo2:27017\"} - mongodb_mongod_replset_oplog_tail_timestamp{instance=\"mongo2:27017\"}",
-          "hide": false,
-          "interval": "",
-          "legendFormat": "OpLog Range",
-          "refId": "B"
-        }
-      ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
-      "title": "Oplog Recovery Window",
-      "tooltip": {
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "$$hashKey": "object:114",
-          "decimals": 0,
-          "format": "s",
-          "label": "",
-          "logBase": 1,
-          "max": null,
-          "min": "0",
-          "show": true
-        },
-        {
-          "$$hashKey": "object:115",
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
-    },
-    {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": "mongodb metrics",
-      "fill": 2,
-      "fillGradient": 0,
-      "gridPos": {
-        "h": 8,
-        "w": 8,
-        "x": 16,
-        "y": 43
-      },
-      "hiddenSeries": false,
-      "id": 101,
-      "legend": {
-        "alignAsTable": true,
-        "avg": true,
-        "current": false,
-        "max": true,
-        "min": true,
-        "show": true,
-        "total": false,
-        "values": true
-      },
-      "lines": true,
-      "linewidth": 2,
-      "nullPointMode": "null",
-      "options": {
-        "alertThreshold": true
-      },
-      "percentage": false,
-      "pluginVersion": "8.2.3",
-      "pointradius": 2,
-      "points": false,
-      "renderer": "flot",
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "exemplar": true,
-          "expr": "time()-mongodb_mongod_replset_oplog_tail_timestamp{instance=\"mongo3:27017\"}",
-          "interval": "",
-          "legendFormat": "Now to End",
-          "refId": "A"
-        },
-        {
-          "exemplar": true,
-          "expr": "mongodb_mongod_replset_oplog_head_timestamp{instance=\"mongo3:27017\"} - mongodb_mongod_replset_oplog_tail_timestamp{instance=\"mongo3:27017\"}",
-          "hide": false,
-          "interval": "",
-          "legendFormat": "OpLog Range",
-          "refId": "B"
-        }
-      ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
-      "title": "Oplog Recovery Window",
-      "tooltip": {
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "$$hashKey": "object:114",
-          "decimals": 0,
-          "format": "s",
-          "label": "",
-          "logBase": 1,
-          "max": null,
-          "min": "0",
-          "show": true
-        },
-        {
-          "$$hashKey": "object:115",
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
-    },
-    {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": "mongodb metrics",
-      "fill": 2,
-      "fillGradient": 0,
-      "gridPos": {
-        "h": 8,
-        "w": 8,
-        "x": 0,
-        "y": 51
-      },
-      "hiddenSeries": false,
-      "id": 46,
-      "legend": {
-        "alignAsTable": true,
-        "avg": true,
-        "current": false,
-        "hideEmpty": false,
-        "hideZero": false,
-        "max": true,
-        "min": true,
-        "show": true,
-        "total": false,
-        "values": true
-      },
-      "lines": true,
-      "linewidth": 2,
-      "nullPointMode": "null",
-      "options": {
-        "alertThreshold": true
-      },
-      "percentage": false,
-      "pluginVersion": "8.2.3",
-      "pointradius": 2,
-      "points": false,
-      "renderer": "flot",
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "exemplar": true,
-          "expr": "mongodb_mongod_replset_member_replication_lag{instance=\"mongo1:27017\"}",
-          "interval": "",
-          "legendFormat": "{{name}}",
-          "refId": "A"
-        }
-      ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
-      "title": "Replication Lag",
-      "tooltip": {
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "$$hashKey": "object:110",
-          "format": "s",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": "0",
-          "show": true
-        },
-        {
-          "$$hashKey": "object:111",
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
-    },
-    {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": "mongodb metrics",
-      "fill": 2,
-      "fillGradient": 0,
-      "gridPos": {
-        "h": 8,
-        "w": 8,
-        "x": 8,
-        "y": 51
-      },
-      "hiddenSeries": false,
-      "id": 106,
-      "legend": {
-        "alignAsTable": true,
-        "avg": true,
-        "current": false,
-        "hideEmpty": false,
-        "hideZero": false,
-        "max": true,
-        "min": true,
-        "show": true,
-        "total": false,
-        "values": true
-      },
-      "lines": true,
-      "linewidth": 2,
-      "nullPointMode": "null",
-      "options": {
-        "alertThreshold": true
-      },
-      "percentage": false,
-      "pluginVersion": "8.2.3",
-      "pointradius": 2,
-      "points": false,
-      "renderer": "flot",
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "exemplar": true,
-          "expr": "mongodb_mongod_replset_member_replication_lag{instance=\"mongo2:27017\"}",
-          "interval": "",
-          "legendFormat": "{{name}}",
-          "refId": "A"
-        }
-      ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
-      "title": "Replication Lag",
-      "tooltip": {
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "$$hashKey": "object:110",
-          "format": "s",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": "0",
-          "show": true
-        },
-        {
-          "$$hashKey": "object:111",
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
-    },
-    {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": "mongodb metrics",
-      "fill": 2,
-      "fillGradient": 0,
-      "gridPos": {
-        "h": 8,
-        "w": 8,
-        "x": 16,
-        "y": 51
-      },
-      "hiddenSeries": false,
-      "id": 107,
-      "legend": {
-        "alignAsTable": true,
-        "avg": true,
-        "current": false,
-        "hideEmpty": false,
-        "hideZero": false,
-        "max": true,
-        "min": true,
-        "show": true,
-        "total": false,
-        "values": true
-      },
-      "lines": true,
-      "linewidth": 2,
-      "nullPointMode": "null",
-      "options": {
-        "alertThreshold": true
-      },
-      "percentage": false,
-      "pluginVersion": "8.2.3",
-      "pointradius": 2,
-      "points": false,
-      "renderer": "flot",
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "exemplar": true,
-          "expr": "mongodb_mongod_replset_member_replication_lag{instance=\"mongo3:27017\"}",
-          "interval": "",
-          "legendFormat": "{{name}}",
-          "refId": "A"
-        }
-      ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
-      "title": "Replication Lag",
-      "tooltip": {
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "$$hashKey": "object:110",
-          "format": "s",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": "0",
-          "show": true
-        },
-        {
-          "$$hashKey": "object:111",
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
-    },
-    {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": "mongodb metrics",
-      "fill": 2,
-      "fillGradient": 0,
-      "gridPos": {
-        "h": 8,
-        "w": 8,
-        "x": 0,
-        "y": 59
-      },
-      "hiddenSeries": false,
-      "id": 48,
-      "legend": {
-        "alignAsTable": true,
-        "avg": true,
-        "current": false,
-        "max": true,
-        "min": true,
-        "show": true,
-        "total": false,
-        "values": true
-      },
-      "lines": true,
-      "linewidth": 2,
-      "nullPointMode": "null",
-      "options": {
-        "alertThreshold": true
-      },
-      "percentage": false,
-      "pluginVersion": "8.2.3",
-      "pointradius": 2,
-      "points": false,
-      "renderer": "flot",
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "exemplar": true,
-          "expr": "max(changes(mongodb_mongod_replset_member_election_date{instance=\"mongo1:27017\"}[$interval]))",
-          "interval": "",
-          "legendFormat": "Count",
-          "refId": "A"
-        }
-      ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
-      "title": "Elections",
-      "tooltip": {
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "$$hashKey": "object:350",
-          "decimals": 2,
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": "0",
-          "show": true
-        },
-        {
-          "$$hashKey": "object:351",
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
-    },
-    {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": "mongodb metrics",
-      "fill": 2,
-      "fillGradient": 0,
-      "gridPos": {
-        "h": 8,
-        "w": 8,
-        "x": 8,
-        "y": 59
-      },
-      "hiddenSeries": false,
-      "id": 102,
-      "legend": {
-        "alignAsTable": true,
-        "avg": true,
-        "current": false,
-        "max": true,
-        "min": true,
-        "show": true,
-        "total": false,
-        "values": true
-      },
-      "lines": true,
-      "linewidth": 2,
-      "nullPointMode": "null",
-      "options": {
-        "alertThreshold": true
-      },
-      "percentage": false,
-      "pluginVersion": "8.2.3",
-      "pointradius": 2,
-      "points": false,
-      "renderer": "flot",
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "exemplar": true,
-          "expr": "max(changes(mongodb_mongod_replset_member_election_date{instance=\"mongo2:27017\"}[$interval]))",
-          "interval": "",
-          "legendFormat": "Count",
-          "refId": "A"
-        }
-      ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
-      "title": "Elections",
-      "tooltip": {
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "$$hashKey": "object:350",
-          "decimals": 2,
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": "0",
-          "show": true
-        },
-        {
-          "$$hashKey": "object:351",
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
-    },
-    {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": "mongodb metrics",
-      "fill": 2,
-      "fillGradient": 0,
-      "gridPos": {
-        "h": 8,
-        "w": 8,
-        "x": 16,
-        "y": 59
-      },
-      "hiddenSeries": false,
-      "id": 103,
-      "legend": {
-        "alignAsTable": true,
-        "avg": true,
-        "current": false,
-        "max": true,
-        "min": true,
-        "show": true,
-        "total": false,
-        "values": true
-      },
-      "lines": true,
-      "linewidth": 2,
-      "nullPointMode": "null",
-      "options": {
-        "alertThreshold": true
-      },
-      "percentage": false,
-      "pluginVersion": "8.2.3",
-      "pointradius": 2,
-      "points": false,
-      "renderer": "flot",
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "exemplar": true,
-          "expr": "max(changes(mongodb_mongod_replset_member_election_date{instance=\"mongo3:27017\"}[$interval]))",
-          "interval": "",
-          "legendFormat": "Count",
-          "refId": "A"
-        }
-      ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
-      "title": "Elections",
-      "tooltip": {
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "$$hashKey": "object:350",
-          "decimals": 2,
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": "0",
-          "show": true
-        },
-        {
-          "$$hashKey": "object:351",
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
-    },
-    {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": "mongodb metrics",
-      "fill": 2,
-      "fillGradient": 0,
-      "gridPos": {
-        "h": 8,
-        "w": 8,
-        "x": 0,
-        "y": 67
+        "y": 18
       },
       "hiddenSeries": false,
       "id": 50,
@@ -2783,7 +724,8 @@
       "linewidth": 2,
       "nullPointMode": "null",
       "options": {
-        "alertThreshold": true
+        "alertThreshold": true,
+        "dataLinks": []
       },
       "percentage": false,
       "pluginVersion": "8.2.3",
@@ -2797,9 +739,9 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "mongodb_mongod_replset_member_uptime{instance=\"mongo1:27017\"}",
+          "expr": "mongodb_rs_members_uptime{member_idx=\"mongo1:27017\"}",
           "interval": "",
-          "legendFormat": "{{name}} - {{state}}",
+          "legendFormat": "{{member_idx}} - {{member_state}}",
           "refId": "A"
         }
       ],
@@ -2823,7 +765,6 @@
       },
       "yaxes": [
         {
-          "$$hashKey": "object:1595",
           "format": "s",
           "label": null,
           "logBase": 10,
@@ -2832,7 +773,6 @@
           "show": true
         },
         {
-          "$$hashKey": "object:1596",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -2858,10 +798,10 @@
         "h": 8,
         "w": 8,
         "x": 8,
-        "y": 67
+        "y": 18
       },
       "hiddenSeries": false,
-      "id": 118,
+      "id": 128,
       "legend": {
         "avg": false,
         "current": false,
@@ -2875,7 +815,8 @@
       "linewidth": 2,
       "nullPointMode": "null",
       "options": {
-        "alertThreshold": true
+        "alertThreshold": true,
+        "dataLinks": []
       },
       "percentage": false,
       "pluginVersion": "8.2.3",
@@ -2889,9 +830,9 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "mongodb_mongod_replset_member_uptime{instance=\"mongo1:27017\"}",
+          "expr": "mongodb_rs_members_uptime{member_idx=\"mongo2:27017\"}",
           "interval": "",
-          "legendFormat": "{{name}} - {{state}}",
+          "legendFormat": "{{member_idx}} - {{member_state}}",
           "refId": "A"
         }
       ],
@@ -2915,7 +856,6 @@
       },
       "yaxes": [
         {
-          "$$hashKey": "object:1595",
           "format": "s",
           "label": null,
           "logBase": 10,
@@ -2924,7 +864,6 @@
           "show": true
         },
         {
-          "$$hashKey": "object:1596",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -2950,10 +889,10 @@
         "h": 8,
         "w": 8,
         "x": 16,
-        "y": 67
+        "y": 18
       },
       "hiddenSeries": false,
-      "id": 119,
+      "id": 129,
       "legend": {
         "avg": false,
         "current": false,
@@ -2967,7 +906,8 @@
       "linewidth": 2,
       "nullPointMode": "null",
       "options": {
-        "alertThreshold": true
+        "alertThreshold": true,
+        "dataLinks": []
       },
       "percentage": false,
       "pluginVersion": "8.2.3",
@@ -2981,9 +921,9 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "mongodb_mongod_replset_member_uptime{instance=\"mongo1:27017\"}",
+          "expr": "mongodb_rs_members_uptime{member_idx=\"mongo3:27017\"}",
           "interval": "",
-          "legendFormat": "{{name}} - {{state}}",
+          "legendFormat": "{{member_idx}} - {{member_state}}",
           "refId": "A"
         }
       ],
@@ -3007,7 +947,6 @@
       },
       "yaxes": [
         {
-          "$$hashKey": "object:1595",
           "format": "s",
           "label": null,
           "logBase": 10,
@@ -3016,7 +955,6 @@
           "show": true
         },
         {
-          "$$hashKey": "object:1596",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -3040,13 +978,13 @@
       "fill": 2,
       "fillGradient": 0,
       "gridPos": {
-        "h": 8,
-        "w": 8,
+        "h": 7,
+        "w": 24,
         "x": 0,
-        "y": 75
+        "y": 26
       },
       "hiddenSeries": false,
-      "id": 52,
+      "id": 130,
       "legend": {
         "alignAsTable": true,
         "avg": true,
@@ -3061,7 +999,8 @@
       "linewidth": 2,
       "nullPointMode": "null",
       "options": {
-        "alertThreshold": true
+        "alertThreshold": true,
+        "dataLinks": []
       },
       "percentage": false,
       "pluginVersion": "8.2.3",
@@ -3074,11 +1013,22 @@
       "steppedLine": false,
       "targets": [
         {
+          "expr": "mongodb_rs_members_pingMs{instance=\"mongo-exporter:9216\", member_idx=\"mongo1:27017\"}",
+          "legendFormat": "{{instance}} - {{member_idx}}",
+          "refId": "C"
+        },
+        {
           "exemplar": true,
-          "expr": "mongodb_mongod_replset_member_ping_ms{instance=\"mongo1:27017\"}",
+          "expr": "mongodb_rs_members_pingMs{instance=\"mongo-exporter:9216\", member_idx=\"mongo2:27017\"}",
+          "instant": false,
           "interval": "",
-          "legendFormat": "{{name}} - {{state}}",
+          "legendFormat": "{{instance}} - {{member_idx}}",
           "refId": "A"
+        },
+        {
+          "expr": "mongodb_rs_members_pingMs{instance=\"mongo-exporter:9216\", member_idx=\"mongo3:27017\"}",
+          "legendFormat": "{{instance}} - {{member_idx}}",
+          "refId": "B"
         }
       ],
       "thresholds": [],
@@ -3101,7 +1051,6 @@
       },
       "yaxes": [
         {
-          "$$hashKey": "object:209",
           "decimals": 2,
           "format": "ms",
           "label": null,
@@ -3111,197 +1060,6 @@
           "show": true
         },
         {
-          "$$hashKey": "object:210",
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
-    },
-    {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": "mongodb metrics",
-      "decimals": 2,
-      "fill": 2,
-      "fillGradient": 0,
-      "gridPos": {
-        "h": 8,
-        "w": 8,
-        "x": 8,
-        "y": 75
-      },
-      "hiddenSeries": false,
-      "id": 120,
-      "legend": {
-        "alignAsTable": true,
-        "avg": true,
-        "current": false,
-        "max": true,
-        "min": true,
-        "show": true,
-        "total": false,
-        "values": true
-      },
-      "lines": true,
-      "linewidth": 2,
-      "nullPointMode": "null",
-      "options": {
-        "alertThreshold": true
-      },
-      "percentage": false,
-      "pluginVersion": "8.2.3",
-      "pointradius": 2,
-      "points": false,
-      "renderer": "flot",
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "exemplar": true,
-          "expr": "mongodb_mongod_replset_member_ping_ms{instance=\"mongo2:27017\"}",
-          "interval": "",
-          "legendFormat": "{{name}} - {{state}}",
-          "refId": "A"
-        }
-      ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
-      "title": "Max Member Ping Time",
-      "tooltip": {
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "$$hashKey": "object:209",
-          "decimals": 2,
-          "format": "ms",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": "0",
-          "show": true
-        },
-        {
-          "$$hashKey": "object:210",
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
-    },
-    {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": "mongodb metrics",
-      "decimals": 2,
-      "fill": 2,
-      "fillGradient": 0,
-      "gridPos": {
-        "h": 8,
-        "w": 8,
-        "x": 16,
-        "y": 75
-      },
-      "hiddenSeries": false,
-      "id": 121,
-      "legend": {
-        "alignAsTable": true,
-        "avg": true,
-        "current": false,
-        "max": true,
-        "min": true,
-        "show": true,
-        "total": false,
-        "values": true
-      },
-      "lines": true,
-      "linewidth": 2,
-      "nullPointMode": "null",
-      "options": {
-        "alertThreshold": true
-      },
-      "percentage": false,
-      "pluginVersion": "8.2.3",
-      "pointradius": 2,
-      "points": false,
-      "renderer": "flot",
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "exemplar": true,
-          "expr": "mongodb_mongod_replset_member_ping_ms{instance=\"mongo3:27017\"}",
-          "interval": "",
-          "legendFormat": "{{name}} - {{state}}",
-          "refId": "A"
-        }
-      ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
-      "title": "Max Member Ping Time",
-      "tooltip": {
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "$$hashKey": "object:209",
-          "decimals": 2,
-          "format": "ms",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": "0",
-          "show": true
-        },
-        {
-          "$$hashKey": "object:210",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -3327,10 +1085,10 @@
         "h": 8,
         "w": 8,
         "x": 0,
-        "y": 83
+        "y": 33
       },
       "hiddenSeries": false,
-      "id": 54,
+      "id": 133,
       "legend": {
         "alignAsTable": true,
         "avg": true,
@@ -3345,7 +1103,8 @@
       "linewidth": 2,
       "nullPointMode": "null",
       "options": {
-        "alertThreshold": true
+        "alertThreshold": true,
+        "dataLinks": []
       },
       "percentage": false,
       "pluginVersion": "8.2.3",
@@ -3359,9 +1118,9 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "time() - max(mongodb_mongod_replset_member_last_heartbeat{instance=\"mongo1:27017\", state=\"PRIMARY\"})",
+          "expr": "time() - max(mongodb_rs_members_lastHeartbeatRecv{member_idx=\"mongo1:27017\"}/1000)",
           "interval": "",
-          "legendFormat": "{{instance}}",
+          "legendFormat": "mongo1",
           "refId": "A"
         }
       ],
@@ -3385,7 +1144,6 @@
       },
       "yaxes": [
         {
-          "$$hashKey": "object:454",
           "format": "s",
           "label": null,
           "logBase": 1,
@@ -3394,7 +1152,6 @@
           "show": true
         },
         {
-          "$$hashKey": "object:455",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -3420,10 +1177,10 @@
         "h": 8,
         "w": 8,
         "x": 8,
-        "y": 83
+        "y": 33
       },
       "hiddenSeries": false,
-      "id": 122,
+      "id": 132,
       "legend": {
         "alignAsTable": true,
         "avg": true,
@@ -3438,7 +1195,8 @@
       "linewidth": 2,
       "nullPointMode": "null",
       "options": {
-        "alertThreshold": true
+        "alertThreshold": true,
+        "dataLinks": []
       },
       "percentage": false,
       "pluginVersion": "8.2.3",
@@ -3452,9 +1210,9 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "time() - max(mongodb_mongod_replset_member_last_heartbeat{instance=\"mongo2:27017\", state=\"PRIMARY\"})",
+          "expr": "time() - max(mongodb_rs_members_lastHeartbeatRecv{member_idx=\"mongo2:27017\"}/1000)",
           "interval": "",
-          "legendFormat": "{{instance}}",
+          "legendFormat": "mongo2",
           "refId": "A"
         }
       ],
@@ -3478,7 +1236,6 @@
       },
       "yaxes": [
         {
-          "$$hashKey": "object:454",
           "format": "s",
           "label": null,
           "logBase": 1,
@@ -3487,7 +1244,6 @@
           "show": true
         },
         {
-          "$$hashKey": "object:455",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -3513,10 +1269,10 @@
         "h": 8,
         "w": 8,
         "x": 16,
-        "y": 83
+        "y": 33
       },
       "hiddenSeries": false,
-      "id": 123,
+      "id": 134,
       "legend": {
         "alignAsTable": true,
         "avg": true,
@@ -3531,7 +1287,8 @@
       "linewidth": 2,
       "nullPointMode": "null",
       "options": {
-        "alertThreshold": true
+        "alertThreshold": true,
+        "dataLinks": []
       },
       "percentage": false,
       "pluginVersion": "8.2.3",
@@ -3545,9 +1302,10 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "time() - max(mongodb_mongod_replset_member_last_heartbeat{instance=\"mongo3:27017\", state=\"PRIMARY\"})",
+          "expr": "time() - max(mongodb_rs_members_lastHeartbeatRecv{member_idx=\"mongo3:27017\"}/1000)",
+          "instant": false,
           "interval": "",
-          "legendFormat": "{{instance}}",
+          "legendFormat": "mongo3",
           "refId": "A"
         }
       ],
@@ -3571,7 +1329,6 @@
       },
       "yaxes": [
         {
-          "$$hashKey": "object:454",
           "format": "s",
           "label": null,
           "logBase": 1,
@@ -3580,7 +1337,6 @@
           "show": true
         },
         {
-          "$$hashKey": "object:455",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -3603,10 +1359,10 @@
       "fill": 2,
       "fillGradient": 0,
       "gridPos": {
-        "h": 8,
-        "w": 8,
+        "h": 7,
+        "w": 24,
         "x": 0,
-        "y": 91
+        "y": 41
       },
       "hiddenSeries": false,
       "id": 56,
@@ -3615,9 +1371,10 @@
         "avg": true,
         "current": false,
         "hideEmpty": false,
-        "hideZero": true,
+        "hideZero": false,
         "max": true,
         "min": true,
+        "rightSide": false,
         "show": true,
         "total": false,
         "values": true
@@ -3626,7 +1383,8 @@
       "linewidth": 2,
       "nullPointMode": "null",
       "options": {
-        "alertThreshold": true
+        "alertThreshold": true,
+        "dataLinks": []
       },
       "percentage": false,
       "pluginVersion": "8.2.3",
@@ -3640,14 +1398,14 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "rate(mongodb_mongod_metrics_repl_preload_docs_num_total{instance=\"mongo1:27017\"}[$interval]) or \nirate(mongodb_mongod_metrics_repl_preload_docs_num_total{instance=\"mongo1:27017\"}[5m])",
+          "expr": "rate(mongodb_ss_metrics_repl_preload_docs_num{job=\"mongo_repl\"}[$interval]) or \nirate(mongodb_ss_metrics_repl_preload_docs_num{job=\"mongo_repl\"}[5m])",
           "interval": "",
           "legendFormat": "Document Preload",
           "refId": "A"
         },
         {
           "exemplar": true,
-          "expr": "rate(mongodb_mongod_metrics_repl_preload_indexes_num_total{instance=\"mongo1:27017\"}[$interval]) or \nirate(mongodb_mongod_metrics_repl_preload_indexes_num_total{instance=\"mongo1:27017\"}[5m])",
+          "expr": "rate(mongodb_ss_metrics_repl_preload_indexes_num{job=\"mongo_repl\"}[$interval]) or \nirate(mongodb_ss_metrics_repl_preload_indexes_num{job=\"mongo_repl\"}[5m])",
           "hide": false,
           "interval": "",
           "legendFormat": "Index Preload",
@@ -3655,7 +1413,7 @@
         },
         {
           "exemplar": true,
-          "expr": "rate(mongodb_mongod_metrics_repl_apply_ops_total{instance=\"mongo1:27017\"}[$interval]) or \nirate(mongodb_mongod_metrics_repl_apply_ops_total{instance=\"mongo1:27017\"}[5m])",
+          "expr": "rate(mongodb_ss_metrics_repl_apply_ops{job=\"mongo_repl\"}[$interval]) or \nirate(mongodb_ss_metrics_repl_apply_ops{job=\"mongo_repl\"}[5m])",
           "hide": false,
           "interval": "",
           "legendFormat": "Batch Apply",
@@ -3682,7 +1440,6 @@
       },
       "yaxes": [
         {
-          "$$hashKey": "object:586",
           "decimals": 1,
           "format": "ops",
           "label": null,
@@ -3692,231 +1449,6 @@
           "show": true
         },
         {
-          "$$hashKey": "object:587",
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
-    },
-    {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": "mongodb metrics",
-      "fill": 2,
-      "fillGradient": 0,
-      "gridPos": {
-        "h": 8,
-        "w": 8,
-        "x": 8,
-        "y": 91
-      },
-      "hiddenSeries": false,
-      "id": 104,
-      "legend": {
-        "alignAsTable": true,
-        "avg": true,
-        "current": false,
-        "hideEmpty": false,
-        "hideZero": true,
-        "max": true,
-        "min": true,
-        "show": true,
-        "total": false,
-        "values": true
-      },
-      "lines": true,
-      "linewidth": 2,
-      "nullPointMode": "null",
-      "options": {
-        "alertThreshold": true
-      },
-      "percentage": false,
-      "pluginVersion": "8.2.3",
-      "pointradius": 2,
-      "points": false,
-      "renderer": "flot",
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "exemplar": true,
-          "expr": "rate(mongodb_mongod_metrics_repl_preload_docs_num_total{instance=\"mongo2:27017\"}[$interval]) or \nirate(mongodb_mongod_metrics_repl_preload_docs_num_total{instance=\"mongo2:27017\"}[5m])",
-          "interval": "",
-          "legendFormat": "Document Preload",
-          "refId": "A"
-        },
-        {
-          "exemplar": true,
-          "expr": "rate(mongodb_mongod_metrics_repl_preload_indexes_num_total{instance=\"mongo2:27017\"}[$interval]) or \nirate(mongodb_mongod_metrics_repl_preload_indexes_num_total{instance=\"mongo2:27017\"}[5m])",
-          "hide": false,
-          "interval": "",
-          "legendFormat": "Index Preload",
-          "refId": "B"
-        },
-        {
-          "exemplar": true,
-          "expr": "rate(mongodb_mongod_metrics_repl_apply_ops_total{instance=\"mongo2:27017\"}[$interval]) or \nirate(mongodb_mongod_metrics_repl_apply_ops_total{instance=\"mongo2:27017\"}[5m])",
-          "hide": false,
-          "interval": "",
-          "legendFormat": "Batch Apply",
-          "refId": "C"
-        }
-      ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
-      "title": "Oplog Operations",
-      "tooltip": {
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "$$hashKey": "object:586",
-          "decimals": 1,
-          "format": "ops",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": "0",
-          "show": true
-        },
-        {
-          "$$hashKey": "object:587",
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
-    },
-    {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": "mongodb metrics",
-      "fill": 2,
-      "fillGradient": 0,
-      "gridPos": {
-        "h": 8,
-        "w": 8,
-        "x": 16,
-        "y": 91
-      },
-      "hiddenSeries": false,
-      "id": 105,
-      "legend": {
-        "alignAsTable": true,
-        "avg": true,
-        "current": false,
-        "hideEmpty": false,
-        "hideZero": true,
-        "max": true,
-        "min": true,
-        "show": true,
-        "total": false,
-        "values": true
-      },
-      "lines": true,
-      "linewidth": 2,
-      "nullPointMode": "null",
-      "options": {
-        "alertThreshold": true
-      },
-      "percentage": false,
-      "pluginVersion": "8.2.3",
-      "pointradius": 2,
-      "points": false,
-      "renderer": "flot",
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "exemplar": true,
-          "expr": "rate(mongodb_mongod_metrics_repl_preload_docs_num_total{instance=\"mongo3:27017\"}[$interval]) or \nirate(mongodb_mongod_metrics_repl_preload_docs_num_total{instance=\"mongo3:27017\"}[5m])",
-          "interval": "",
-          "legendFormat": "Document Preload",
-          "refId": "A"
-        },
-        {
-          "exemplar": true,
-          "expr": "rate(mongodb_mongod_metrics_repl_preload_indexes_num_total{instance=\"mongo3:27017\"}[$interval]) or \nirate(mongodb_mongod_metrics_repl_preload_indexes_num_total{instance=\"mongo3:27017\"}[5m])",
-          "hide": false,
-          "interval": "",
-          "legendFormat": "Index Preload",
-          "refId": "B"
-        },
-        {
-          "exemplar": true,
-          "expr": "rate(mongodb_mongod_metrics_repl_apply_ops_total{instance=\"mongo3:27017\"}[$interval]) or \nirate(mongodb_mongod_metrics_repl_apply_ops_total{instance=\"mongo3:27017\"}[5m])",
-          "hide": false,
-          "interval": "",
-          "legendFormat": "Batch Apply",
-          "refId": "C"
-        }
-      ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
-      "title": "Oplog Operations",
-      "tooltip": {
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "$$hashKey": "object:586",
-          "decimals": 1,
-          "format": "ops",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": "0",
-          "show": true
-        },
-        {
-          "$$hashKey": "object:587",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -3942,100 +1474,7 @@
         "h": 8,
         "w": 8,
         "x": 0,
-        "y": 99
-      },
-      "hiddenSeries": false,
-      "id": 58,
-      "legend": {
-        "alignAsTable": true,
-        "avg": true,
-        "current": false,
-        "max": true,
-        "min": true,
-        "show": true,
-        "total": false,
-        "values": true
-      },
-      "lines": true,
-      "linewidth": 2,
-      "nullPointMode": "null",
-      "options": {
-        "alertThreshold": true
-      },
-      "percentage": false,
-      "pluginVersion": "8.2.3",
-      "pointradius": 2,
-      "points": false,
-      "renderer": "flot",
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "exemplar": true,
-          "expr": "mongodb_mongod_metrics_repl_buffer_count{instance=\"mongo1:27017\"}",
-          "interval": "",
-          "legendFormat": "Current",
-          "refId": "A"
-        }
-      ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
-      "title": "Oplog Buffered Operations",
-      "tooltip": {
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "$$hashKey": "object:370",
-          "format": "ops",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": "0",
-          "show": true
-        },
-        {
-          "$$hashKey": "object:371",
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
-    },
-    {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": "mongodb metrics",
-      "fill": 2,
-      "fillGradient": 0,
-      "gridPos": {
-        "h": 8,
-        "w": 8,
-        "x": 8,
-        "y": 99
+        "y": 48
       },
       "hiddenSeries": false,
       "id": 108,
@@ -4053,7 +1492,8 @@
       "linewidth": 2,
       "nullPointMode": "null",
       "options": {
-        "alertThreshold": true
+        "alertThreshold": true,
+        "dataLinks": []
       },
       "percentage": false,
       "pluginVersion": "8.2.3",
@@ -4067,9 +1507,9 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "mongodb_mongod_metrics_repl_buffer_count{instance=\"mongo2:27017\"}",
+          "expr": "rate(mongodb_ss_metrics_repl_buffer_count{job=\"mongo_repl\"}[5m])",
           "interval": "",
-          "legendFormat": "Current",
+          "legendFormat": "Buffer count",
           "refId": "A"
         }
       ],
@@ -4093,7 +1533,6 @@
       },
       "yaxes": [
         {
-          "$$hashKey": "object:370",
           "format": "ops",
           "label": null,
           "logBase": 1,
@@ -4102,193 +1541,6 @@
           "show": true
         },
         {
-          "$$hashKey": "object:371",
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
-    },
-    {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": "mongodb metrics",
-      "fill": 2,
-      "fillGradient": 0,
-      "gridPos": {
-        "h": 8,
-        "w": 8,
-        "x": 16,
-        "y": 99
-      },
-      "hiddenSeries": false,
-      "id": 109,
-      "legend": {
-        "alignAsTable": true,
-        "avg": true,
-        "current": false,
-        "max": true,
-        "min": true,
-        "show": true,
-        "total": false,
-        "values": true
-      },
-      "lines": true,
-      "linewidth": 2,
-      "nullPointMode": "null",
-      "options": {
-        "alertThreshold": true
-      },
-      "percentage": false,
-      "pluginVersion": "8.2.3",
-      "pointradius": 2,
-      "points": false,
-      "renderer": "flot",
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "exemplar": true,
-          "expr": "mongodb_mongod_metrics_repl_buffer_count{instance=\"mongo3:27017\"}",
-          "interval": "",
-          "legendFormat": "Current",
-          "refId": "A"
-        }
-      ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
-      "title": "Oplog Buffered Operations",
-      "tooltip": {
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "$$hashKey": "object:370",
-          "format": "ops",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": "0",
-          "show": true
-        },
-        {
-          "$$hashKey": "object:371",
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
-    },
-    {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": "mongodb metrics",
-      "fill": 2,
-      "fillGradient": 0,
-      "gridPos": {
-        "h": 8,
-        "w": 8,
-        "x": 0,
-        "y": 107
-      },
-      "hiddenSeries": false,
-      "id": 60,
-      "legend": {
-        "alignAsTable": true,
-        "avg": true,
-        "current": false,
-        "max": true,
-        "min": true,
-        "show": true,
-        "total": false,
-        "values": true
-      },
-      "lines": true,
-      "linewidth": 2,
-      "nullPointMode": "null",
-      "options": {
-        "alertThreshold": true
-      },
-      "percentage": false,
-      "pluginVersion": "8.2.3",
-      "pointradius": 2,
-      "points": false,
-      "renderer": "flot",
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "exemplar": true,
-          "expr": "mongodb_mongod_metrics_repl_network_getmores_total_milliseconds{instance=\"mongo1:27017\"}",
-          "interval": "",
-          "legendFormat": "{{instance}}",
-          "refId": "A"
-        }
-      ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
-      "title": "Oplog Getmore Time",
-      "tooltip": {
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "$$hashKey": "object:615",
-          "format": "ms",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": "0",
-          "show": true
-        },
-        {
-          "$$hashKey": "object:616",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -4314,7 +1566,7 @@
         "h": 8,
         "w": 8,
         "x": 8,
-        "y": 107
+        "y": 48
       },
       "hiddenSeries": false,
       "id": 110,
@@ -4332,7 +1584,8 @@
       "linewidth": 2,
       "nullPointMode": "null",
       "options": {
-        "alertThreshold": true
+        "alertThreshold": true,
+        "dataLinks": []
       },
       "percentage": false,
       "pluginVersion": "8.2.3",
@@ -4346,9 +1599,9 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "mongodb_mongod_metrics_repl_network_getmores_total_milliseconds{instance=\"mongo2:27017\"}",
+          "expr": "mongodb_ss_metrics_repl_network_getmores_totalMillis{job=\"mongo_repl\"}",
           "interval": "",
-          "legendFormat": "{{instance}}",
+          "legendFormat": "GetMores",
           "refId": "A"
         }
       ],
@@ -4372,7 +1625,6 @@
       },
       "yaxes": [
         {
-          "$$hashKey": "object:615",
           "format": "ms",
           "label": null,
           "logBase": 1,
@@ -4381,7 +1633,6 @@
           "show": true
         },
         {
-          "$$hashKey": "object:616",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -4407,318 +1658,7 @@
         "h": 8,
         "w": 8,
         "x": 16,
-        "y": 107
-      },
-      "hiddenSeries": false,
-      "id": 111,
-      "legend": {
-        "alignAsTable": true,
-        "avg": true,
-        "current": false,
-        "max": true,
-        "min": true,
-        "show": true,
-        "total": false,
-        "values": true
-      },
-      "lines": true,
-      "linewidth": 2,
-      "nullPointMode": "null",
-      "options": {
-        "alertThreshold": true
-      },
-      "percentage": false,
-      "pluginVersion": "8.2.3",
-      "pointradius": 2,
-      "points": false,
-      "renderer": "flot",
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "exemplar": true,
-          "expr": "mongodb_mongod_metrics_repl_network_getmores_total_milliseconds{instance=\"mongo3:27017\"}",
-          "interval": "",
-          "legendFormat": "{{instance}}",
-          "refId": "A"
-        }
-      ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
-      "title": "Oplog Getmore Time",
-      "tooltip": {
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "$$hashKey": "object:615",
-          "format": "ms",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": "0",
-          "show": true
-        },
-        {
-          "$$hashKey": "object:616",
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
-    },
-    {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": "mongodb metrics",
-      "fill": 2,
-      "fillGradient": 0,
-      "gridPos": {
-        "h": 8,
-        "w": 8,
-        "x": 0,
-        "y": 115
-      },
-      "hiddenSeries": false,
-      "id": 62,
-      "legend": {
-        "alignAsTable": true,
-        "avg": true,
-        "current": false,
-        "max": true,
-        "min": true,
-        "show": true,
-        "total": false,
-        "values": true
-      },
-      "lines": true,
-      "linewidth": 2,
-      "nullPointMode": "null",
-      "options": {
-        "alertThreshold": true
-      },
-      "percentage": false,
-      "pluginVersion": "8.2.3",
-      "pointradius": 2,
-      "points": false,
-      "renderer": "flot",
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "exemplar": true,
-          "expr": "rate(mongodb_mongod_metrics_repl_preload_docs_total_milliseconds{instance=\"mongo1:27017\"}[$interval]) or\nirate(mongodb_mongod_metrics_repl_preload_docs_total_milliseconds{instance=\"mongo1:27017\"}[5m])",
-          "interval": "",
-          "legendFormat": "Document Preload",
-          "refId": "A"
-        },
-        {
-          "exemplar": true,
-          "expr": "rate(mongodb_mongod_metrics_repl_preload_indexes_total_milliseconds{instance=\"mongo1:27017\"}[$interval]) or\nirate(mongodb_mongod_metrics_repl_preload_indexes_total_milliseconds{instance=\"mongo1:27017\"}[5m])",
-          "hide": false,
-          "interval": "",
-          "legendFormat": "Index Preload",
-          "refId": "B"
-        },
-        {
-          "exemplar": true,
-          "expr": "rate(mongodb_mongod_metrics_repl_apply_batches_total_milliseconds{instance=\"mongo1:27017\"}[$interval]) or\nirate(mongodb_mongod_metrics_repl_apply_batches_total_milliseconds{instance=\"mongo1:27017\"}[5m])",
-          "hide": false,
-          "interval": "",
-          "legendFormat": "Batch Apply",
-          "refId": "C"
-        }
-      ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
-      "title": "Oplog Processing Time",
-      "tooltip": {
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "$$hashKey": "object:860",
-          "format": "ms",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": "0",
-          "show": true
-        },
-        {
-          "$$hashKey": "object:861",
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
-    },
-    {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": "mongodb metrics",
-      "fill": 2,
-      "fillGradient": 0,
-      "gridPos": {
-        "h": 8,
-        "w": 8,
-        "x": 8,
-        "y": 115
-      },
-      "hiddenSeries": false,
-      "id": 112,
-      "legend": {
-        "alignAsTable": true,
-        "avg": true,
-        "current": false,
-        "max": true,
-        "min": true,
-        "show": true,
-        "total": false,
-        "values": true
-      },
-      "lines": true,
-      "linewidth": 2,
-      "nullPointMode": "null",
-      "options": {
-        "alertThreshold": true
-      },
-      "percentage": false,
-      "pluginVersion": "8.2.3",
-      "pointradius": 2,
-      "points": false,
-      "renderer": "flot",
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "exemplar": true,
-          "expr": "rate(mongodb_mongod_metrics_repl_preload_docs_total_milliseconds{instance=\"mongo2:27017\"}[$interval]) or\nirate(mongodb_mongod_metrics_repl_preload_docs_total_milliseconds{instance=\"mongo2:27017\"}[5m])",
-          "interval": "",
-          "legendFormat": "Document Preload",
-          "refId": "A"
-        },
-        {
-          "exemplar": true,
-          "expr": "rate(mongodb_mongod_metrics_repl_preload_indexes_total_milliseconds{instance=\"mongo2:27017\"}[$interval]) or\nirate(mongodb_mongod_metrics_repl_preload_indexes_total_milliseconds{instance=\"mongo2:27017\"}[5m])",
-          "hide": false,
-          "interval": "",
-          "legendFormat": "Index Preload",
-          "refId": "B"
-        },
-        {
-          "exemplar": true,
-          "expr": "rate(mongodb_mongod_metrics_repl_apply_batches_total_milliseconds{instance=\"mongo2:27017\"}[$interval]) or\nirate(mongodb_mongod_metrics_repl_apply_batches_total_milliseconds{instance=\"mongo2:27017\"}[5m])",
-          "hide": false,
-          "interval": "",
-          "legendFormat": "Batch Apply",
-          "refId": "C"
-        }
-      ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
-      "title": "Oplog Processing Time",
-      "tooltip": {
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "$$hashKey": "object:860",
-          "format": "ms",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": "0",
-          "show": true
-        },
-        {
-          "$$hashKey": "object:861",
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
-    },
-    {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": "mongodb metrics",
-      "fill": 2,
-      "fillGradient": 0,
-      "gridPos": {
-        "h": 8,
-        "w": 8,
-        "x": 16,
-        "y": 115
+        "y": 48
       },
       "hiddenSeries": false,
       "id": 113,
@@ -4736,7 +1676,8 @@
       "linewidth": 2,
       "nullPointMode": "null",
       "options": {
-        "alertThreshold": true
+        "alertThreshold": true,
+        "dataLinks": []
       },
       "percentage": false,
       "pluginVersion": "8.2.3",
@@ -4750,14 +1691,14 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "rate(mongodb_mongod_metrics_repl_preload_docs_total_milliseconds{instance=\"mongo3:27017\"}[$interval]) or\nirate(mongodb_mongod_metrics_repl_preload_docs_total_milliseconds{instance=\"mongo3:27017\"}[5m])",
+          "expr": "rate(mongodb_ss_metrics_repl_preload_docs_totalMillis{job=\"mongo_repl\"}[$interval]) or\nirate(mongodb_ss_metrics_repl_preload_docs_totalMillis{job=\"mongo_repl\"}[5m])",
           "interval": "",
           "legendFormat": "Document Preload",
           "refId": "A"
         },
         {
           "exemplar": true,
-          "expr": "rate(mongodb_mongod_metrics_repl_preload_indexes_total_milliseconds{instance=\"mongo3:27017\"}[$interval]) or\nirate(mongodb_mongod_metrics_repl_preload_indexes_total_milliseconds{instance=\"mongo3:27017\"}[5m])",
+          "expr": "rate(mongodb_ss_metrics_repl_preload_indexes_totalMillis{job=\"mongo_repl\"}[$interval]) or\nirate(mongodb_ss_metrics_repl_preload_indexes_totalMillis{job=\"mongo_repl\"}[5m])",
           "hide": false,
           "interval": "",
           "legendFormat": "Index Preload",
@@ -4765,7 +1706,7 @@
         },
         {
           "exemplar": true,
-          "expr": "rate(mongodb_mongod_metrics_repl_apply_batches_total_milliseconds{instance=\"mongo3:27017\"}[$interval]) or\nirate(mongodb_mongod_metrics_repl_apply_batches_total_milliseconds{instance=\"mongo3:27017\"}[5m])",
+          "expr": "rate(mongodb_ss_metrics_repl_apply_batches_totalMillis{job=\"mongo_repl\"}[$interval]) or\nirate(mongodb_ss_metrics_repl_apply_batches_totalMillis{job=\"mongo_repl\"}[5m])",
           "hide": false,
           "interval": "",
           "legendFormat": "Batch Apply",
@@ -4792,7 +1733,6 @@
       },
       "yaxes": [
         {
-          "$$hashKey": "object:860",
           "format": "ms",
           "label": null,
           "logBase": 1,
@@ -4801,7 +1741,6 @@
           "show": true
         },
         {
-          "$$hashKey": "object:861",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -4827,7 +1766,7 @@
         "h": 10,
         "w": 8,
         "x": 0,
-        "y": 123
+        "y": 56
       },
       "hiddenSeries": false,
       "id": 64,
@@ -4845,7 +1784,8 @@
       "linewidth": 2,
       "nullPointMode": "null",
       "options": {
-        "alertThreshold": true
+        "alertThreshold": true,
+        "dataLinks": []
       },
       "percentage": false,
       "pluginVersion": "8.2.3",
@@ -4859,14 +1799,14 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "mongodb_mongod_metrics_repl_buffer_size_bytes{instance=\"mongo1:27017\"}",
+          "expr": "mongodb_ss_metrics_repl_buffer_sizeBytes{job=\"mongo_repl\"}",
           "interval": "",
           "legendFormat": "Used",
           "refId": "A"
         },
         {
           "exemplar": true,
-          "expr": "mongodb_mongod_metrics_repl_buffer_max_size_bytes{instance=\"mongo1:27017\"}",
+          "expr": "mongodb_ss_metrics_repl_buffer_maxSizeBytes{job=\"mongo_repl\"}",
           "hide": false,
           "interval": "",
           "legendFormat": "Max",
@@ -4893,7 +1833,6 @@
       },
       "yaxes": [
         {
-          "$$hashKey": "object:1105",
           "format": "bytes",
           "label": null,
           "logBase": 10,
@@ -4902,209 +1841,6 @@
           "show": true
         },
         {
-          "$$hashKey": "object:1106",
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
-    },
-    {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": "mongodb metrics",
-      "fill": 2,
-      "fillGradient": 0,
-      "gridPos": {
-        "h": 10,
-        "w": 8,
-        "x": 8,
-        "y": 123
-      },
-      "hiddenSeries": false,
-      "id": 114,
-      "legend": {
-        "alignAsTable": true,
-        "avg": true,
-        "current": false,
-        "max": true,
-        "min": true,
-        "show": true,
-        "total": false,
-        "values": true
-      },
-      "lines": true,
-      "linewidth": 2,
-      "nullPointMode": "null",
-      "options": {
-        "alertThreshold": true
-      },
-      "percentage": false,
-      "pluginVersion": "8.2.3",
-      "pointradius": 2,
-      "points": false,
-      "renderer": "flot",
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "exemplar": true,
-          "expr": "mongodb_mongod_metrics_repl_buffer_size_bytes{instance=\"mongo2:27017\"}",
-          "interval": "",
-          "legendFormat": "Used",
-          "refId": "A"
-        },
-        {
-          "exemplar": true,
-          "expr": "mongodb_mongod_metrics_repl_buffer_max_size_bytes{instance=\"mongo2:27017\"}",
-          "hide": false,
-          "interval": "",
-          "legendFormat": "Max",
-          "refId": "B"
-        }
-      ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
-      "title": "Oplog Buffer Capacity",
-      "tooltip": {
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "$$hashKey": "object:1105",
-          "format": "bytes",
-          "label": null,
-          "logBase": 10,
-          "max": null,
-          "min": "0",
-          "show": true
-        },
-        {
-          "$$hashKey": "object:1106",
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
-    },
-    {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": "mongodb metrics",
-      "fill": 2,
-      "fillGradient": 0,
-      "gridPos": {
-        "h": 10,
-        "w": 8,
-        "x": 16,
-        "y": 123
-      },
-      "hiddenSeries": false,
-      "id": 115,
-      "legend": {
-        "alignAsTable": true,
-        "avg": true,
-        "current": false,
-        "max": true,
-        "min": true,
-        "show": true,
-        "total": false,
-        "values": true
-      },
-      "lines": true,
-      "linewidth": 2,
-      "nullPointMode": "null",
-      "options": {
-        "alertThreshold": true
-      },
-      "percentage": false,
-      "pluginVersion": "8.2.3",
-      "pointradius": 2,
-      "points": false,
-      "renderer": "flot",
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "exemplar": true,
-          "expr": "mongodb_mongod_metrics_repl_buffer_size_bytes{instance=\"mongo3:27017\"}",
-          "interval": "",
-          "legendFormat": "Used",
-          "refId": "A"
-        },
-        {
-          "exemplar": true,
-          "expr": "mongodb_mongod_metrics_repl_buffer_max_size_bytes{instance=\"mongo3:27017\"}",
-          "hide": false,
-          "interval": "",
-          "legendFormat": "Max",
-          "refId": "B"
-        }
-      ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
-      "title": "Oplog Buffer Capacity",
-      "tooltip": {
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "$$hashKey": "object:1105",
-          "format": "bytes",
-          "label": null,
-          "logBase": 10,
-          "max": null,
-          "min": "0",
-          "show": true
-        },
-        {
-          "$$hashKey": "object:1106",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -5120,7 +1856,7 @@
     }
   ],
   "refresh": "5s",
-  "schemaVersion": 31,
+  "schemaVersion": 22,
   "style": "dark",
   "tags": [],
   "templating": {
@@ -5132,11 +1868,11 @@
           "text": "mongo1",
           "value": "mongo1"
         },
-        "description": "the mongo instances",
+        "description": "the mongo members",
         "error": null,
         "hide": 2,
         "includeAll": true,
-        "label": "instance",
+        "label": "member_idx",
         "multi": false,
         "name": "host",
         "options": [
@@ -5269,12 +2005,12 @@
     ]
   },
   "time": {
-    "from": "now-15m",
+    "from": "now-5m",
     "to": "now"
   },
   "timepicker": {},
   "timezone": "",
   "title": "ReplicaSet",
   "uid": "xHsKGXKnk_repl",
-  "version": 1
+  "version": 5
 }
