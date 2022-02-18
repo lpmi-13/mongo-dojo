@@ -46,7 +46,8 @@ https://docs.docker.com/get-docker/
 https://docs.docker.com/compose/install/
 
 3) `$ bash startdb.sh`
-(this just starts up all the containers and doesn't insert any data yet)
+
+4) `$ bash start_insert_swarm_containers.sh`
 
 ### Tasks for the container-based configuration
 
@@ -88,14 +89,181 @@ insert query update delete getmore command dirty used flushes vsize   res qrw ar
     *0    *0     *0     *0       0     3|0  0.0% 0.1%       0 1.42G 78.0M 0|0 1|0   418b   63.9k   12 dojo  PRI Feb 15 16:01:08.438
 ```
 
+### Run a query on an unindexed field (we'll index it later)
 
-- Creating an index
+The `reviewsubmitted` field isn't currently indexed, so any query operation using it is going to result in a COLLSCAN
+
+connect to the primary:
+
+```
+mongo mongodb://localhost:27017
+```
+
+and once connected to the primary, you should be able to see the number of documents in the `reviews` collection in the `userData` database:
+
+```
+dojo:PRIMARY> show dbs
+admin     0.000GB
+config    0.000GB
+local     0.116GB
+userData  0.113GB
+dojo:PRIMARY> use userData
+switched to db userData
+dojo:PRIMARY> show collections
+reviews
+```
+
+now we can run explain for a query based on the unindexed field
+
+```
+dojo:PRIMARY> db.reviews.find({ reviewsubmitted: { $lt: "2015-01-01 00:00:00"}}).ex
+plain()
+```
+
+which will show us that mongo had to scan the entire collection to retrieve the results:
+
+```
+{
+        "queryPlanner" : {
+                "plannerVersion" : 1,
+                "namespace" : "userData.reviews",
+                "indexFilterSet" : false,
+                "parsedQuery" : {
+                        "reviewsubmitted" : {
+                                "$lt" : "2015-01-01 00:00:00"
+                        }
+                },
+                "winningPlan" : {
+                        "stage" : "COLLSCAN",
+                        "filter" : {
+                                "reviewsubmitted" : {
+                                        "$lt" : "2015-01-01 00:00:00"
+                                }
+                        },
+                        "direction" : "forward"
+                },
+                "rejectedPlans" : [ ]
+        },
+        "serverInfo" : {
+                "host" : "57411b882bcb",
+                "port" : 27017,
+                "version" : "3.6.23",
+                "gitVersion" : "d352e6a4764659e0d0350ce77279de3c1f243e5c"
+        },
+        "ok" : 1,
+        "operationTime" : Timestamp(1645142923, 1),
+        "$clusterTime" : {
+                "clusterTime" : Timestamp(1645142923, 1),
+                "signature" : {
+                        "hash" : BinData(0,"AAAAAAAAAAAAAAAAAAAAAAAAAAA="),
+                        "keyId" : NumberLong(0)
+                }
+        }
+}
+```
+
+The important part of this is the `"stage" : "COLLSCAN",` line, showing that mongo had to scan the entire collection. We don't want to do this if we can avoid it.
+
+
+### Creating an index
+
+first, connect to the primary:
+
+(run this from your local machine)
+```
+mongo mongodb://localhost:27017
+```
+
+
+create an index on the `reviewsubmitted` field like so:
+
+```
+db.reviews.createIndex({ "reviewsubmitted": -1 })
+```
+
+and the output should be something like
+
+```
+{
+        "createdCollectionAutomatically" : false,
+        "numIndexesBefore" : 1,
+        "numIndexesAfter" : 2,
+        "ok" : 1,
+        "operationTime" : Timestamp(1645142260, 1),
+        "$clusterTime" : {
+                "clusterTime" : Timestamp(1645142260, 1),
+                "signature" : {
+                        "hash" : BinData(0,"AAAAAAAAAAAAAAAAAAAAAAAAAAA="),
+                        "keyId" : NumberLong(0)
+                }
+        }
+}
+```
+
+now we can run explain on the same query as above, and we'll see it did a much more efficient index scan.
+
+```
+dojo:PRIMARY> db.reviews.find({ reviewsubmitted: { $lt: "2015-01-01 00:00:00"}}).explain()
+{
+        "queryPlanner" : {
+                "plannerVersion" : 1,
+                "namespace" : "userData.reviews",
+                "indexFilterSet" : false,
+                "parsedQuery" : {
+                        "reviewsubmitted" : {
+                                "$lt" : "2015-01-01 00:00:00"
+                        }
+                },
+                "winningPlan" : {
+                        "stage" : "FETCH",
+                        "inputStage" : {
+                                "stage" : "IXSCAN",
+                                "keyPattern" : {
+                                        "reviewsubmitted" : -1
+                                },
+                                "indexName" : "reviewsubmitted_-1",
+                                "isMultiKey" : false,
+                                "multiKeyPaths" : {
+                                        "reviewsubmitted" : [ ]
+                                },
+                                "isUnique" : false,
+                                "isSparse" : false,
+                                "isPartial" : false,
+                                "indexVersion" : 2,
+                                "direction" : "forward",
+                                "indexBounds" : {
+                                        "reviewsubmitted" : [
+                                                "(\"2015-01-01 00:00:00\", \"\"]"
+                                        ]
+                                }
+                        }
+                },
+                "rejectedPlans" : [ ]
+        },
+        "serverInfo" : {
+                "host" : "57411b882bcb",
+                "port" : 27017,
+                "version" : "3.6.23",
+                "gitVersion" : "d352e6a4764659e0d0350ce77279de3c1f243e5c"
+        },
+        "ok" : 1,
+        "operationTime" : Timestamp(1645143090, 1),
+        "$clusterTime" : {
+                "clusterTime" : Timestamp(1645143090, 1),
+                "signature" : {
+                        "hash" : BinData(0,"AAAAAAAAAAAAAAAAAAAAAAAAAAA="),
+                        "keyId" : NumberLong(0)
+                }
+        }
+}
+```
+
+The important information here is the `"stage" : "IXSCAN",` line, showing us that mongo did an index scan, which is WAY more efficient than a full COLLSCAN.
 
 
 
-- Load data and start with an unoptimized query. Run explain to see that it's not performant and fix it. Re-run explain to prove the fix worked.
 
-- Running `explain()` to see why a query might be running slowly (probably lack of an index)
+
 
 - Find and stop a long-running query
 
