@@ -260,8 +260,11 @@ dojo:PRIMARY> db.reviews.find({ reviewsubmitted: { $lt: "2015-01-01 00:00:00"}})
 
 The important information here is the `"stage" : "IXSCAN",` line, showing us that mongo did an index scan, which is WAY more efficient than a full COLLSCAN.
 
+### Create a rolling index across the replicaset
 
+For this, we'll do something that's much more common in a production system, where we need to create an index, but not stop mongo will it's happening, and do it on one instance at a time.
 
+So we remove one secondary from the replicaset, add the index, then update the configuration on the primary so that it's hidden (means it won't get hit for reads, so stale data isn't an issue), and once it catches up with replication, make it visible again for the replicaset. Then we do the same on the other secondary, and finally step down the primary, and once it becomes a secondary, do the same on that new secondary.
 
 
 
