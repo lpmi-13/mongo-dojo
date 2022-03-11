@@ -48,12 +48,18 @@ sudo systemctl enable mongod
 
 # I thought there would be a cleaner way to do this, but this works so keeping it for now
 sudo iptables -A IN_public_allow -p tcp -m tcp --dport 27017 -m conntrack --ctstate NEW,UNTRACKED -j ACCEPT
+
 # mongo exporter
 sudo iptables -A IN_public_allow -p tcp -m tcp --dport 9216 -m conntrack --ctstate NEW,UNTRACKED -j ACCEPT
+
 # node exporter
 sudo iptables -A IN_public_allow -p tcp -m tcp --dport 9100 -m conntrack --ctstate NEW,UNTRACKED -j ACCEPT
 sudo /etc/init.d/network restart
 
+
+# because centOS has SELinux enabled by default, we can't do an update of the port during a rolling index, so this turns
+# that off and sets it in permissive mode, which wouldn't be great for production, but this is a dojo after all...
+sudo setenforce 0
 
 
 # mongo exporter stuff
