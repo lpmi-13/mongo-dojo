@@ -17,4 +17,4 @@ FROM golang:1.15.2-alpine
 COPY --from=builder /insert-data /insert-data
 
 # and now we can connect directly to the primary via the DNS
-CMD ["/insert-data", "50000", "mongodb://mongo1:27017"]
+CMD ["/insert-data", "500000", "mongodb://mongo1:27017"]

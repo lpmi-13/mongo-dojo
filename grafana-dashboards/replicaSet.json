@@ -20,10 +20,8 @@
   },
   "editable": true,
   "fiscalYearStartMonth": 0,
-  "gnetId": null,
   "graphTooltip": 0,
-  "id": 12,
-  "iteration": 1636126800378,
+  "iteration": 1647078712501,
   "links": [
     {
       "asDropdown": true,
@@ -41,7 +39,10 @@
   "liveNow": false,
   "panels": [
     {
-      "datasource": "mongodb metrics",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "P7ADD5123A1CB92FF"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -102,12 +103,17 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "8.2.3",
+      "pluginVersion": "8.4.3",
       "targets": [
         {
-          "exemplar": true,
+          "datasource": {
+            "type": "prometheus",
+            "uid": "P7ADD5123A1CB92FF"
+          },
+          "exemplar": false,
           "expr": "mongodb_mongod_replset_my_state{instance=\"192.168.42.100:9216\",job=\"mongo_repl\",set=\"dojo\"}",
           "format": "time_series",
+          "instant": true,
           "interval": "",
           "legendFormat": "",
           "refId": "A"
@@ -126,7 +132,10 @@
       "type": "stat"
     },
     {
-      "datasource": "mongodb metrics",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "P7ADD5123A1CB92FF"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -187,11 +196,16 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "8.2.3",
+      "pluginVersion": "8.4.3",
       "targets": [
         {
-          "exemplar": true,
+          "datasource": {
+            "type": "prometheus",
+            "uid": "P7ADD5123A1CB92FF"
+          },
+          "exemplar": false,
           "expr": "mongodb_mongod_replset_my_state{instance=\"192.168.42.101:9216\",job=\"mongo_repl\",set=\"dojo\"}",
+          "instant": true,
           "interval": "",
           "legendFormat": "",
           "refId": "A"
@@ -201,7 +215,10 @@
       "type": "stat"
     },
     {
-      "datasource": "mongodb metrics",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "P7ADD5123A1CB92FF"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -262,11 +279,16 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "8.2.3",
+      "pluginVersion": "8.4.3",
       "targets": [
         {
-          "exemplar": true,
+          "datasource": {
+            "type": "prometheus",
+            "uid": "P7ADD5123A1CB92FF"
+          },
+          "exemplar": false,
           "expr": "mongodb_mongod_replset_my_state{instance=\"192.168.42.102:9216\",job=\"mongo_repl\",set=\"dojo\"}",
+          "instant": true,
           "interval": "",
           "legendFormat": "",
           "refId": "A"
@@ -276,7 +298,10 @@
       "type": "stat"
     },
     {
-      "datasource": "mongodb metrics",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "P7ADD5123A1CB92FF"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -322,11 +347,16 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.2.3",
+      "pluginVersion": "8.4.3",
       "targets": [
         {
-          "exemplar": true,
+          "datasource": {
+            "type": "prometheus",
+            "uid": "P7ADD5123A1CB92FF"
+          },
+          "exemplar": false,
           "expr": "mongodb_mongod_replset_number_of_members{instance=\"192.168.42.100:9216\",job=\"mongo_repl\",set=\"dojo\"}",
+          "instant": true,
           "interval": "",
           "legendFormat": "",
           "refId": "A"
@@ -336,7 +366,10 @@
       "type": "stat"
     },
     {
-      "datasource": "mongodb metrics",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "P7ADD5123A1CB92FF"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -381,11 +414,16 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.2.3",
+      "pluginVersion": "8.4.3",
       "targets": [
         {
-          "exemplar": true,
+          "datasource": {
+            "type": "prometheus",
+            "uid": "P7ADD5123A1CB92FF"
+          },
+          "exemplar": false,
           "expr": "mongodb_mongod_replset_number_of_members{instance=\"192.168.42.101:9216\",job=\"mongo_repl\",set=\"dojo\"}",
+          "instant": true,
           "interval": "",
           "legendFormat": "",
           "refId": "A"
@@ -395,7 +433,10 @@
       "type": "stat"
     },
     {
-      "datasource": "mongodb metrics",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "P7ADD5123A1CB92FF"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -440,11 +481,16 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.2.3",
+      "pluginVersion": "8.4.3",
       "targets": [
         {
-          "exemplar": true,
+          "datasource": {
+            "type": "prometheus",
+            "uid": "P7ADD5123A1CB92FF"
+          },
+          "exemplar": false,
           "expr": "mongodb_mongod_replset_number_of_members{instance=\"192.168.42.102:9216\",job=\"mongo_repl\",set=\"dojo\"}",
+          "instant": true,
           "interval": "",
           "legendFormat": "",
           "refId": "A"
@@ -454,7 +500,10 @@
       "type": "stat"
     },
     {
-      "datasource": "mongodb metrics",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "P7ADD5123A1CB92FF"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -503,11 +552,16 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "8.2.3",
+      "pluginVersion": "8.4.3",
       "targets": [
         {
-          "exemplar": true,
+          "datasource": {
+            "type": "prometheus",
+            "uid": "P7ADD5123A1CB92FF"
+          },
+          "exemplar": false,
           "expr": "time() - mongodb_mongod_replset_member_election_date{instance=\"192.168.42.100:9216\"}",
+          "instant": true,
           "interval": "",
           "legendFormat": "",
           "refId": "A"
@@ -517,7 +571,10 @@
       "type": "stat"
     },
     {
-      "datasource": "mongodb metrics",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "P7ADD5123A1CB92FF"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -548,7 +605,7 @@
         "x": 8,
         "y": 7
       },
-      "id": 98,
+      "id": 125,
       "options": {
         "colorMode": "none",
         "graphMode": "none",
@@ -566,11 +623,16 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "8.2.3",
+      "pluginVersion": "8.4.3",
       "targets": [
         {
-          "exemplar": true,
+          "datasource": {
+            "type": "prometheus",
+            "uid": "P7ADD5123A1CB92FF"
+          },
+          "exemplar": false,
           "expr": "time() - mongodb_mongod_replset_member_election_date{instance=\"192.168.42.101:9216\"}",
+          "instant": true,
           "interval": "",
           "legendFormat": "",
           "refId": "A"
@@ -580,7 +642,10 @@
       "type": "stat"
     },
     {
-      "datasource": "mongodb metrics",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "P7ADD5123A1CB92FF"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -629,11 +694,16 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "8.2.3",
+      "pluginVersion": "8.4.3",
       "targets": [
         {
-          "exemplar": true,
+          "datasource": {
+            "type": "prometheus",
+            "uid": "P7ADD5123A1CB92FF"
+          },
+          "exemplar": false,
           "expr": "time() - mongodb_mongod_replset_member_election_date{instance=\"192.168.42.102:9216\"}",
+          "instant": true,
           "interval": "",
           "legendFormat": "",
           "refId": "A"
@@ -647,7 +717,10 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "mongodb metrics",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "P7ADD5123A1CB92FF"
+      },
       "fill": 2,
       "fillGradient": 0,
       "gridPos": {
@@ -674,7 +747,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.2.3",
+      "pluginVersion": "8.4.3",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -701,9 +774,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "ReplSet Lag",
       "tooltip": {
         "shared": true,
@@ -712,9 +783,7 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
@@ -722,25 +791,19 @@
         {
           "$$hashKey": "object:122",
           "format": "s",
-          "label": null,
           "logBase": 1,
-          "max": null,
           "min": "0",
           "show": true
         },
         {
           "$$hashKey": "object:123",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -748,7 +811,10 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "mongodb metrics",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "P7ADD5123A1CB92FF"
+      },
       "fill": 2,
       "fillGradient": 0,
       "gridPos": {
@@ -775,7 +841,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.2.3",
+      "pluginVersion": "8.4.3",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -802,9 +868,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "ReplSet Lag",
       "tooltip": {
         "shared": true,
@@ -813,9 +877,7 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
@@ -823,25 +885,19 @@
         {
           "$$hashKey": "object:350",
           "format": "s",
-          "label": null,
           "logBase": 1,
-          "max": null,
           "min": "0",
           "show": true
         },
         {
           "$$hashKey": "object:351",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -849,7 +905,10 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "mongodb metrics",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "P7ADD5123A1CB92FF"
+      },
       "fill": 2,
       "fillGradient": 0,
       "gridPos": {
@@ -876,7 +935,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.2.3",
+      "pluginVersion": "8.4.3",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -903,9 +962,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "ReplSet lag",
       "tooltip": {
         "shared": true,
@@ -914,9 +971,7 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
@@ -924,25 +979,19 @@
         {
           "$$hashKey": "object:430",
           "format": "s",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         },
         {
           "$$hashKey": "object:431",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
           "min": "0",
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -950,7 +999,10 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "observer node exporter",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "P556D71F129650BEA"
+      },
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -977,7 +1029,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.2.3",
+      "pluginVersion": "8.4.3",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -995,9 +1047,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "CPU 192.168.42.100",
       "tooltip": {
         "shared": true,
@@ -1006,9 +1056,7 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
@@ -1016,26 +1064,20 @@
         {
           "$$hashKey": "object:162",
           "format": "percentunit",
-          "label": null,
           "logBase": 1,
           "max": "1.1",
-          "min": null,
           "show": true
         },
         {
           "$$hashKey": "object:163",
           "decimals": 0,
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -1043,7 +1085,10 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "observer node exporter",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "P556D71F129650BEA"
+      },
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -1070,7 +1115,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.2.3",
+      "pluginVersion": "8.4.3",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -1088,9 +1133,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "CPU 192.168.42.101",
       "tooltip": {
         "shared": true,
@@ -1099,9 +1142,7 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
@@ -1109,26 +1150,20 @@
         {
           "$$hashKey": "object:162",
           "format": "percentunit",
-          "label": null,
           "logBase": 1,
           "max": "1.1",
-          "min": null,
           "show": true
         },
         {
           "$$hashKey": "object:163",
           "decimals": 0,
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -1136,7 +1171,10 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "observer node exporter",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "P556D71F129650BEA"
+      },
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -1163,7 +1201,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.2.3",
+      "pluginVersion": "8.4.3",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -1181,9 +1219,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "CPU 192.168.42.102",
       "tooltip": {
         "shared": true,
@@ -1192,9 +1228,7 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
@@ -1202,26 +1236,20 @@
         {
           "$$hashKey": "object:162",
           "format": "percentunit",
-          "label": null,
           "logBase": 1,
           "max": "1.1",
-          "min": null,
           "show": true
         },
         {
           "$$hashKey": "object:163",
           "decimals": 0,
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -1229,7 +1257,10 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "observer node exporter",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "P556D71F129650BEA"
+      },
       "fill": 4,
       "fillGradient": 0,
       "gridPos": {
@@ -1256,7 +1287,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.2.3",
+      "pluginVersion": "8.4.3",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -1306,9 +1337,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Memory",
       "tooltip": {
         "shared": true,
@@ -1317,9 +1346,7 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
@@ -1327,25 +1354,18 @@
         {
           "$$hashKey": "object:398",
           "format": "bytes",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         },
         {
           "$$hashKey": "object:399",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -1353,7 +1373,10 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "observer node exporter",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "P556D71F129650BEA"
+      },
       "fill": 4,
       "fillGradient": 0,
       "gridPos": {
@@ -1380,7 +1403,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.2.3",
+      "pluginVersion": "8.4.3",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -1430,9 +1453,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Memory",
       "tooltip": {
         "shared": true,
@@ -1441,9 +1462,7 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
@@ -1451,25 +1470,18 @@
         {
           "$$hashKey": "object:398",
           "format": "bytes",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         },
         {
           "$$hashKey": "object:399",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -1477,7 +1489,10 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "observer node exporter",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "P556D71F129650BEA"
+      },
       "fill": 4,
       "fillGradient": 0,
       "gridPos": {
@@ -1504,7 +1519,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.2.3",
+      "pluginVersion": "8.4.3",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -1554,9 +1569,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Memory",
       "tooltip": {
         "shared": true,
@@ -1565,9 +1578,7 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
@@ -1575,25 +1586,18 @@
         {
           "$$hashKey": "object:398",
           "format": "bytes",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         },
         {
           "$$hashKey": "object:399",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -1601,7 +1605,10 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "mongodb metrics",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "P7ADD5123A1CB92FF"
+      },
       "fill": 2,
       "fillGradient": 0,
       "gridPos": {
@@ -1629,7 +1636,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.2.3",
+      "pluginVersion": "8.4.3",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -1648,9 +1655,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Replication Operations",
       "tooltip": {
         "shared": true,
@@ -1659,9 +1664,7 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
@@ -1670,25 +1673,19 @@
           "$$hashKey": "object:1350",
           "decimals": 2,
           "format": "ops",
-          "label": null,
           "logBase": 1,
-          "max": null,
           "min": "0",
           "show": true
         },
         {
           "$$hashKey": "object:1351",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -1696,7 +1693,10 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "mongodb metrics",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "P7ADD5123A1CB92FF"
+      },
       "fill": 2,
       "fillGradient": 0,
       "gridPos": {
@@ -1724,7 +1724,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.2.3",
+      "pluginVersion": "8.4.3",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -1743,9 +1743,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Replication Operations",
       "tooltip": {
         "shared": true,
@@ -1754,9 +1752,7 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
@@ -1765,25 +1761,19 @@
           "$$hashKey": "object:1350",
           "decimals": 2,
           "format": "ops",
-          "label": null,
           "logBase": 1,
-          "max": null,
           "min": "0",
           "show": true
         },
         {
           "$$hashKey": "object:1351",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -1791,7 +1781,10 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "mongodb metrics",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "P7ADD5123A1CB92FF"
+      },
       "fill": 2,
       "fillGradient": 0,
       "gridPos": {
@@ -1819,7 +1812,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.2.3",
+      "pluginVersion": "8.4.3",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -1838,9 +1831,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Replication Operations",
       "tooltip": {
         "shared": true,
@@ -1849,9 +1840,7 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
@@ -1860,25 +1849,19 @@
           "$$hashKey": "object:1350",
           "decimals": 2,
           "format": "ops",
-          "label": null,
           "logBase": 1,
-          "max": null,
           "min": "0",
           "show": true
         },
         {
           "$$hashKey": "object:1351",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -1886,7 +1869,10 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "mongodb metrics",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "P7ADD5123A1CB92FF"
+      },
       "fill": 2,
       "fillGradient": 0,
       "gridPos": {
@@ -1914,7 +1900,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.2.3",
+      "pluginVersion": "8.4.3",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -1940,9 +1926,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Oplog Recovery Window",
       "tooltip": {
         "shared": true,
@@ -1951,9 +1935,7 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
@@ -1964,23 +1946,18 @@
           "format": "s",
           "label": "",
           "logBase": 1,
-          "max": null,
           "min": "0",
           "show": true
         },
         {
           "$$hashKey": "object:115",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -1988,7 +1965,10 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "mongodb metrics",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "P7ADD5123A1CB92FF"
+      },
       "fill": 2,
       "fillGradient": 0,
       "gridPos": {
@@ -2016,7 +1996,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.2.3",
+      "pluginVersion": "8.4.3",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -2042,9 +2022,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Oplog Recovery Window",
       "tooltip": {
         "shared": true,
@@ -2053,9 +2031,7 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
@@ -2066,23 +2042,18 @@
           "format": "s",
           "label": "",
           "logBase": 1,
-          "max": null,
           "min": "0",
           "show": true
         },
         {
           "$$hashKey": "object:115",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -2090,7 +2061,10 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "mongodb metrics",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "P7ADD5123A1CB92FF"
+      },
       "fill": 2,
       "fillGradient": 0,
       "gridPos": {
@@ -2118,7 +2092,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.2.3",
+      "pluginVersion": "8.4.3",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -2144,9 +2118,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Oplog Recovery Window",
       "tooltip": {
         "shared": true,
@@ -2155,9 +2127,7 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
@@ -2168,23 +2138,18 @@
           "format": "s",
           "label": "",
           "logBase": 1,
-          "max": null,
           "min": "0",
           "show": true
         },
         {
           "$$hashKey": "object:115",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -2192,7 +2157,10 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "mongodb metrics",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "P7ADD5123A1CB92FF"
+      },
       "fill": 2,
       "fillGradient": 0,
       "gridPos": {
@@ -2222,7 +2190,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.2.3",
+      "pluginVersion": "8.4.3",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -2240,9 +2208,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Replication Lag",
       "tooltip": {
         "shared": true,
@@ -2251,9 +2217,7 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
@@ -2261,25 +2225,19 @@
         {
           "$$hashKey": "object:110",
           "format": "s",
-          "label": null,
           "logBase": 1,
-          "max": null,
           "min": "0",
           "show": true
         },
         {
           "$$hashKey": "object:111",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -2287,7 +2245,10 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "mongodb metrics",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "P7ADD5123A1CB92FF"
+      },
       "fill": 2,
       "fillGradient": 0,
       "gridPos": {
@@ -2317,7 +2278,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.2.3",
+      "pluginVersion": "8.4.3",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -2335,9 +2296,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Replication Lag",
       "tooltip": {
         "shared": true,
@@ -2346,9 +2305,7 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
@@ -2356,25 +2313,19 @@
         {
           "$$hashKey": "object:110",
           "format": "s",
-          "label": null,
           "logBase": 1,
-          "max": null,
           "min": "0",
           "show": true
         },
         {
           "$$hashKey": "object:111",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -2382,7 +2333,10 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "mongodb metrics",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "P7ADD5123A1CB92FF"
+      },
       "fill": 2,
       "fillGradient": 0,
       "gridPos": {
@@ -2412,7 +2366,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.2.3",
+      "pluginVersion": "8.4.3",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -2430,9 +2384,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Replication Lag",
       "tooltip": {
         "shared": true,
@@ -2441,9 +2393,7 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
@@ -2451,25 +2401,19 @@
         {
           "$$hashKey": "object:110",
           "format": "s",
-          "label": null,
           "logBase": 1,
-          "max": null,
           "min": "0",
           "show": true
         },
         {
           "$$hashKey": "object:111",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -2477,7 +2421,10 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "mongodb metrics",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "P7ADD5123A1CB92FF"
+      },
       "fill": 2,
       "fillGradient": 0,
       "gridPos": {
@@ -2505,7 +2452,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.2.3",
+      "pluginVersion": "8.4.3",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -2523,9 +2470,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Elections",
       "tooltip": {
         "shared": true,
@@ -2534,9 +2479,7 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
@@ -2545,25 +2488,19 @@
           "$$hashKey": "object:350",
           "decimals": 2,
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
           "min": "0",
           "show": true
         },
         {
           "$$hashKey": "object:351",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -2571,7 +2508,10 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "mongodb metrics",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "P7ADD5123A1CB92FF"
+      },
       "fill": 2,
       "fillGradient": 0,
       "gridPos": {
@@ -2599,7 +2539,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.2.3",
+      "pluginVersion": "8.4.3",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -2617,9 +2557,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Elections",
       "tooltip": {
         "shared": true,
@@ -2628,9 +2566,7 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
@@ -2639,25 +2575,19 @@
           "$$hashKey": "object:350",
           "decimals": 2,
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
           "min": "0",
           "show": true
         },
         {
           "$$hashKey": "object:351",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -2665,7 +2595,10 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "mongodb metrics",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "P7ADD5123A1CB92FF"
+      },
       "fill": 2,
       "fillGradient": 0,
       "gridPos": {
@@ -2693,7 +2626,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.2.3",
+      "pluginVersion": "8.4.3",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -2711,9 +2644,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Elections",
       "tooltip": {
         "shared": true,
@@ -2722,9 +2653,7 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
@@ -2733,25 +2662,19 @@
           "$$hashKey": "object:350",
           "decimals": 2,
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
           "min": "0",
           "show": true
         },
         {
           "$$hashKey": "object:351",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -2759,7 +2682,10 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "mongodb metrics",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "P7ADD5123A1CB92FF"
+      },
       "fill": 2,
       "fillGradient": 0,
       "gridPos": {
@@ -2786,7 +2712,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.2.3",
+      "pluginVersion": "8.4.3",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -2804,9 +2730,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Member State Uptime",
       "tooltip": {
         "shared": true,
@@ -2815,9 +2739,7 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
@@ -2825,25 +2747,19 @@
         {
           "$$hashKey": "object:1595",
           "format": "s",
-          "label": null,
           "logBase": 10,
-          "max": null,
           "min": "0",
           "show": true
         },
         {
           "$$hashKey": "object:1596",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -2851,7 +2767,10 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "mongodb metrics",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "P7ADD5123A1CB92FF"
+      },
       "fill": 2,
       "fillGradient": 0,
       "gridPos": {
@@ -2878,7 +2797,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.2.3",
+      "pluginVersion": "8.4.3",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -2896,9 +2815,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Member State Uptime",
       "tooltip": {
         "shared": true,
@@ -2907,9 +2824,7 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
@@ -2917,25 +2832,19 @@
         {
           "$$hashKey": "object:1595",
           "format": "s",
-          "label": null,
           "logBase": 10,
-          "max": null,
           "min": "0",
           "show": true
         },
         {
           "$$hashKey": "object:1596",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -2943,7 +2852,10 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "mongodb metrics",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "P7ADD5123A1CB92FF"
+      },
       "fill": 2,
       "fillGradient": 0,
       "gridPos": {
@@ -2970,7 +2882,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.2.3",
+      "pluginVersion": "8.4.3",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -2988,9 +2900,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Member State Uptime",
       "tooltip": {
         "shared": true,
@@ -2999,9 +2909,7 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
@@ -3009,25 +2917,19 @@
         {
           "$$hashKey": "object:1595",
           "format": "s",
-          "label": null,
           "logBase": 10,
-          "max": null,
           "min": "0",
           "show": true
         },
         {
           "$$hashKey": "object:1596",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -3035,7 +2937,10 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "mongodb metrics",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "P7ADD5123A1CB92FF"
+      },
       "decimals": 2,
       "fill": 2,
       "fillGradient": 0,
@@ -3064,7 +2969,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.2.3",
+      "pluginVersion": "8.4.3",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -3082,9 +2987,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Max Member Ping Time",
       "tooltip": {
         "shared": true,
@@ -3093,9 +2996,7 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
@@ -3104,25 +3005,19 @@
           "$$hashKey": "object:209",
           "decimals": 2,
           "format": "ms",
-          "label": null,
           "logBase": 1,
-          "max": null,
           "min": "0",
           "show": true
         },
         {
           "$$hashKey": "object:210",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -3130,7 +3025,10 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "mongodb metrics",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "P7ADD5123A1CB92FF"
+      },
       "decimals": 2,
       "fill": 2,
       "fillGradient": 0,
@@ -3159,7 +3057,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.2.3",
+      "pluginVersion": "8.4.3",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -3177,9 +3075,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Max Member Ping Time",
       "tooltip": {
         "shared": true,
@@ -3188,9 +3084,7 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
@@ -3199,25 +3093,19 @@
           "$$hashKey": "object:209",
           "decimals": 2,
           "format": "ms",
-          "label": null,
           "logBase": 1,
-          "max": null,
           "min": "0",
           "show": true
         },
         {
           "$$hashKey": "object:210",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -3225,7 +3113,10 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "mongodb metrics",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "P7ADD5123A1CB92FF"
+      },
       "decimals": 2,
       "fill": 2,
       "fillGradient": 0,
@@ -3254,7 +3145,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.2.3",
+      "pluginVersion": "8.4.3",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -3272,9 +3163,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Max Member Ping Time",
       "tooltip": {
         "shared": true,
@@ -3283,9 +3172,7 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
@@ -3294,25 +3181,19 @@
           "$$hashKey": "object:209",
           "decimals": 2,
           "format": "ms",
-          "label": null,
           "logBase": 1,
-          "max": null,
           "min": "0",
           "show": true
         },
         {
           "$$hashKey": "object:210",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -3320,7 +3201,10 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "mongodb metrics",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "P7ADD5123A1CB92FF"
+      },
       "fill": 2,
       "fillGradient": 0,
       "gridPos": {
@@ -3348,7 +3232,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.2.3",
+      "pluginVersion": "8.4.3",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -3366,9 +3250,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Max Heartbeat Time",
       "tooltip": {
         "shared": true,
@@ -3377,9 +3259,7 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
@@ -3387,25 +3267,19 @@
         {
           "$$hashKey": "object:454",
           "format": "s",
-          "label": null,
           "logBase": 1,
-          "max": null,
           "min": "0",
           "show": true
         },
         {
           "$$hashKey": "object:455",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -3413,7 +3287,10 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "mongodb metrics",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "P7ADD5123A1CB92FF"
+      },
       "fill": 2,
       "fillGradient": 0,
       "gridPos": {
@@ -3441,7 +3318,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.2.3",
+      "pluginVersion": "8.4.3",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -3459,9 +3336,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Max Heartbeat Time",
       "tooltip": {
         "shared": true,
@@ -3470,9 +3345,7 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
@@ -3480,25 +3353,19 @@
         {
           "$$hashKey": "object:454",
           "format": "s",
-          "label": null,
           "logBase": 1,
-          "max": null,
           "min": "0",
           "show": true
         },
         {
           "$$hashKey": "object:455",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -3506,7 +3373,10 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "mongodb metrics",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "P7ADD5123A1CB92FF"
+      },
       "fill": 2,
       "fillGradient": 0,
       "gridPos": {
@@ -3534,7 +3404,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.2.3",
+      "pluginVersion": "8.4.3",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -3552,9 +3422,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Max Heartbeat Time",
       "tooltip": {
         "shared": true,
@@ -3563,9 +3431,7 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
@@ -3573,25 +3439,19 @@
         {
           "$$hashKey": "object:454",
           "format": "s",
-          "label": null,
           "logBase": 1,
-          "max": null,
           "min": "0",
           "show": true
         },
         {
           "$$hashKey": "object:455",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -3599,7 +3459,10 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "mongodb metrics",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "P7ADD5123A1CB92FF"
+      },
       "fill": 2,
       "fillGradient": 0,
       "gridPos": {
@@ -3629,7 +3492,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.2.3",
+      "pluginVersion": "8.4.3",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -3663,9 +3526,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Oplog Operations",
       "tooltip": {
         "shared": true,
@@ -3674,9 +3535,7 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
@@ -3685,25 +3544,19 @@
           "$$hashKey": "object:586",
           "decimals": 1,
           "format": "ops",
-          "label": null,
           "logBase": 1,
-          "max": null,
           "min": "0",
           "show": true
         },
         {
           "$$hashKey": "object:587",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -3711,7 +3564,10 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "mongodb metrics",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "P7ADD5123A1CB92FF"
+      },
       "fill": 2,
       "fillGradient": 0,
       "gridPos": {
@@ -3741,7 +3597,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.2.3",
+      "pluginVersion": "8.4.3",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -3775,9 +3631,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Oplog Operations",
       "tooltip": {
         "shared": true,
@@ -3786,9 +3640,7 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
@@ -3797,25 +3649,19 @@
           "$$hashKey": "object:586",
           "decimals": 1,
           "format": "ops",
-          "label": null,
           "logBase": 1,
-          "max": null,
           "min": "0",
           "show": true
         },
         {
           "$$hashKey": "object:587",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -3823,7 +3669,10 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "mongodb metrics",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "P7ADD5123A1CB92FF"
+      },
       "fill": 2,
       "fillGradient": 0,
       "gridPos": {
@@ -3853,7 +3702,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.2.3",
+      "pluginVersion": "8.4.3",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -3887,9 +3736,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Oplog Operations",
       "tooltip": {
         "shared": true,
@@ -3898,9 +3745,7 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
@@ -3909,25 +3754,19 @@
           "$$hashKey": "object:586",
           "decimals": 1,
           "format": "ops",
-          "label": null,
           "logBase": 1,
-          "max": null,
           "min": "0",
           "show": true
         },
         {
           "$$hashKey": "object:587",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -3935,7 +3774,10 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "mongodb metrics",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "P7ADD5123A1CB92FF"
+      },
       "fill": 2,
       "fillGradient": 0,
       "gridPos": {
@@ -3963,7 +3805,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.2.3",
+      "pluginVersion": "8.4.3",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -3981,9 +3823,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Oplog Buffered Operations",
       "tooltip": {
         "shared": true,
@@ -3992,9 +3832,7 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
@@ -4002,25 +3840,19 @@
         {
           "$$hashKey": "object:370",
           "format": "ops",
-          "label": null,
           "logBase": 1,
-          "max": null,
           "min": "0",
           "show": true
         },
         {
           "$$hashKey": "object:371",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -4028,7 +3860,10 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "mongodb metrics",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "P7ADD5123A1CB92FF"
+      },
       "fill": 2,
       "fillGradient": 0,
       "gridPos": {
@@ -4056,7 +3891,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.2.3",
+      "pluginVersion": "8.4.3",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -4074,9 +3909,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Oplog Buffered Operations",
       "tooltip": {
         "shared": true,
@@ -4085,9 +3918,7 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
@@ -4095,25 +3926,19 @@
         {
           "$$hashKey": "object:370",
           "format": "ops",
-          "label": null,
           "logBase": 1,
-          "max": null,
           "min": "0",
           "show": true
         },
         {
           "$$hashKey": "object:371",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -4121,7 +3946,10 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "mongodb metrics",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "P7ADD5123A1CB92FF"
+      },
       "fill": 2,
       "fillGradient": 0,
       "gridPos": {
@@ -4149,7 +3977,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.2.3",
+      "pluginVersion": "8.4.3",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -4167,9 +3995,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Oplog Buffered Operations",
       "tooltip": {
         "shared": true,
@@ -4178,9 +4004,7 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
@@ -4188,25 +4012,19 @@
         {
           "$$hashKey": "object:370",
           "format": "ops",
-          "label": null,
           "logBase": 1,
-          "max": null,
           "min": "0",
           "show": true
         },
         {
           "$$hashKey": "object:371",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -4214,7 +4032,10 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "mongodb metrics",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "P7ADD5123A1CB92FF"
+      },
       "fill": 2,
       "fillGradient": 0,
       "gridPos": {
@@ -4242,7 +4063,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.2.3",
+      "pluginVersion": "8.4.3",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -4260,9 +4081,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Oplog Getmore Time",
       "tooltip": {
         "shared": true,
@@ -4271,9 +4090,7 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
@@ -4281,25 +4098,19 @@
         {
           "$$hashKey": "object:615",
           "format": "ms",
-          "label": null,
           "logBase": 1,
-          "max": null,
           "min": "0",
           "show": true
         },
         {
           "$$hashKey": "object:616",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -4307,7 +4118,10 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "mongodb metrics",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "P7ADD5123A1CB92FF"
+      },
       "fill": 2,
       "fillGradient": 0,
       "gridPos": {
@@ -4335,7 +4149,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.2.3",
+      "pluginVersion": "8.4.3",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -4353,9 +4167,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Oplog Getmore Time",
       "tooltip": {
         "shared": true,
@@ -4364,9 +4176,7 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
@@ -4374,25 +4184,19 @@
         {
           "$$hashKey": "object:615",
           "format": "ms",
-          "label": null,
           "logBase": 1,
-          "max": null,
           "min": "0",
           "show": true
         },
         {
           "$$hashKey": "object:616",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -4400,7 +4204,10 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "mongodb metrics",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "P7ADD5123A1CB92FF"
+      },
       "fill": 2,
       "fillGradient": 0,
       "gridPos": {
@@ -4428,7 +4235,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.2.3",
+      "pluginVersion": "8.4.3",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -4446,9 +4253,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Oplog Getmore Time",
       "tooltip": {
         "shared": true,
@@ -4457,9 +4262,7 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
@@ -4467,25 +4270,19 @@
         {
           "$$hashKey": "object:615",
           "format": "ms",
-          "label": null,
           "logBase": 1,
-          "max": null,
           "min": "0",
           "show": true
         },
         {
           "$$hashKey": "object:616",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -4493,7 +4290,10 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "mongodb metrics",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "P7ADD5123A1CB92FF"
+      },
       "fill": 2,
       "fillGradient": 0,
       "gridPos": {
@@ -4521,7 +4321,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.2.3",
+      "pluginVersion": "8.4.3",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -4555,9 +4355,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Oplog Processing Time",
       "tooltip": {
         "shared": true,
@@ -4566,9 +4364,7 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
@@ -4576,25 +4372,19 @@
         {
           "$$hashKey": "object:860",
           "format": "ms",
-          "label": null,
           "logBase": 1,
-          "max": null,
           "min": "0",
           "show": true
         },
         {
           "$$hashKey": "object:861",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -4602,7 +4392,10 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "mongodb metrics",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "P7ADD5123A1CB92FF"
+      },
       "fill": 2,
       "fillGradient": 0,
       "gridPos": {
@@ -4630,7 +4423,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.2.3",
+      "pluginVersion": "8.4.3",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -4664,9 +4457,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Oplog Processing Time",
       "tooltip": {
         "shared": true,
@@ -4675,9 +4466,7 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
@@ -4685,25 +4474,19 @@
         {
           "$$hashKey": "object:860",
           "format": "ms",
-          "label": null,
           "logBase": 1,
-          "max": null,
           "min": "0",
           "show": true
         },
         {
           "$$hashKey": "object:861",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -4711,7 +4494,10 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "mongodb metrics",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "P7ADD5123A1CB92FF"
+      },
       "fill": 2,
       "fillGradient": 0,
       "gridPos": {
@@ -4739,7 +4525,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.2.3",
+      "pluginVersion": "8.4.3",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -4773,9 +4559,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Oplog Processing Time",
       "tooltip": {
         "shared": true,
@@ -4784,9 +4568,7 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
@@ -4794,25 +4576,19 @@
         {
           "$$hashKey": "object:860",
           "format": "ms",
-          "label": null,
           "logBase": 1,
-          "max": null,
           "min": "0",
           "show": true
         },
         {
           "$$hashKey": "object:861",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -4820,7 +4596,10 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "mongodb metrics",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "P7ADD5123A1CB92FF"
+      },
       "fill": 2,
       "fillGradient": 0,
       "gridPos": {
@@ -4848,7 +4627,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.2.3",
+      "pluginVersion": "8.4.3",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -4874,9 +4653,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Oplog Buffer Capacity",
       "tooltip": {
         "shared": true,
@@ -4885,9 +4662,7 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
@@ -4895,25 +4670,19 @@
         {
           "$$hashKey": "object:1105",
           "format": "bytes",
-          "label": null,
           "logBase": 10,
-          "max": null,
           "min": "0",
           "show": true
         },
         {
           "$$hashKey": "object:1106",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -4921,7 +4690,10 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "mongodb metrics",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "P7ADD5123A1CB92FF"
+      },
       "fill": 2,
       "fillGradient": 0,
       "gridPos": {
@@ -4949,7 +4721,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.2.3",
+      "pluginVersion": "8.4.3",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -4975,9 +4747,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Oplog Buffer Capacity",
       "tooltip": {
         "shared": true,
@@ -4986,9 +4756,7 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
@@ -4996,25 +4764,19 @@
         {
           "$$hashKey": "object:1105",
           "format": "bytes",
-          "label": null,
           "logBase": 10,
-          "max": null,
           "min": "0",
           "show": true
         },
         {
           "$$hashKey": "object:1106",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -5022,7 +4784,10 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "mongodb metrics",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "P7ADD5123A1CB92FF"
+      },
       "fill": 2,
       "fillGradient": 0,
       "gridPos": {
@@ -5050,7 +4815,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.2.3",
+      "pluginVersion": "8.4.3",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -5076,9 +4841,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Oplog Buffer Capacity",
       "tooltip": {
         "shared": true,
@@ -5087,9 +4850,7 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
@@ -5097,43 +4858,35 @@
         {
           "$$hashKey": "object:1105",
           "format": "bytes",
-          "label": null,
           "logBase": 10,
-          "max": null,
           "min": "0",
           "show": true
         },
         {
           "$$hashKey": "object:1106",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     }
   ],
   "refresh": "5s",
-  "schemaVersion": 31,
+  "schemaVersion": 35,
   "style": "dark",
   "tags": [],
   "templating": {
     "list": [
       {
-        "allValue": null,
         "current": {
           "selected": false,
           "text": "192.168.42.100",
           "value": "192.168.42.100"
         },
         "description": "the mongo instances",
-        "error": null,
         "hide": 2,
         "includeAll": true,
         "label": "instance",
@@ -5166,14 +4919,12 @@
         "type": "custom"
       },
       {
-        "allValue": null,
         "current": {
           "selected": false,
           "text": "mongo_repl",
           "value": "mongo_repl"
         },
         "description": "the name of the replica set",
-        "error": null,
         "hide": 2,
         "includeAll": false,
         "label": "Replica Set",
@@ -5191,14 +4942,12 @@
         "type": "custom"
       },
       {
-        "allValue": null,
         "current": {
           "selected": false,
           "text": "9216",
           "value": "9216"
         },
         "description": "mongo metric port",
-        "error": null,
         "hide": 2,
         "includeAll": false,
         "label": "mongo metric port",
@@ -5224,8 +4973,6 @@
           "text": "1m",
           "value": "1m"
         },
-        "description": null,
-        "error": null,
         "hide": 2,
         "label": "interval",
         "name": "interval",
@@ -5276,5 +5023,6 @@
   "timezone": "",
   "title": "ReplicaSet",
   "uid": "xHsKGXKnk_repl",
-  "version": 1
+  "version": 1,
+  "weekStart": ""
 }

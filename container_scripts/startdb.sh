@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# clean out the mongo data locally first
+rm -rf ~/mongors
+
 docker-compose up -d
 
 sleep 5
