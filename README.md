@@ -305,9 +305,9 @@ https://docs.docker.com/get-docker/
 2) Install Docker compose
 https://docs.docker.com/compose/install/
 
-3) `$ bash startdb.sh`
+3) `$ ./container_scripts/startdb.sh`
 
-4) `$ bash start_insert_swarm_containers.sh`
+4) `$ ./start_insert_swarm_containers.sh`
 
 ### Tasks for the container-based configuration
 

@@ -22,7 +22,7 @@
   "gnetId": null,
   "graphTooltip": 0,
   "id": 1,
-  "iteration": 1644939838958,
+  "iteration": 1648127438547,
   "links": [
     {
       "asDropdown": true,
@@ -413,6 +413,7 @@
         {
           "exemplar": true,
           "expr": "time() - mongodb_rs_members_electionDate{member_idx=\"mongo1:27017\"}/1000",
+          "instant": true,
           "interval": "",
           "legendFormat": "",
           "refId": "A"
@@ -498,6 +499,7 @@
         {
           "exemplar": true,
           "expr": "time() - mongodb_rs_members_electionDate{member_idx=\"mongo2:27017\"}/1000",
+          "instant": true,
           "interval": "",
           "legendFormat": "",
           "refId": "A"
@@ -583,6 +585,7 @@
         {
           "exemplar": true,
           "expr": "time() - mongodb_rs_members_electionDate{member_idx=\"mongo3:27017\"}/1000",
+          "instant": true,
           "interval": "",
           "legendFormat": "",
           "refId": "A"
@@ -2012,5 +2015,5 @@
   "timezone": "",
   "title": "ReplicaSet",
   "uid": "xHsKGXKnk_repl",
-  "version": 5
+  "version": 1
 }
