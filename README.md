@@ -296,11 +296,6 @@ rs.stepDown(60)
 
 To force it to become a secondary, and then repeat the same process from above. After you're done, you'll probably see that this particular instance (`mongo3`) decides to become the primary again, and this is becuase the priority is set to 100. In an actual production setup, all of the instances would probably have priority set to 1...we did this just to force it to become the primary when the VMs start up.
 
-### Restoring from backups
-
-We're going to use `vagrant snapshot save mongo3 backup` to snapshot the primary as a backup named "backup".
-
-Then we're going to kill a machine (one of the secondaries) and restore that from the backup.
 
 ## Setting up (for containers)
 
@@ -528,10 +523,9 @@ dojo:PRIMARY> db.reviews.find({ reviewsubmitted: { $lt: "2015-01-01 00:00:00"}})
 The important information here is the `"stage" : "IXSCAN",` line, showing us that mongo did an index scan, which is WAY more efficient than a full COLLSCAN.
 
 
+### Find and stop a long-running query
 
-
-
-- Find and stop a long-running query
+This is going to be using some very funky queries, but just to see if we can force a very long-running one.
 
 - Firing exactly enough traffic to the primary to make it stop responding to read requests, but still respond to heartbeats
 
