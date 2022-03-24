@@ -212,7 +212,89 @@ After that's done, congratulations! You've now run a full rolling index on a Mon
 
 ### Upgrading the Mongo version
 
-This will involve following the process in `steps.txt`.
+Start with one of the secondaries (similar to how we do a rolling index build), and pull it out of the replicaset:
+
+```
+sudo vim /etc/mongod.conf
+```
+
+and update the following configuration
+
+```
+# mongod.conf
+systemLog:
+  destination: file
+  logAppend: true
+  path: /var/log/mongodb/mongod.log
+# Where and how to store data.
+storage:
+  dbPath: /var/lib/mongo
+  journal:
+    enabled: true
+# how the process runs
+processManagement:
+  fork: true  # fork and run in background
+  pidFilePath: /var/run/mongodb/mongod.pid  # location of pidfile
+  timeZoneInfo: /usr/share/zoneinfo
+# network interfaces
+net:
+  port: 27117 # <-- CHANGE THIS TO SOMETHING BESIDES 27017
+  bindIp: 0.0.0.0  # Enter 0.0.0.0,:: to bind to all IPv4 and IPv6 addresses or, alternatively, use the net.bindIpAll setti    ng.
+#replication:   <-- COMMENT THIS LINE OUT
+#   oplogSizeMB: 50  <-- COMMENT THIS LINE OUT
+#   replSetName: dojo  <--COMMENT THIS LINE OUT
+```
+
+and then stop the `mongod` process.
+
+```
+sudo systemctl stop mongod
+```
+
+add a new repo configuration for yum:
+
+```
+sudo vim /etc/yum.repos.d/mongodb-org-4.0.repo
+```
+
+copy in the following:
+
+```
+[mongodb-org-4.0]
+name=MongoDB Repository
+baseurl=https://repo.mongodb.org/yum/redhat/$releasever/mongodb-org/4.0/x86_64/
+gpgcheck=1
+enabled=1
+gpgkey=https://www.mongodb.org/static/pgp/server-4.0.asc
+```
+
+after that, you should be able to run
+
+```
+sudo yum install -y mongodb-org
+```
+
+and this will make 4.0 your installed version. If you can, it might also be nice to reboot the instance
+
+```
+sudo reboot now
+```
+
+and then ssh back into the instance via `vagrant ssh` and restart the `mongod` process:
+
+```
+sudo systemctl start mongod
+```
+
+now you can add it back into the replicaset by reverting the changes we made to `/etc/mongo.conf` above.
+
+Do the same for the other secondary, and then get ready to step down the primary. Once you're in the primary via the mongo shell, use:
+
+```
+rs.stepDown(60)
+```
+
+To force it to become a secondary, and then repeat the same process from above. After you're done, you'll probably see that this particular instance (`mongo3`) decides to become the primary again, and this is becuase the priority is set to 100. In an actual production setup, all of the instances would probably have priority set to 1...we did this just to force it to become the primary when the VMs start up.
 
 ### Restoring from backups
 
@@ -234,7 +316,9 @@ https://docs.docker.com/compose/install/
 
 ### Tasks for the container-based configuration
 
-- Look at "realtime" metrics inside the containers using "mongotop" and "mongostat"
+---
+
+### Look at "realtime" metrics inside the containers using "mongotop" and "mongostat"
 
 ```
 docker exec -it mongo1 /bin/sh
