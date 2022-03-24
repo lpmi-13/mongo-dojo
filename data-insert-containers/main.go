@@ -18,6 +18,7 @@ type FakeData struct {
 	Email           string `faker:"email"`
 	ReviewSubmitted string `faker:"timestamp"`
 	Review          string `faker:"paragraph"`
+	BusinessId      int    `faker:"boundary_start=1, boundary_end=10000"`
 }
 
 var collection *mongo.Collection
@@ -26,7 +27,7 @@ var ctx = context.TODO()
 func main() {
 
 	numberOfRecords, err := strconv.Atoi(os.Args[1])
-        connectionURI := os.Args[2]
+	connectionURI := os.Args[2]
 
 	// this is the primary host for the replicaset running inside the containers
 	clientOptions := options.Client().ApplyURI(connectionURI)
