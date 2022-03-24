@@ -11,7 +11,7 @@ This is a basic setup to reproduce a simple mongo replicaset using VMs locally w
 
 This is all containerized, and it's used for the tasks that don't actually involve stopping the mongod process, which normally would kill the container. The dashboard config is a bit different, since we can just use the container network DNS to address each of the processes instead of IP address, but everything else is basically the same.
 
-## Generating the data
+### Generating the data
 
 There are two ways to do this, one inserting the records as they're generated via Faker, and separating data creation from insertion into the mongo replicaset. Creating the json locally via `docker-compose up --build` in the `data-generate` directory, and then inserting via `./batch-insert.sh` takes about 10-12 minutes, whereas directly running the `./start_insert_swarm_containers.sh` takes almost 40 minutes.
 
@@ -32,10 +32,189 @@ https://www.vagrantup.com/downloads
 
 ### Tasks for the VM-based configuration
 
-- Upgrading the Mongo version
+---
+
+### Create a rolling index across the replicaset
+
+For this, we'll do something that's much more common in a production system, where we need to create an index, but not stop mongo while it's happening, and do it on one instance at a time.
+
+> TL;DR - So we remove one secondary from the replicaset, add the index, then update the configuration on the primary so that it's hidden (means it won't get hit for reads, so stale data isn't an issue), and once it catches up with replication, make it visible again for the replicaset. Then we do the same on the other secondary, and finally step down the primary, and once it becomes a secondary, do the same on that new secondary.
+
+First, connect to a secondary via:
+
+```
+vagrant ssh mongo1
+```
+and now we update the mongo config to take the instance out of the replicaset
+
+```
+sudo vim /etc/mongod.conf
+```
+
+and update the following configuration to take the instance out of the replicaset
+
+```
+# mongod.conf
+systemLog:
+  destination: file
+  logAppend: true
+  path: /var/log/mongodb/mongod.log
+# Where and how to store data.
+storage:
+  dbPath: /var/lib/mongo
+  journal:
+    enabled: true
+# how the process runs
+processManagement:
+  fork: true  # fork and run in background
+  pidFilePath: /var/run/mongodb/mongod.pid  # location of pidfile
+  timeZoneInfo: /usr/share/zoneinfo
+# network interfaces
+net:
+  port: 27117 # <-- CHANGE THIS TO SOMETHING BESIDES 27017
+  bindIp: 0.0.0.0  # Enter 0.0.0.0,:: to bind to all IPv4 and IPv6 addresses or, alternatively, use the net.bindIpAll setting.
+#replication:   <-- COMMENT THIS LINE OUT
+#   oplogSizeMB: 50  <-- COMMENT THIS LINE OUT
+#   replSetName: dojo  <--COMMENT THIS LINE OUT
+```
+
+and now we can restart the mongod process like so
+
+```
+sudo systemctl mongod restart
+```
+
+and then start the mongo shell again via
+
+```
+mongo mongodb://localhost:27017
+```
+
+and we're ready to create the index. You should be able to run the following:
+
+```
+use userData
+db.reviews.createIndex({ "BusinessId": 1})
+```
+
+and then close out of the shell and examine the mongo logs to watch the index being built (it'll be fast, since nothing's coming into this instance anymore).
+
+```
+sudo tail -f /var/log/mongodb/mongod.log
+```
+
+and you should see something like...
+
+```
+2022-03-11T16:45:17.409+0000 I INDEX    [conn1] build index on: userData.reviews properties: { v: 2, key: { BusinessId: 1.0 }, name: "BusinessId_1", ns: "userData.reviews" }
+2022-03-11T16:45:17.409+0000 I INDEX    [conn1] 	 building index using bulk method; build may temporarily use up to 500 megabytes of RAM
+2022-03-11T16:45:20.001+0000 I -        [conn1]   Index Build: 1777900/5000001 35%
+2022-03-11T16:45:23.001+0000 I -        [conn1]   Index Build: 3584000/5000001 71%
+2022-03-11T16:45:36.999+0000 I INDEX    [conn1] build index done.  scanned 5000001 total records. 19 secs
+```
+
+*On the Primary node* set the instance with the index to be hidden, so while it syncs it's not also serving any reads and the syncing can happen more quickly.
+
+```
+vagrant ssh mongo3
+```
+
+and enter the mongo shell
+
+```
+mongo mongodb://localhost:27017
+```
+
+then update the replicaset config so the secondary can sync in a hidden state.
+
+```
+conf = rs.config()
+```
+
+and you should be able to verify which member you're targeting with:
+
+```
+conf.members[0]
+{
+	"_id" : 0,
+	"host" : "192.168.42.100:27017",
+	"arbiterOnly" : false,
+	"buildIndexes" : true,
+	"hidden" : false,
+	"priority" : 1,
+	"tags" : {
+		
+	},
+	"slaveDelay" : NumberLong(0),
+	"votes" : 1
+}
+```
+
+so now we update this node to be `hidden` and with `priority: 0` so it can't accidentally become the primary.
+
+```
+conf.members[0].hidden = true
+conf.members[0].priority = 0
+rs.reconfig(conf)
+```
+
+and you should see output like
+
+```
+{
+	"ok" : 1,
+	"operationTime" : Timestamp(1647018316, 1),
+	"$clusterTime" : {
+		"clusterTime" : Timestamp(1647018316, 1),
+		"signature" : {
+			"hash" : BinData(0,"AAAAAAAAAAAAAAAAAAAAAAAAAAA="),
+			"keyId" : NumberLong(0)
+		}
+	}
+}
+```
+
+Now we're ready to change the port on the first node back to the default so it can reconnect to the replicaset and sync, with its new shiny index in place.
+
+> on the first node (mongo1)
+
+```
+sudo vim /etc/mongod.conf
+```
+
+and set the port back to `27017` and uncomment the following lines:
+
+```
+#replication:
+#   oplogSizeMB: 50
+#   replSetName: dojo
+```
+
+then restart the mongod process
+
+```
+sudo systemctl mongod restart
+```
+
+The secondary should now be reconnected to the replicaset and syncing. So go ahead and check the grafana dashboard at `localhost:3000` just to confirm that everything looks okay, and repeat the exact same process for the other secondary.
+
+After finishing up this process on both of the secondaries, we're ready to step down the primary so it can become a secondary, and the whole process can be repeated on the new secondary (previous primary).
+
+To do that, from the primary node, enter the mongo shell and run:
+
+```
+rs.stepDown(60)
+```
+
+and you should see in the terminal that it now says `dojo:SECONDARY>`, at which point, just run through the same steps from above.
+
+After that's done, congratulations! You've now run a full rolling index on a MongoDB replicaset!!!
+
+### Upgrading the Mongo version
+
 This will involve following the process in `steps.txt`.
 
-- Restoring from backups (not exactly sure how backups will work in this setup, but we can probably work something out)
+### Restoring from backups
 
 We're going to use `vagrant snapshot save mongo3 backup` to snapshot the primary as a backup named "backup".
 
@@ -264,181 +443,6 @@ dojo:PRIMARY> db.reviews.find({ reviewsubmitted: { $lt: "2015-01-01 00:00:00"}})
 
 The important information here is the `"stage" : "IXSCAN",` line, showing us that mongo did an index scan, which is WAY more efficient than a full COLLSCAN.
 
-### Create a rolling index across the replicaset
-
-For this, we'll do something that's much more common in a production system, where we need to create an index, but not stop mongo while it's happening, and do it on one instance at a time.
-
-> TL;DR - So we remove one secondary from the replicaset, add the index, then update the configuration on the primary so that it's hidden (means it won't get hit for reads, so stale data isn't an issue), and once it catches up with replication, make it visible again for the replicaset. Then we do the same on the other secondary, and finally step down the primary, and once it becomes a secondary, do the same on that new secondary.
-
-First, connect to a secondary via:
-
-```
-vagrant ssh mongo1
-```
-and now we update the mongo config to take the instance out of the replicaset
-
-```
-sudo vim /etc/mongod.conf
-```
-
-and update the following configuration to take the instance out of the replicaset
-
-```
-# mongod.conf
-systemLog:
-  destination: file
-  logAppend: true
-  path: /var/log/mongodb/mongod.log
-# Where and how to store data.
-storage:
-  dbPath: /var/lib/mongo
-  journal:
-    enabled: true
-# how the process runs
-processManagement:
-  fork: true  # fork and run in background
-  pidFilePath: /var/run/mongodb/mongod.pid  # location of pidfile
-  timeZoneInfo: /usr/share/zoneinfo
-# network interfaces
-net:
-  port: 27117 # <-- CHANGE THIS TO SOMETHING BESIDES 27017
-  bindIp: 0.0.0.0  # Enter 0.0.0.0,:: to bind to all IPv4 and IPv6 addresses or, alternatively, use the net.bindIpAll setting.
-#replication:   <-- COMMENT THIS LINE OUT
-#   oplogSizeMB: 50  <-- COMMENT THIS LINE OUT
-#   replSetName: dojo  <--COMMENT THIS LINE OUT
-```
-
-and now we can restart the mongod process like so
-
-```
-sudo systemctl mongod restart
-```
-
-and then start the mongo shell again via
-
-```
-mongo mongodb://localhost:27017
-```
-
-and we're ready to create the index. You should be able to run the following:
-
-```
-use userData
-db.reviews.createIndex({ "BusinessId": 1})
-```
-
-and then close out of the shell and examine the mongo logs to watch the index being built (it'll be fast, since nothing's coming into this instance anymore).
-
-```
-sudo tail -f /var/log/mongodb/mongod.log
-```
-
-and you should see something like...
-
-```
-2022-03-11T16:45:17.409+0000 I INDEX    [conn1] build index on: userData.reviews properties: { v: 2, key: { BusinessId: 1.0 }, name: "BusinessId_1", ns: "userData.reviews" }
-2022-03-11T16:45:17.409+0000 I INDEX    [conn1] 	 building index using bulk method; build may temporarily use up to 500 megabytes of RAM
-2022-03-11T16:45:20.001+0000 I -        [conn1]   Index Build: 1777900/5000001 35%
-2022-03-11T16:45:23.001+0000 I -        [conn1]   Index Build: 3584000/5000001 71%
-2022-03-11T16:45:36.999+0000 I INDEX    [conn1] build index done.  scanned 5000001 total records. 19 secs
-```
-
-*On the Primary node* set the instance with the index to be hidden, so while it syncs it's not also serving any reads and the syncing can happen more quickly.
-
-```
-vagrant ssh mongo3
-```
-
-and enter the mongo shell
-
-```
-mongo mongodb://localhost:27017
-```
-
-then update the replicaset config so the secondary can sync in a hidden state.
-
-```
-conf = rs.config()
-```
-
-and you should be able to verify which member you're targeting with:
-
-```
-conf.members[0]
-{
-	"_id" : 0,
-	"host" : "192.168.42.100:27017",
-	"arbiterOnly" : false,
-	"buildIndexes" : true,
-	"hidden" : false,
-	"priority" : 1,
-	"tags" : {
-		
-	},
-	"slaveDelay" : NumberLong(0),
-	"votes" : 1
-}
-```
-
-so now we update this node to be `hidden` and with `priority: 0` so it can't accidentally become the primary.
-
-```
-conf.members[0].hidden = true
-conf.members[0].priority = 0
-rs.reconfig(conf)
-```
-
-and you should see output like
-
-```
-{
-	"ok" : 1,
-	"operationTime" : Timestamp(1647018316, 1),
-	"$clusterTime" : {
-		"clusterTime" : Timestamp(1647018316, 1),
-		"signature" : {
-			"hash" : BinData(0,"AAAAAAAAAAAAAAAAAAAAAAAAAAA="),
-			"keyId" : NumberLong(0)
-		}
-	}
-}
-```
-
-Now we're ready to change the port on the first node back to the default so it can reconnect to the replicaset and sync, with its new shiny index in place.
-
-> on the first node (mongo1)
-
-```
-sudo vim /etc/mongod.conf
-```
-
-and set the port back to `27017` and uncomment the following lines:
-
-```
-#replication:
-#   oplogSizeMB: 50
-#   replSetName: dojo
-```
-
-then restart the mongod process
-
-```
-sudo systemctl mongod restart
-```
-
-The secondary should now be reconnected to the replicaset and syncing. So go ahead and check the grafana dashboard at `localhost:3000` just to confirm that everything looks okay, and repeat the exact same process for the other secondary.
-
-After finishing up this process on both of the secondaries, we're ready to step down the primary so it can become a secondary, and the whole process can be repeated on the new secondary (previous primary).
-
-To do that, from the primary node, enter the mongo shell and run:
-
-```
-rs.stepDown(60)
-```
-
-and you should see in the terminal that it now says `dojo:SECONDARY>`, at which point, just run through the same steps from above.
-
-After that's done, congratulations! You've now run a full rolling index on a MongoDB replicaset!!!
 
 
 
@@ -450,7 +454,6 @@ After that's done, congratulations! You've now run a full rolling index on a Mon
 - Attaching a node service that reads from the primary (without secondaryPreferred), and then see what happens when the primary steps down (it should break)
 
 - Fire a number of different types of queries into mongo and see what the graphs look like: skip param with a high number (1000+), gt/ls combined in the same query maybe?
-
 
 ### Gotchas
 
