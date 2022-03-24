@@ -22,7 +22,7 @@
   "gnetId": null,
   "graphTooltip": 0,
   "id": 1,
-  "iteration": 1648127438547,
+  "iteration": 1648127755266,
   "links": [
     {
       "asDropdown": true,
@@ -365,7 +365,7 @@
         "thresholdMarkers": true
       },
       "gridPos": {
-        "h": 4,
+        "h": 10,
         "w": 8,
         "x": 0,
         "y": 4
@@ -433,178 +433,6 @@
       "valueName": "current"
     },
     {
-      "cacheTimeout": null,
-      "colorBackground": false,
-      "colorValue": false,
-      "colors": [
-        "#299c46",
-        "rgba(237, 129, 40, 0.89)",
-        "#d44a3a"
-      ],
-      "datasource": "mongodb metrics",
-      "format": "s",
-      "gauge": {
-        "maxValue": 100,
-        "minValue": 0,
-        "show": false,
-        "thresholdLabels": false,
-        "thresholdMarkers": true
-      },
-      "gridPos": {
-        "h": 4,
-        "w": 8,
-        "x": 8,
-        "y": 4
-      },
-      "id": 126,
-      "interval": null,
-      "links": [],
-      "mappingType": 1,
-      "mappingTypes": [
-        {
-          "name": "value to text",
-          "value": 1
-        },
-        {
-          "name": "range to text",
-          "value": 2
-        }
-      ],
-      "maxDataPoints": 100,
-      "nullPointMode": "connected",
-      "nullText": null,
-      "options": {},
-      "pluginVersion": "6.6.2",
-      "postfix": "s",
-      "postfixFontSize": "50%",
-      "prefix": "",
-      "prefixFontSize": "50%",
-      "rangeMaps": [
-        {
-          "from": "null",
-          "text": "N/A",
-          "to": "null"
-        }
-      ],
-      "sparkline": {
-        "fillColor": "rgba(31, 118, 189, 0.18)",
-        "full": false,
-        "lineColor": "rgb(31, 120, 193)",
-        "show": false,
-        "ymax": null,
-        "ymin": null
-      },
-      "tableColumn": "",
-      "targets": [
-        {
-          "exemplar": true,
-          "expr": "time() - mongodb_rs_members_electionDate{member_idx=\"mongo2:27017\"}/1000",
-          "instant": true,
-          "interval": "",
-          "legendFormat": "",
-          "refId": "A"
-        }
-      ],
-      "thresholds": "",
-      "title": "ReplSet Last Election",
-      "type": "singlestat",
-      "valueFontSize": "80%",
-      "valueMaps": [
-        {
-          "op": "=",
-          "text": "N/A",
-          "value": "null"
-        }
-      ],
-      "valueName": "current"
-    },
-    {
-      "cacheTimeout": null,
-      "colorBackground": false,
-      "colorValue": false,
-      "colors": [
-        "#299c46",
-        "rgba(237, 129, 40, 0.89)",
-        "#d44a3a"
-      ],
-      "datasource": "mongodb metrics",
-      "format": "s",
-      "gauge": {
-        "maxValue": 100,
-        "minValue": 0,
-        "show": false,
-        "thresholdLabels": false,
-        "thresholdMarkers": true
-      },
-      "gridPos": {
-        "h": 4,
-        "w": 8,
-        "x": 16,
-        "y": 4
-      },
-      "id": 127,
-      "interval": null,
-      "links": [],
-      "mappingType": 1,
-      "mappingTypes": [
-        {
-          "name": "value to text",
-          "value": 1
-        },
-        {
-          "name": "range to text",
-          "value": 2
-        }
-      ],
-      "maxDataPoints": 100,
-      "nullPointMode": "connected",
-      "nullText": null,
-      "options": {},
-      "pluginVersion": "6.6.2",
-      "postfix": "s",
-      "postfixFontSize": "50%",
-      "prefix": "",
-      "prefixFontSize": "50%",
-      "rangeMaps": [
-        {
-          "from": "null",
-          "text": "N/A",
-          "to": "null"
-        }
-      ],
-      "sparkline": {
-        "fillColor": "rgba(31, 118, 189, 0.18)",
-        "full": false,
-        "lineColor": "rgb(31, 120, 193)",
-        "show": false,
-        "ymax": null,
-        "ymin": null
-      },
-      "tableColumn": "",
-      "targets": [
-        {
-          "exemplar": true,
-          "expr": "time() - mongodb_rs_members_electionDate{member_idx=\"mongo3:27017\"}/1000",
-          "instant": true,
-          "interval": "",
-          "legendFormat": "",
-          "refId": "A"
-        }
-      ],
-      "thresholds": "",
-      "title": "ReplSet Last Election",
-      "type": "singlestat",
-      "valueFontSize": "80%",
-      "valueMaps": [
-        {
-          "op": "=",
-          "text": "N/A",
-          "value": "null"
-        }
-      ],
-      "valueName": "current"
-    },
-    {
       "aliasColors": {},
       "bars": false,
       "dashLength": 10,
@@ -614,9 +442,9 @@
       "fillGradient": 0,
       "gridPos": {
         "h": 10,
-        "w": 24,
-        "x": 0,
-        "y": 8
+        "w": 16,
+        "x": 8,
+        "y": 4
       },
       "hiddenSeries": false,
       "id": 117,
@@ -710,7 +538,7 @@
         "h": 8,
         "w": 8,
         "x": 0,
-        "y": 18
+        "y": 14
       },
       "hiddenSeries": false,
       "id": 50,
@@ -801,7 +629,7 @@
         "h": 8,
         "w": 8,
         "x": 8,
-        "y": 18
+        "y": 14
       },
       "hiddenSeries": false,
       "id": 128,
@@ -892,7 +720,7 @@
         "h": 8,
         "w": 8,
         "x": 16,
-        "y": 18
+        "y": 14
       },
       "hiddenSeries": false,
       "id": 129,
@@ -984,7 +812,7 @@
         "h": 7,
         "w": 24,
         "x": 0,
-        "y": 26
+        "y": 22
       },
       "hiddenSeries": false,
       "id": 130,
@@ -1016,21 +844,21 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "mongodb_rs_members_pingMs{instance=\"mongo-exporter:9216\", member_idx=\"mongo1:27017\"}",
-          "legendFormat": "{{instance}} - {{member_idx}}",
+          "expr": "mongodb_rs_members_pingMs{member_idx=\"mongo1:27017\"}",
+          "legendFormat": "{{member_idx}}",
           "refId": "C"
         },
         {
           "exemplar": true,
-          "expr": "mongodb_rs_members_pingMs{instance=\"mongo-exporter:9216\", member_idx=\"mongo2:27017\"}",
+          "expr": "mongodb_rs_members_pingMs{member_idx=\"mongo2:27017\"}",
           "instant": false,
           "interval": "",
-          "legendFormat": "{{instance}} - {{member_idx}}",
+          "legendFormat": "{{member_idx}}",
           "refId": "A"
         },
         {
-          "expr": "mongodb_rs_members_pingMs{instance=\"mongo-exporter:9216\", member_idx=\"mongo3:27017\"}",
-          "legendFormat": "{{instance}} - {{member_idx}}",
+          "expr": "mongodb_rs_members_pingMs{member_idx=\"mongo3:27017\"}",
+          "legendFormat": "{{member_idx}}",
           "refId": "B"
         }
       ],
@@ -1088,7 +916,7 @@
         "h": 8,
         "w": 8,
         "x": 0,
-        "y": 33
+        "y": 29
       },
       "hiddenSeries": false,
       "id": 133,
@@ -1180,7 +1008,7 @@
         "h": 8,
         "w": 8,
         "x": 8,
-        "y": 33
+        "y": 29
       },
       "hiddenSeries": false,
       "id": 132,
@@ -1272,7 +1100,7 @@
         "h": 8,
         "w": 8,
         "x": 16,
-        "y": 33
+        "y": 29
       },
       "hiddenSeries": false,
       "id": 134,
@@ -1365,7 +1193,7 @@
         "h": 7,
         "w": 24,
         "x": 0,
-        "y": 41
+        "y": 37
       },
       "hiddenSeries": false,
       "id": 56,
@@ -1477,7 +1305,7 @@
         "h": 8,
         "w": 8,
         "x": 0,
-        "y": 48
+        "y": 44
       },
       "hiddenSeries": false,
       "id": 108,
@@ -1569,7 +1397,7 @@
         "h": 8,
         "w": 8,
         "x": 8,
-        "y": 48
+        "y": 44
       },
       "hiddenSeries": false,
       "id": 110,
@@ -1661,7 +1489,7 @@
         "h": 8,
         "w": 8,
         "x": 16,
-        "y": 48
+        "y": 44
       },
       "hiddenSeries": false,
       "id": 113,
@@ -1769,7 +1597,7 @@
         "h": 10,
         "w": 8,
         "x": 0,
-        "y": 56
+        "y": 52
       },
       "hiddenSeries": false,
       "id": 64,
@@ -2015,5 +1843,5 @@
   "timezone": "",
   "title": "ReplicaSet",
   "uid": "xHsKGXKnk_repl",
-  "version": 1
+  "version": 2
 }
