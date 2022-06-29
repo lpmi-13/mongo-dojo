@@ -30,6 +30,8 @@ https://www.vagrantup.com/downloads
 5) `$ ./setup-vm.sh`
 (this scripts insertion of mock data into the replicaset)
 
+> Note: If you already have the data generated from previous runs, you can just run `vagrant up` to get the replica set back up, and skip the next step.
+
 ### Tasks for the VM-based configuration
 
 ---
@@ -305,9 +307,9 @@ https://docs.docker.com/get-docker/
 2) Install Docker compose
 https://docs.docker.com/compose/install/
 
-3) `$ ./container_scripts/startdb.sh`
+3) `$ ./setup-containers.sh`
 
-4) `$ ./setup-containers.sh`
+> Note: If you already have the data generated from previous runs, you can just run `./container-scripts/start.db` to get the replica set back up.
 
 ### Tasks for the container-based configuration
 

@@ -49,8 +49,8 @@ services:
     image: mongo:3.6
     volumes:
       - ~/mongors/data1:/data/db
-      - ./container_scripts/rs-init.sh:/scripts/rs-init.sh
-      - ./container_scripts/create_exporter_user.sh:/scripts/create_exporter_user.sh
+      - ./container-scripts/rs-init.sh:/scripts/rs-init.sh
+      - ./container-scripts/create_exporter_user.sh:/scripts/create_exporter_user.sh
     networks:
       - mongors-network
     ports:
@@ -59,7 +59,13 @@ services:
       - mongo2
       - mongo3
     restart: always
-    entrypoint: [ "/usr/bin/mongod", "--bind_ip_all", "--replSet", "dojo" ]
+    entrypoint:
+      [
+        "/usr/bin/mongod",
+        "--bind_ip_all",
+        "--replSet",
+        "dojo"
+      ]
   mongo2:
     container_name: mongo2
     image: mongo:3.6
@@ -70,7 +76,13 @@ services:
     ports:
       - 27018:27017
     restart: always
-    entrypoint: [ "/usr/bin/mongod", "--bind_ip_all", "--replSet", "dojo" ]
+    entrypoint:
+      [
+        "/usr/bin/mongod",
+        "--bind_ip_all",
+        "--replSet",
+        "dojo"
+      ]
   mongo3:
     container_name: mongo3
     image: mongo:3.6
@@ -81,10 +93,16 @@ services:
     ports:
       - 27019:27017
     restart: always
-    entrypoint: [ "/usr/bin/mongod", "--bind_ip_all", "--replSet", "dojo" ]
+    entrypoint:
+      [
+        "/usr/bin/mongod",
+        "--bind_ip_all",
+        "--replSet",
+        "dojo"
+      ]
 
 volumes:
-    grafana_data: {}
+  grafana_data: {}
 
 networks:
   mongors-network:
