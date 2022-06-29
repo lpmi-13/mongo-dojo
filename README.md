@@ -143,7 +143,7 @@ conf.members[0]
 	"hidden" : false,
 	"priority" : 1,
 	"tags" : {
-		
+
 	},
 	"slaveDelay" : NumberLong(0),
 	"votes" : 1
@@ -308,6 +308,8 @@ https://docs.docker.com/compose/install/
 3) `$ ./container_scripts/startdb.sh`
 
 4) `$ ./start_insert_swarm_containers.sh`
+
+> Note: for the above, you can also follow the `./batch-insert.sh` in the `data-generate` directory method
 
 ### Tasks for the container-based configuration
 
@@ -523,15 +525,38 @@ dojo:PRIMARY> db.reviews.find({ reviewsubmitted: { $lt: "2015-01-01 00:00:00"}})
 The important information here is the `"stage" : "IXSCAN",` line, showing us that mongo did an index scan, which is WAY more efficient than a full COLLSCAN.
 
 
-### Find and stop a long-running query
+### Find and fix a long-running query
 
-This is going to be using some very funky queries, but just to see if we can force a very long-running one.
+The one we're going to try is something involving the `ReviewSubmitted` field, since you could easily imagine a scenario where you're interested in bring back all the reviews from the present year/month/day/etc.
 
-- Firing exactly enough traffic to the primary to make it stop responding to read requests, but still respond to heartbeats
+> Note: since this field starts out un-indexed, don't fire anything like `db.reviews.find({"ReviewSubmitted": { $gt: "1995-10-14 00:00:00" }}).count()` at it...since I finally killed that query after it had been running for 30 minutes.
 
-- Attaching a node service that reads from the primary (without secondaryPreferred), and then see what happens when the primary steps down (it should break)
+In the current scenario, we're going to generate a low level of background activity in the replicaset, firing a few basic queries as well as inserting new data.
 
-- Fire a number of different types of queries into mongo and see what the graphs look like: skip param with a high number (1000+), gt/ls combined in the same query maybe?
+```
+./start-background-load.sh
+```
+
+that should start up some background queries, as well as some concurrent processes that are actively adding data.
+
+Now check the grafana dashboards at `localhost:3000` and you should be able to see the database is "doing things" (:tm:).
+
+In order to see how an index can *actually* help us out, we need to fire a long-running query, and see the performance improvements (as opposed to just running `explain()` and seeing stats about it). After all, actually _feeling_ what dealing with a mongo replicaset is like is the whole point of the mongo-dojo!
+
+We can easily fire the same query as above, which should run for a few seconds and eventually return
+
+```
+db.reviews.find({ reviewsubmitted: { $lt: "2015-01-01 00:00:00"}}).count()
+```
+
+Now, let's run the same index building operation from above, while inside the mongo shell:
+
+```
+db.reviews.createIndex({ "reviewsubmitted": -1 })
+```
+
+...and once that's finished, you should be able to run the same query and see it returning MUCH faster.
+
 
 ### Gotchas
 

@@ -1,0 +1,8 @@
+version: "3"
+
+services:
+  data-query-background:
+    build: .
+    extra_hosts:
+      - "mongo1:127.0.0.1"
+    network_mode: "host"

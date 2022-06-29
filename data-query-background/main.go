@@ -13,15 +13,6 @@ import (
 	"go.mongodb.org/mongo-driver/mongo/options"
 )
 
-// type FakeData struct {
-// Name            string `faker:"name"`
-// UserName        string `faker:"username"`
-// Email           string `faker:"email"`
-// ReviewSubmitted string `faker:"timestamp"`
-// Review          string `faker:"paragraph"`
-// BusinessId      int    `faker:"boundary_start=1, boundary_end=10000"`
-// }
-
 var collection *mongo.Collection
 var ctx = context.TODO()
 
@@ -57,7 +48,10 @@ func sendRequest(connectionURI string, ch chan string) {
 
 	filter := bson.M{"username": "wpgPoKz"}
 	mongo_collection := client.Database("userData").Collection("reviews")
+	// so we don't flood the DB with connections
 	time.Sleep(300 * time.Millisecond)
+
+	log.Printf("sending a query...")
 	result, err := mongo_collection.Find(context.TODO(), filter)
 	if err != nil {
 		log.Fatal(err)
