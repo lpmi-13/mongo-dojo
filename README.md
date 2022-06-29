@@ -13,7 +13,7 @@ This is all containerized, and it's used for the tasks that don't actually invol
 
 ### Generating the data
 
-There are two ways to do this, one inserting the records as they're generated via Faker, and separating data creation from insertion into the mongo replicaset. Creating the json locally via `docker-compose up --build` in the `data-generate` directory, and then inserting via `./batch-insert.sh` takes about 10-12 minutes, whereas directly running the `./start_insert_swarm_containers.sh` takes almost 40 minutes.
+The fastest way to do this is separating data creation from insertion into the mongo replicaset. Creating the json locally via `docker-compose up --build` in the `data-generate` directory, and then inserting via `./batch-insert.sh` takes about 10-12 minutes.
 
 ## Setting up (for VMs)
 
@@ -27,7 +27,7 @@ https://www.vagrantup.com/downloads
 
 4) `$ vagrant plugin install vagrant-vbguest`
 
-5) `$ bash setup.sh`
+5) `$ ./setup-vm.sh`
 (this scripts insertion of mock data into the replicaset)
 
 ### Tasks for the VM-based configuration
@@ -307,9 +307,7 @@ https://docs.docker.com/compose/install/
 
 3) `$ ./container_scripts/startdb.sh`
 
-4) `$ ./start_insert_swarm_containers.sh`
-
-> Note: for the above, you can also follow the `./batch-insert.sh` in the `data-generate` directory method
+4) `$ ./setup-containers.sh`
 
 ### Tasks for the container-based configuration
 

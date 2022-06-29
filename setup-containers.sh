@@ -1,6 +1,5 @@
-#!/bin/sh
+#! /bin/bash
 
-docker build -t data-insert-containers data-insert-containers/
+./container-scripts/startdb.sh
 
-# we need to run this on the host network, since this isn't in the compose network, which also means we need to manually add the hosts mapping
-docker run -it --rm --network host --add-host mongo1:127.0.0.1 data-insert-containers
+cd data-generate && docker-compose up --build && ./batch-insert.sh localhost

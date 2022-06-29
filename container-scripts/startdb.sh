@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # clean out the mongo data locally first
-rm -rf ~/mongors
+sudo rm -rf ~/mongors
 
 docker-compose up -d
 
