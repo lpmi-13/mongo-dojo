@@ -1,5 +1,6 @@
 # Mongo dojo
 
+[Blog post describing the background and motivation for this project](https://micromaterialsblog.wordpress.com/2022/06/29/mongo-dojo-a-place-to-practice-mongodb-replicaset-skills/)
 
 There are going to be two different configurations for running these exercises:
 
