@@ -528,7 +528,7 @@ The important information here is the `"stage" : "IXSCAN",` line, showing us tha
 
 ### Find and fix a long-running query
 
-The one we're going to try is something involving the `ReviewSubmitted` field, since you could easily imagine a scenario where you're interested in bring back all the reviews from the present year/month/day/etc.
+The one we're going to try is something involving the `ReviewSubmitted` field, since you could easily imagine a scenario where you're interested in bringing back all the reviews from the present year/month/day/etc.
 
 > Note: since this field starts out un-indexed, don't fire anything like `db.reviews.find({"ReviewSubmitted": { $gt: "1995-10-14 00:00:00" }}).count()` at it...since I finally killed that query after it had been running for 30 minutes.
 
